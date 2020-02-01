@@ -1,0 +1,11 @@
+echo 命令用于向窗口输出文本。
+
+
+快捷键
+sudo 
+vi
+li
+ll
+
+sudo install apt-get
+

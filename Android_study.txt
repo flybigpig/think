@@ -1,0 +1,8 @@
+ndk
+
+new version has replace with cmake
+cmake as the old android.mk file
+
+
+
+
