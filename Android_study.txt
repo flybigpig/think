@@ -5,4 +5,13 @@ cmake as the old android.mk file
 
 
 
+存在 jni 调用java 方法 和java 调用jni 方法
 
+相关命令
+
+javac *.java
+
+javah MyJNI
+set JAVA_HOME=D:\SoftwareDeveloping\jdk32bit_1.6
+g++ -Wl,--add-stdcall-alias -I"%JAVA_HOME%\include" -I"%JAVA_HOME%\include\win32" -shared -o MyJNI.dll MyJNIImpl.cpp
+java MyJNI
