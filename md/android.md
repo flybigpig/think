@@ -1,8 +1,8 @@
 # android
 
-Date  2020 0202
++ Date  2020 0202
 
-#### ndk
+####  ndk
 
 > new version has replace with cmake, cmake as the old android.mk file.
 

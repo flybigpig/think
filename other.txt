@@ -1,10 +1,9 @@
-english with world
+# english with world
 
-in this time,i user the linux with my work.
-and i found that ,even if i have used the windows much longer time ,
-but the english use little. 
+#### in this time,i user the linux with my work.
 
-maybe whene using it,you will think the english is the better than chinese.
+#### and i found that ,even if i have used the windows much longer time ,but the english use little. 
+#### maybe whene using it,you will think the english is the better than chinese.
 example : if you want  write something,you will found the chinese can be 
 harder than english,of course,you are good at chinese and english who Satisfies
 your daily's work.
@@ -14,8 +13,6 @@ computer is made by american,and the programed py english.
 
 
 
-
- 
 
 
 
