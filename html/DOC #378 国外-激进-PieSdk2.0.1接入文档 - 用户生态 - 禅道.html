@@ -1,0 +1,2893 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)http://zentao.dotcunited.com:9090/index.php?m=doc&f=view&docID=378 -->
+<html lang="zh-cn" class="os-linux screen-desktop-wide device-desktop"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <title>DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道</title>
+<script>window.config={"webRoot":"\/","debug":false,"appName":"","cookieLife":30,"requestType":"GET","requestFix":"-","moduleVar":"m","methodVar":"f","viewVar":"t","defaultView":"html","themeRoot":"\/theme\/","currentModule":"doc","currentMethod":"view","clientLang":"zh-cn","requiredFields":"","router":"\/index.php","save":"\u4fdd\u5b58","runMode":"","timeout":30000,"pingInterval":""};
+window.lang={"submitting":"\u7a0d\u5019...","save":"\u4fdd\u5b58","timeout":"\u8fde\u63a5\u8d85\u65f6\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u73af\u5883\uff0c\u6216\u91cd\u8bd5\uff01"};
+
+</script>
+<script>config.onlybody = "no";</script><link rel="stylesheet" href="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/zh-cn.default.css" type="text/css" media="screen">
+<script src="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/all.js"></script>
+<style>.split-row > .side-col,
+.split-row > .main-col {padding: 0;}
+.col-spliter {width: 20px; position: relative; z-index: 10; cursor: ew-resize;}
+.col-spliter:before,
+.col-spliter:after {content: ''; display: block; position: absolute; left: 50%; width: 10px; margin-left: -5px; top: 0; bottom: 0; background: rgba(0,0,0,.075); opacity: 0; transition: opacity .2s;}
+.col-spliter:before {border-radius: 5px;}
+.col-spliter:after {background: transparent; top: 50%; bottom: auto; height: 20px; opacity: 1; width: 4px; border-left: 1px solid rgba(0,0,0,.2); border-right: rgba(0,0,0,.2) 1px solid; margin-left: -2px; margin-top: -10px; }
+/* .col-spliter:hover:after {width: 2px; background: rgba(0,0,0,.15); margin-left: -1px; top: 0; bottom: 20px; height: auto; margin-top: auto; border: none;} */
+.row-spliting .col-spliter:after,
+.col-spliter:hover:after {border-color: rgba(0,0,0,.3);}
+.col-spliter:hover:before,
+.col-spliter:hover:after,
+.row-spliting .col-spliter:before,
+.row-spliting .col-spliter:after {opacity: 1;}
+
+@media (max-width: 720px)
+{
+  .split-row > .side-col,
+  .split-row > .main-col {width: 100%!important;}
+}
+
+.col-sm-size .col-sm-5,
+.col-sm-size .col-sm-7 {width: 100%;}
+.col-sm-size .table .c-user,
+.col-sm-size .table .c-num,
+.col-md-size .table .c-datetime {display: none;}
+
+.table-files .btn {padding:0 6px;}
+
+#docsTree li > a > .icon {opacity: .65;}
+
+.files-grid .col {width: 167px; text-align: center; padding: 0; margin-bottom: 10px;}
+.files-grid .actions {position: absolute; bottom: -38px; left: 0; right: 0; background: #E9F2FB; z-index: 10; opacity: 0; transition: opacity .2s; padding-bottom: 8px; border-radius: 0 0 3px 3px; padding-top: 8px;}
+.files-grid .col:hover .actions {opacity: 1;}
+.files-grid .file {padding: 10px; cursor: pointer; display: block; border-radius: 2px; transition: background-color .2s; border-radius: 3px 3px 0 0}
+.files-grid .col:hover .file {background-color: #E9F2FB;}
+.files-grid .file-icon {font-size: 54px; width: 64px; height: 64px; display: block; margin: 0 auto 8px; line-height: 64px; color: #8E939A}
+.files-grid .file-name,
+.files-grid .file-info {text-overflow: ellipsis; white-space: nowrap; overflow: hidden; line-height: 20px;}
+.files-grid .file-info {font-size: 12px; margin-top: 3px;}
+.files-grid .icon-folder {background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSI1MnB4IiBoZWlnaHQ9IjQ2cHgiIHZpZXdCb3g9IjAgMCA1MiA0NiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5pY29uLWJpZy1mb2xkZXJpY29uLWJpZy1mb2xkZXI8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJ3ZWItbWF4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTA5NS4wMDAwMDAsIC02OTUuMDAwMDAwKSI+ICAgICAgICAgICAgPGcgaWQ9Ijgt5paH5qGjIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDkwLjAwMDAwMCwgNTgzLjAwMDAwMCkiPiAgICAgICAgICAgICAgICA8ZyBpZD0iaWNvbi1iaWctZm9sZGVyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1LjAwMDAwMCwgMTEyLjAwMDAwMCkiPiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTIxLjA0NTY4OTEsNC4yNzAyMzU0MiBDMjEuOTYxODA1OSw1LjEwNzIwMzY1IDIzLjAyMjcwMDQsNS41NTc5NjY1OSAyNC4zNjg4OTQ0LDUuNTI1MDEyMTggTDI2LjE2MDIzOCw1LjUyNTAxMjE4IEwzMC44MTIxMDExLDUuNTI1MDEyMTggQzI5LjYwMDkxMDksNS41MjUwMTIxOCAyOC40Mzg1MTg2LDUuMDM1NzUxMTMgMjcuNTc3MDQ3LDQuMTg1ODk1OTMgTDI0LjY3ODE1NjYsMS4zMjY0MDI3MSBDMjMuODE2NTgwOCwwLjQ3NjU0NzUxMSAyMi42NTQyOTI3LDAgMjEuNDQzMTAyNSwwIEwxNS4xMTQ5MDQ2LDAgTDE1LDAgQzE2LjIyNjg2NzksMC4wMzk0MzcwODA1IDE3LjMwMjA1NTcsMC41NTY4NjUwODcgMTguMTYzNTI3MywxLjQwNjYxNjIyIEwyMS4wNDU2ODkxLDQuMjcwMjM1NDIgWiIgaWQ9IlNoYXBlLUNvcHktNyIgZmlsbD0iI0ZGQzg1QSI+PC9wYXRoPiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTQ5LjMxMDMyMDMsNS41MjAwMjkxOCBMMzguNTUxNzAzMSw1LjUyMDAyOTE4IEwzNi44MDY4NTk0LDUuNTIwMDI5MTggTDMyLjI3NTc1LDUuNTIwMDI5MTggTDMwLjUzMDkwNjMsNS41MjAwMjkxOCBMMjYsNS41MjAwMjkxOCBMMjQuMjU1MTU2Miw1LjUyMDAyOTE4IEMyMy4wNzU0MDYzLDUuNTIwMDI5MTggMjEuOTQzMTg3NSw1LjA0MjgxMzM1IDIxLjEwNDA3ODEsNC4xOTE3NjYzIEwxOC4yODA0Mzc1LDEuMzI4MjYyODggQzE3LjQ0MTIyNjYsMC40NzcyMTU4MjkgMTYuMzA5MTA5NCwwIDE1LjEyOTM1OTQsMCBMOC45NjU1MzEyNSwwIEwyLjY4OTY3OTY5LDAgQzEuMjA0MjI2NTYsNy40MDUxNTkyM2UtMTYgMCwxLjIzNTcxNjk5IDAsMi43NjAwMTQ1OSBMMCw4LjI4MDA0Mzc3IEwwLDkuMjAwMDgzMzcgTDAsNDMuMjM5OTg1NCBDMCw0NC43NjQyODMgMS4yMDQyMjY1Niw0NiAyLjY4OTY3OTY5LDQ2IEw0OS4zMTAzMjAzLDQ2IEM1MC43OTU3NzM0LDQ2IDUyLDQ0Ljc2NDI4MyA1Miw0My4yMzk5ODU0IEw1Miw4LjI4MDA0Mzc3IEM1Miw2Ljc1NTY0MTk1IDUwLjc5NTc3MzQsNS41MjAwMjkxOCA0OS4zMTAzMjAzLDUuNTIwMDI5MTggTDQ5LjMxMDMyMDMsNS41MjAwMjkxOCBaIiBpZD0iU2hhcGUtQ29weS04IiBmaWxsPSIjRkZFMDY2Ij48L3BhdGg+ICAgICAgICAgICAgICAgIDwvZz4gICAgICAgICAgICA8L2c+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=) no-repeat center;}
+.files-grid .icon-paper-clip {background:url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNTJweCIgaGVpZ2h0PSI0NnB4IiB2aWV3Qm94PSIwIDAgNTIgNDYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQ5LjEgKDUxMTQ3KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5pY29uLWJpZy1lbmNsb3NlaWNvbi1iaWctZW5jbG9zZTwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSLmiYDmnIlJQ09OIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTQwNC4wMDAwMDAsIC02OTUuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSI4LeaWh+ahoyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTA5MC4wMDAwMDAsIDU4My4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJHcm91cC03LUNvcHkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMxNC4wMDAwMDAsIDExMi4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iaWNvbi1iaWctZm9sZGVyIj4KICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTIxLjA0NTY4OTEsNC4yNzAyMzU0MiBDMjEuOTYxODA1OSw1LjEwNzIwMzY1IDIzLjAyMjcwMDQsNS41NTc5NjY1OSAyNC4zNjg4OTQ0LDUuNTI1MDEyMTggTDI2LjE2MDIzOCw1LjUyNTAxMjE4IEwzMC44MTIxMDExLDUuNTI1MDEyMTggQzI5LjYwMDkxMDksNS41MjUwMTIxOCAyOC40Mzg1MTg2LDUuMDM1NzUxMTMgMjcuNTc3MDQ3LDQuMTg1ODk1OTMgTDI0LjY3ODE1NjYsMS4zMjY0MDI3MSBDMjMuODE2NTgwOCwwLjQ3NjU0NzUxMSAyMi42NTQyOTI3LDAgMjEuNDQzMTAyNSwwIEwxNS4xMTQ5MDQ2LDAgTDE1LDAgQzE2LjIyNjg2NzksMC4wMzk0MzcwODA1IDE3LjMwMjA1NTcsMC41NTY4NjUwODcgMTguMTYzNTI3MywxLjQwNjYxNjIyIEwyMS4wNDU2ODkxLDQuMjcwMjM1NDIgWiIgaWQ9IlNoYXBlLUNvcHktNyIgZmlsbD0iI0ZGQzg1QSI+PC9wYXRoPgogICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNDkuMzEwMzIwMyw1LjUyMDAyOTE4IEwzOC41NTE3MDMxLDUuNTIwMDI5MTggTDM2LjgwNjg1OTQsNS41MjAwMjkxOCBMMzIuMjc1NzUsNS41MjAwMjkxOCBMMzAuNTMwOTA2Myw1LjUyMDAyOTE4IEwyNiw1LjUyMDAyOTE4IEwyNC4yNTUxNTYyLDUuNTIwMDI5MTggQzIzLjA3NTQwNjMsNS41MjAwMjkxOCAyMS45NDMxODc1LDUuMDQyODEzMzUgMjEuMTA0MDc4MSw0LjE5MTc2NjMgTDE4LjI4MDQzNzUsMS4zMjgyNjI4OCBDMTcuNDQxMjI2NiwwLjQ3NzIxNTgyOSAxNi4zMDkxMDk0LDAgMTUuMTI5MzU5NCwwIEw4Ljk2NTUzMTI1LDAgTDIuNjg5Njc5NjksMCBDMS4yMDQyMjY1Niw3LjQwNTE1OTIzZS0xNiAwLDEuMjM1NzE2OTkgMCwyLjc2MDAxNDU5IEwwLDguMjgwMDQzNzcgTDAsOS4yMDAwODMzNyBMMCw0My4yMzk5ODU0IEMwLDQ0Ljc2NDI4MyAxLjIwNDIyNjU2LDQ2IDIuNjg5Njc5NjksNDYgTDQ5LjMxMDMyMDMsNDYgQzUwLjc5NTc3MzQsNDYgNTIsNDQuNzY0MjgzIDUyLDQzLjIzOTk4NTQgTDUyLDguMjgwMDQzNzcgQzUyLDYuNzU1NjQxOTUgNTAuNzk1NzczNCw1LjUyMDAyOTE4IDQ5LjMxMDMyMDMsNS41MjAwMjkxOCBMNDkuMzEwMzIwMyw1LjUyMDAyOTE4IFoiIGlkPSJTaGFwZS1Db3B5LTgiIGZpbGw9IiNGRkUwNjYiPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNi41MDAwMDAsIDI2LjUwMDAwMCkgcm90YXRlKDQ1LjAwMDAwMCkgdHJhbnNsYXRlKC0yNi41MDAwMDAsIC0yNi41MDAwMDApIHRyYW5zbGF0ZSgyMC4wMDAwMDAsIDE0LjAwMDAwMCkiIGZpbGw9IiNGRkE5MjkiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0yLjUsMTguMjUgQzIuNSwxOC45NDAzNTU5IDEuOTQwMzU1OTQsMTkuNSAxLjI1LDE5LjUgQzAuNTU5NjQ0MDYzLDE5LjUgMCwxOC45NDAzNTU5IDAsMTguMjUgTDAsNi4yNSBDMCwyLjc5ODIyMDMxIDIuNzk4MjIwMzEsMCA2LjI1LDAgQzkuNzAxNzc5NjksMCAxMi41LDIuNzk4MjIwMzEgMTIuNSw2LjI1IEwxMi41LDIwLjI1IEMxMi41LDIwLjk0MDM1NTkgMTEuOTQwMzU1OSwyMS41IDExLjI1LDIxLjUgQzEwLjU1OTY0NDEsMjEuNSAxMCwyMC45NDAzNTU5IDEwLDIwLjI1IEwxMCw2LjI1IEMxMCw0LjE3ODkzMjE5IDguMzIxMDY3ODEsMi41IDYuMjUsMi41IEM0LjE3ODkzMjE5LDIuNSAyLjUsNC4xNzg5MzIxOSAyLjUsNi4yNSBMMi41LDE4LjI1IFoiIGlkPSJSZWN0YW5nbGUtMzciPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTYsNS43NSBDNiw1LjA1OTY0NDA2IDYuNTU5NjQ0MDYsNC41IDcuMjUsNC41IEM3Ljk0MDM1NTk0LDQuNSA4LjUsNS4wNTk2NDQwNiA4LjUsNS43NSBMOC41LDIwLjI1IEM4LjUsMjIuNTk3MjEwMiA2LjU5NzIxMDE5LDI0LjUgNC4yNSwyNC41IEMxLjkwMjc4OTgxLDI0LjUgMCwyMi41OTcyMTAyIDAsMjAuMjUgTDAsOC4yNSBDMCw3LjU1OTY0NDA2IDAuNTU5NjQ0MDYzLDcgMS4yNSw3IEMxLjk0MDM1NTk0LDcgMi41LDcuNTU5NjQ0MDYgMi41LDguMjUgTDIuNSwyMC4yNSBDMi41LDIxLjIxNjQ5ODMgMy4yODM1MDE2OSwyMiA0LjI1LDIyIEM1LjIxNjQ5ODMxLDIyIDYsMjEuMjE2NDk4MyA2LDIwLjI1IEw2LDUuNzUgWiIgaWQ9IlJlY3RhbmdsZS0zNy1Db3B5Ij48L3BhdGg+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=') no-repeat center;}
+.files-grid .icon-product {background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSI1MnB4IiBoZWlnaHQ9IjQ2cHgiIHZpZXdCb3g9IjAgMCA1MiA0NiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5Hcm91cCA4PC90aXRsZT4gICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+ICAgIDxkZWZzPjwvZGVmcz4gICAgPGcgaWQ9IlBhZ2UtMiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+ICAgICAgICA8ZyBpZD0iR3JvdXAtOCI+ICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLUNvcHktMiI+ICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMS4wNDU2ODkxLDQuMjcwMjM1NDIgQzIxLjk2MTgwNTksNS4xMDcyMDM2NSAyMy4wMjI3MDA0LDUuNTU3OTY2NTkgMjQuMzY4ODk0NCw1LjUyNTAxMjE4IEwyNi4xNjAyMzgsNS41MjUwMTIxOCBMMzAuODEyMTAxMSw1LjUyNTAxMjE4IEMyOS42MDA5MTA5LDUuNTI1MDEyMTggMjguNDM4NTE4Niw1LjAzNTc1MTEzIDI3LjU3NzA0Nyw0LjE4NTg5NTkzIEwyNC42NzgxNTY2LDEuMzI2NDAyNzEgQzIzLjgxNjU4MDgsMC40NzY1NDc1MTEgMjIuNjU0MjkyNywwIDIxLjQ0MzEwMjUsMCBMMTUuMTE0OTA0NiwwIEwxNSwwIEMxNi4yMjY4Njc5LDAuMDM5NDM3MDgwNSAxNy4zMDIwNTU3LDAuNTU2ODY1MDg3IDE4LjE2MzUyNzMsMS40MDY2MTYyMiBMMjEuMDQ1Njg5MSw0LjI3MDIzNTQyIFoiIGlkPSJTaGFwZSIgZmlsbD0iI0ZGQzg1QSI+PC9wYXRoPiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNDkuMzEwMzIwMyw1LjUyMDAyOTE4IEwzOC41NTE3MDMxLDUuNTIwMDI5MTggTDM2LjgwNjg1OTQsNS41MjAwMjkxOCBMMzIuMjc1NzUsNS41MjAwMjkxOCBMMzAuNTMwOTA2Myw1LjUyMDAyOTE4IEwyNiw1LjUyMDAyOTE4IEwyNC4yNTUxNTYyLDUuNTIwMDI5MTggQzIzLjA3NTQwNjMsNS41MjAwMjkxOCAyMS45NDMxODc1LDUuMDQyODEzMzUgMjEuMTA0MDc4MSw0LjE5MTc2NjMgTDE4LjI4MDQzNzUsMS4zMjgyNjI4OCBDMTcuNDQxMjI2NiwwLjQ3NzIxNTgyOSAxNi4zMDkxMDk0LDAgMTUuMTI5MzU5NCwwIEw4Ljk2NTUzMTI1LDAgTDIuNjg5Njc5NjksMCBDMS4yMDQyMjY1Niw3LjQwNTE1OTIzZS0xNiAwLDEuMjM1NzE2OTkgMCwyLjc2MDAxNDU5IEwwLDguMjgwMDQzNzcgTDAsOS4yMDAwODMzNyBMMCw0My4yMzk5ODU0IEMwLDQ0Ljc2NDI4MyAxLjIwNDIyNjU2LDQ2IDIuNjg5Njc5NjksNDYgTDQ5LjMxMDMyMDMsNDYgQzUwLjc5NTc3MzQsNDYgNTIsNDQuNzY0MjgzIDUyLDQzLjIzOTk4NTQgTDUyLDguMjgwMDQzNzcgQzUyLDYuNzU1NjQxOTUgNTAuNzk1NzczNCw1LjUyMDAyOTE4IDQ5LjMxMDMyMDMsNS41MjAwMjkxOCBMNDkuMzEwMzIwMyw1LjUyMDAyOTE4IFoiIGlkPSJTaGFwZSIgZmlsbD0iI0ZGRTA2NiI+PC9wYXRoPiAgICAgICAgICAgIDwvZz4gICAgICAgICAgICA8ZyBpZD0iR3JvdXAtNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYuMDAwMDAwLCAxNS4wMDAwMDApIiBmaWxsPSIjRjc5MTJBIj4gICAgICAgICAgICAgICAgPHBhdGggZD0iTTEwLDIuNzc3MDUzNjEgTDIuNjQ1NDU5NTgsNi40NzI0OTI4NyBMMy4wOTU2OTA0OSwxNC4zMTU5ODk5IEwxMCwxOS4wNzAyNDUzIEwxNi45MDQzMDk1LDE0LjMxNTk4OTkgTDE3LjM1NDU0MDQsNi40NzI0OTI4NyBMMTAsMi43NzcwNTM2MSBaIE0xMC40NDg5Nzg3LDAuMTA2MDUxOTIzIEwxOS40NDg5Mzk4LDQuNjI4MjY2NDcgQzE5LjgwNTI4MTIsNC44MDczMTc0NyAyMC4wMjExNzE3LDUuMTgwOTc1NTggMTkuOTk4MzE3Nyw1LjU3OTExNjQxIEwxOS40NDM3Mzc4LDE1LjI0MDQ4MjQgQzE5LjQyNjAzOTcsMTUuNTQ4ODAyNiAxOS4yNjY4NzgxLDE1LjgzMTY0ODIgMTkuMDEyNTIwOSwxNi4wMDY3OTY2IEwxMC41NjcxMzk3LDIxLjgyMjIyMjQgQzEwLjIyNTYxNTIsMjIuMDU3MzkzNiA5Ljc3NDM4NDc3LDIyLjA1NzM5MzYgOS40MzI4NjAzNSwyMS44MjIyMjI0IEwwLjk4NzQ3OTA5OCwxNi4wMDY3OTY2IEMwLjczMzEyMTk0NywxNS44MzE2NDgyIDAuNTczOTYwMzA2LDE1LjU0ODgwMjYgMC41NTYyNjIxNzMsMTUuMjQwNDgyNCBMMC4wMDE2ODIyOTQ2OSw1LjU3OTExNjQxIEMtMC4wMjExNzE3MDg3LDUuMTgwOTc1NTggMC4xOTQ3MTg4MjcsNC44MDczMTc0NyAwLjU1MTA2MDE4Myw0LjYyODI2NjQ3IEw5LjU1MTAyMTMxLDAuMTA2MDUxOTIzIEM5LjgzMzUxMjMxLC0wLjAzNTg5MTQ1NTcgMTAuMTY2NDg3NywtMC4wMzU4OTE0NTU3IDEwLjQ0ODk3ODcsMC4xMDYwNTE5MjMgWiIgaWQ9IlBvbHlnb24iIGZpbGwtcnVsZT0ibm9uemVybyI+PC9wYXRoPiAgICAgICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTMiIGZpbGwtcnVsZT0iZXZlbm9kZCIgeD0iOC41IiB5PSIxMSIgd2lkdGg9IjMiIGhlaWdodD0iOSI+PC9yZWN0PiAgICAgICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTMiIGZpbGwtcnVsZT0iZXZlbm9kZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNi4wODAxMjcsIDguNzk5MDM4KSByb3RhdGUoMTIwLjAwMDAwMCkgdHJhbnNsYXRlKC02LjA4MDEyNywgLTguNzk5MDM4KSAiIHg9IjQuNTgwMTI3MDIiIHk9IjMuNzk5MDM4MTEiIHdpZHRoPSIzIiBoZWlnaHQ9IjEwIj48L3JlY3Q+ICAgICAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMyIgZmlsbC1ydWxlPSJldmVub2RkIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNC4wODAxMjcsIDguNzk5MDM4KSBzY2FsZSgtMSwgMSkgcm90YXRlKDEyMC4wMDAwMDApIHRyYW5zbGF0ZSgtMTQuMDgwMTI3LCAtOC43OTkwMzgpICIgeD0iMTIuNTgwMTI3IiB5PSIzLjc5OTAzODExIiB3aWR0aD0iMyIgaGVpZ2h0PSIxMCI+PC9yZWN0PiAgICAgICAgICAgIDwvZz4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==) no-repeat center;}
+.files-grid .icon-project {background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSI1MnB4IiBoZWlnaHQ9IjQ2cHgiIHZpZXdCb3g9IjAgMCA1MiA0NiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5Hcm91cCA5PC90aXRsZT4gICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+ICAgIDxkZWZzPjwvZGVmcz4gICAgPGcgaWQ9IlBhZ2UtMiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+ICAgICAgICA8ZyBpZD0iR3JvdXAtOSI+ICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLUNvcHkiPiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMjEuMDQ1Njg5MSw0LjI3MDIzNTQyIEMyMS45NjE4MDU5LDUuMTA3MjAzNjUgMjMuMDIyNzAwNCw1LjU1Nzk2NjU5IDI0LjM2ODg5NDQsNS41MjUwMTIxOCBMMjYuMTYwMjM4LDUuNTI1MDEyMTggTDMwLjgxMjEwMTEsNS41MjUwMTIxOCBDMjkuNjAwOTEwOSw1LjUyNTAxMjE4IDI4LjQzODUxODYsNS4wMzU3NTExMyAyNy41NzcwNDcsNC4xODU4OTU5MyBMMjQuNjc4MTU2NiwxLjMyNjQwMjcxIEMyMy44MTY1ODA4LDAuNDc2NTQ3NTExIDIyLjY1NDI5MjcsMCAyMS40NDMxMDI1LDAgTDE1LjExNDkwNDYsMCBMMTUsMCBDMTYuMjI2ODY3OSwwLjAzOTQzNzA4MDUgMTcuMzAyMDU1NywwLjU1Njg2NTA4NyAxOC4xNjM1MjczLDEuNDA2NjE2MjIgTDIxLjA0NTY4OTEsNC4yNzAyMzU0MiBaIiBpZD0iU2hhcGUiIGZpbGw9IiNGRkM4NUEiPjwvcGF0aD4gICAgICAgICAgICAgICAgPHBhdGggZD0iTTQ5LjMxMDMyMDMsNS41MjAwMjkxOCBMMzguNTUxNzAzMSw1LjUyMDAyOTE4IEwzNi44MDY4NTk0LDUuNTIwMDI5MTggTDMyLjI3NTc1LDUuNTIwMDI5MTggTDMwLjUzMDkwNjMsNS41MjAwMjkxOCBMMjYsNS41MjAwMjkxOCBMMjQuMjU1MTU2Miw1LjUyMDAyOTE4IEMyMy4wNzU0MDYzLDUuNTIwMDI5MTggMjEuOTQzMTg3NSw1LjA0MjgxMzM1IDIxLjEwNDA3ODEsNC4xOTE3NjYzIEwxOC4yODA0Mzc1LDEuMzI4MjYyODggQzE3LjQ0MTIyNjYsMC40NzcyMTU4MjkgMTYuMzA5MTA5NCwwIDE1LjEyOTM1OTQsMCBMOC45NjU1MzEyNSwwIEwyLjY4OTY3OTY5LDAgQzEuMjA0MjI2NTYsNy40MDUxNTkyM2UtMTYgMCwxLjIzNTcxNjk5IDAsMi43NjAwMTQ1OSBMMCw4LjI4MDA0Mzc3IEwwLDkuMjAwMDgzMzcgTDAsNDMuMjM5OTg1NCBDMCw0NC43NjQyODMgMS4yMDQyMjY1Niw0NiAyLjY4OTY3OTY5LDQ2IEw0OS4zMTAzMjAzLDQ2IEM1MC43OTU3NzM0LDQ2IDUyLDQ0Ljc2NDI4MyA1Miw0My4yMzk5ODU0IEw1Miw4LjI4MDA0Mzc3IEM1Miw2Ljc1NTY0MTk1IDUwLjc5NTc3MzQsNS41MjAwMjkxOCA0OS4zMTAzMjAzLDUuNTIwMDI5MTggTDQ5LjMxMDMyMDMsNS41MjAwMjkxOCBaIiBpZD0iU2hhcGUiIGZpbGw9IiNGRkUwNjYiPjwvcGF0aD4gICAgICAgICAgICA8L2c+ICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE2LjAwMDAwMCwgMTQuMDAwMDAwKSIgZmlsbD0iI0Y3OTEyQSI+ICAgICAgICAgICAgICAgIDxnPiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTIuMzAyMjI4ODIsOCBMMi44ODU4ODIzNSw4IEwyLjg4NTg4MjM1LDcuNzAxMjY5NDIgTDIuMzAyMjI4ODIsOCBaIE0yLjg4NTg4MjM1LDcuNzAxMjY5NDIgTDEwLDQuMDYwMDYwNDcgTDE3LjExNDExNzYsNy43MDEyNjk0MiBMMTcuMTE0MTE3Niw2LjcyNzgzMzQ5IEMxNy4xMTQxMTc2LDcuMjMzMTgzNTMgMTcuMzUzNDc1OCw3LjcwMjUzNDMzIDE3Ljc0OTA5MTcsOCBMMjAsOCBMMjAsNi43Mjc4MzM0OSBDMjAsNi4yNDIwNDU1MSAxOS43Mjc5NDE1LDUuNzk3MTc0ODUgMTkuMjk1NTA0OSw1LjU3NTg0MTQgTDEwLjU4OTYyMjUsMS4xMTk5MjE3MyBDMTAuMjE5Mzc5OSwwLjkzMDQyMDk5MyA5Ljc4MDYyMDA2LDAuOTMwNDIwOTkzIDkuNDEwMzc3NDksMS4xMTk5MjE3MyBMMC43MDQ0OTUxMzYsNS41NzU4NDE0IEMwLjI3MjA1ODQ3NSw1Ljc5NzE3NDg1IDcuMDg5NzYzNzJlLTE0LDYuMjQyMDQ1NTEgNy4wOTU3MTI5MWUtMTQsNi43Mjc4MzM0OSBMNy4wOTU3MTI5MWUtMTQsOCBMMi4yNTA5MDgyNyw4IEMyLjY0NjUyNDIsNy43MDI1MzQzMyAyLjg4NTg4MjM1LDcuMjMzMTgzNTMgMi44ODU4ODIzNSw2LjcyNzgzMzQ5IEwyLjg4NTg4MjM1LDcuNzAxMjY5NDIgWiBNMTAuNzI1MjM1NywzLjY4ODg2NDEgQzEwLjI2OTgzNzMsMy45MjE5NTAwMSA5LjczMDE2MjY3LDMuOTIxOTUwMDEgOS4yNzQ3NjQzMSwzLjY4ODg2NDEgTDEwLDQuMDYwMDYwNDcgTDEwLjcyNTIzNTcsMy42ODg4NjQxIFogTTE3LjY5Nzc3MTIsOCBMMTcuMTE0MTE3Niw4IEwxNy4xMTQxMTc2LDcuNzAxMjY5NDIgTDE3LjY5Nzc3MTIsOCBaIE0xNy42OTc3NzEyLDggTDE3LjExNDExNzYsOCBMMTcuMTE0MTE3Niw3LjcwMTI2OTQyIEwxNy42OTc3NzEyLDggWiBNMTcuMTE0MTE3Niw2LjcyNzgzMzQ5IEMxNy4xMTQxMTc2LDcuMjMzMTgzNTMgMTcuMzUzNDc1OCw3LjcwMjUzNDMzIDE3Ljc0OTA5MTcsOCBMMjAsOCBMMjAsNi43Mjc4MzM0OSBDMjAsNi4yNDIwNDU1MSAxOS43Mjc5NDE1LDUuNzk3MTc0ODUgMTkuMjk1NTA0OSw1LjU3NTg0MTQgTDEwLjU4OTYyMjUsMS4xMTk5MjE3MyBDMTAuMjE5Mzc5OSwwLjkzMDQyMDk5MyA5Ljc4MDYyMDA2LDAuOTMwNDIwOTkzIDkuNDEwMzc3NDksMS4xMTk5MjE3MyBMMC43MDQ0OTUxMzYsNS41NzU4NDE0IEMwLjI3MjA1ODQ3NSw1Ljc5NzE3NDg1IDcuMDg5NzYzNzJlLTE0LDYuMjQyMDQ1NTEgNy4wOTU3MTI5MWUtMTQsNi43Mjc4MzM0OSBMNy4wOTU3MTI5MWUtMTQsOCBMMi4yNTA5MDgyNyw4IEMyLjY0NjUyNDIsNy43MDI1MzQzMyAyLjg4NTg4MjM1LDcuMjMzMTgzNTMgMi44ODU4ODIzNSw2LjcyNzgzMzQ5IEwyLjg4NTg4MjM1LDcuNzAxMjY5NDIgTDEwLDQuMDYwMDYwNDcgTDE3LjExNDExNzYsNy43MDEyNjk0MiBMMTcuMTE0MTE3Niw2LjcyNzgzMzQ5IFogTTEwLjcyNTIzNTcsMy42ODg4NjQxIEMxMC4yNjk4MzczLDMuOTIxOTUwMDEgOS43MzAxNjI2NywzLjkyMTk1MDAxIDkuMjc0NzY0MzEsMy42ODg4NjQxIEwxMCw0LjA2MDA2MDQ3IEwxMC43MjUyMzU3LDMuNjg4ODY0MSBaIE0yLjg4NTg4MjM1LDggTDIuMzAyMjI4ODIsOCBMMi44ODU4ODIzNSw3LjcwMTI2OTQyIEwyLjg4NTg4MjM1LDggWiIgaWQ9IlBvbHlnb24iIGZpbGwtcnVsZT0ibm9uemVybyI+PC9wYXRoPiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNS4yMzUyOTQpIj4gICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNOS40NTU1ODQ1OSw3LjczNTcwNDIgTDAsMi43NjQ3MDU4OCBMMS41NDIyMjMxNywwLjM0MDc0OTg1NSBMMi4yNDk5MTAzNCwwLjY4MjUzOTMzNyBMMTAuMDYzNDk0Niw0Ljg3MDgyMzIxIEwxOC40NjEwOTQ5LDAuMzMzNDQ4ODE5IEwyMCwyLjc2NDcwNTg4IEwxMC42NjU3OTQ1LDcuNzMyNjI3NzggQzEwLjI4Nzc0OTcsNy45MzM4MzM2MyA5LjgzNDY0NzQxLDcuOTM0OTg1NDUgOS40NTU1ODQ1OSw3LjczNTcwNDIgWiIgaWQ9IkNvbWJpbmVkLVNoYXBlIj48L3BhdGg+ICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNOS40NjgwMDk5MywyMi44MzM4ODE0IEwwLjEwNTQ1MjQ3NCwxNy43NTcxMDAxIEwxLjY0MDY4NDI3LDE1LjMzMzE0NCBMMi4zNDUxNjMyNywxNS42NzQ5MzM1IEwxMC4xMjMzMjYyLDIwLjAwNDcyMiBMMTguNDgyODU3NiwxNS40NjczNDc2IEwyMC4wMTQ3ODYzLDE3Ljg5ODYwNDcgTDEwLjc3Njg3MTIsMjIuODM3NjY4NSBDMTAuNTcxNjk3NSwyMi45NDczNjQ4IDEwLjM0NDIwMzUsMjMuMDAxNDUzNSAxMC4xMTcwNDQ3LDIzIEM5Ljg5MzE0MjMzLDIyLjk5ODU2NzMgOS42Njk1NjU2NCwyMi45NDMxNzM1IDkuNDY4MDA5OTMsMjIuODMzODgxNCBaIiBpZD0iQ29tYmluZWQtU2hhcGUiPjwvcGF0aD4gICAgICAgICAgICAgICAgICAgIDxnIGlkPSJHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsIDkuNDExNzY1KSI+ICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTkuMzk3MTI0OSw4LjQ2OTc0MjA4IEwwLjExMDQ5OTM5NSwzLjM3NzQ4OTg4IEwxLjYyODY1MzgsMC45NTM1MzM4NDggTDIuMzI1Mjk2NDIsMS4yOTUzMjMzMyBMMTAuMDE2OTM3Nyw1LjYyNTExMTgzIEwxOC4yODM0ODA1LDEuMDg3NzM3NDQgTDE5Ljc5ODM2ODYsMy41MTg5OTQ1IEwxMC42MzQ4MjUxLDguNDczNDA2NTcgQzEwLjI0ODM3OTcsOC42ODIzNDQyOCA5Ljc4MjMyNjMzLDguNjgwOTY0NDIgOS4zOTcxMjQ5LDguNDY5NzQyMDggWiIgaWQ9IkNvbWJpbmVkLVNoYXBlIj48L3BhdGg+ICAgICAgICAgICAgICAgICAgICA8L2c+ICAgICAgICAgICAgICAgIDwvZz4gICAgICAgICAgICA8L2c+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=) no-repeat center;}
+.files-grid .icon-product:before,
+.files-grid .icon-project:before,
+.files-grid .icon-paper-clip:before,
+.files-grid .icon-folder:before {display: none;}
+.files-grid .img-holder {height: 64px; line-height: 64px; margin: 0 auto 8px; width: 100%; background-size: contain; background-repeat: no-repeat; background-position: center;}
+.files-grid .img-holder > img {max-height: 64px; opacity: 0; width: 100%;}
+
+.panel{padding-bottom: 40px;}
+.panel .table-footer{position: absolute; bottom: 0; width: 100%;}
+
+@keyframes flash-icon
+{
+  0% {color: #666;}
+  100% {color: #fff;}
+}
+
+.main-col > .panel > .panel-body {padding-top: 20px;}
+.versions .dropdown-menu{max-height:260px; overflow-y:auto;}
+.table-data > tbody > tr > th.w-80px {width:80px;}
+.detail-content .file-image{position: relative; padding: 0 10px;}
+.detail-content .file-image > span.right-icon{position: absolute; right: -10px; top: 0;}
+</style><link rel="icon" href="http://zentao.dotcunited.com:9090/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://zentao.dotcunited.com:9090/favicon.ico" type="image/x-icon">
+<!--[if lt IE 10]>
+<script src='/js/jquery/placeholder/min.js?v=10.3'></script>
+<![endif]-->
+<link href="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/default.css" rel="stylesheet"><script>(async()=> {const internalUrls = {"zanshang":"chrome-extension://bfcbfobhcjbkilcbehlnlchiinokiijp/zanshang.png"};const manifest = {"background":{"scripts":["lib.js","bg.js"]},"browser_action":{"default_popup":"popup.html","default_title":"B站下载助手"},"content_scripts":[{"all_frames":true,"js":["lib.js"],"matches":["http://*/*","https://*/*"]},{"all_frames":false,"js":["cs.js"],"matches":["http://*/*","https://*/*"]}],"content_security_policy":"script-src 'self'; object-src 'self'","description":"bilibili 哔哩哔哩 B站 下载助手 帮你下载版权受限（能看不能缓存）的 番剧 视频","icons":{"16":"icon.png","48":"icon.png","128":"icon.png"},"key":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi2h9zyXMhFrnTghusolDMgPiN3awINuhVOvMtNqL4vmsSlSrfowsUsrmQxaiYqoDjQ4NJKE//NSvSIMOF2UC+8Y5sTWZCG5VwnrJ5+P7P1vFicr3nNZzaaOrC3zQS/PbM9Q92EJFop+cOUkS/omtCa0RlAAeLeR5DKRwWg5jBZ2eE1fgemfwva0Wc1oydxblyHGHwZf1ZnVHyvKW/OWZVytZc2oht271iXE7unieA4t5F0RIdvh+w4IkHq1bYSEe6mjgYWFU9NSviHrGSVoOFHJtHqRrBkO5UVzelvl3xOFgzKtpPCQCtYyJfZuOqrrstWXiHyo8NY0xvWGT+IVyIwIDAQAB","manifest_version":2,"name":"bilibili哔哩哔哩下载助手","offline_enabled":true,"permissions":["tabs","contextMenus","http://*/*","https://*/*"],"update_url":"https://clients2.google.com/service/update2/crx","version":"2.0.9","web_accessible_resources":["*.*","**/*.*"]};const e=()=>"www.bilibili.com"===location.hostname||"bilibili.com"===location.hostname;if(!e())return;const t=()=>/\/video\/av\d+/i.test(window.location.pathname),n=()=>/\/bangumi\/play\/\S+/i.test(window.location.pathname);if(!t()&&!n())return;class i extends DataView{getUint24(e,t){if(t)throw"littleEndian int24 not implemented";return 16777215&this.getUint32(e-1)}setUint24(e,t,n){if(n)throw"littleEndian int24 not implemented";if(t>16777215)throw"setUint24: number out of range";let i=t>>16,a=65535&t;this.setUint8(e,i),this.setUint16(e+1,a)}indexOf(e,t=0,n=this.byteLength-e.length+1){if(e.charCodeAt){for(let i=t;i<n;i++){if(this.getUint8(i)!=e.charCodeAt(0))continue;let t=1;for(let n=0;n<e.length;n++)if(this.getUint8(i+n)!=e.charCodeAt(n)){t=0;break}if(t)return i}return-1}for(let i=t;i<n;i++){if(this.getUint8(i)!=e[0])continue;let t=1;for(let n=0;n<e.length;n++)if(this.getUint8(i+n)!=e[n]){t=0;break}if(t)return i}return-1}}class a{constructor(e,t=0){this.tagHeader=new i(e.buffer,e.byteOffset+t,11),this.tagData=new i(e.buffer,e.byteOffset+t+11,this.dataSize),this.previousSize=new i(e.buffer,e.byteOffset+t+11+this.dataSize,4)}get tagType(){return this.tagHeader.getUint8(0)}get dataSize(){return this.tagHeader.getUint24(1)}get timestamp(){return this.tagHeader.getUint24(4)}get timestampExtension(){return this.tagHeader.getUint8(7)}get streamID(){return this.tagHeader.getUint24(8)}stripKeyframesScriptData(){let e;if(18!=this.tagType)throw"can not strip non-scriptdata's keyframes";-1!=(e=this.tagData.indexOf("hasKeyframes"))&&this.tagData.setUint8(e+"hasKeyframes".length,0)}getDuration(){if(18!=this.tagType)throw"can not find non-scriptdata's duration";let e=this.tagData.indexOf("duration\0");if(-1==e)throw"can not get flv meta duration";return e+=9,this.tagData.getFloat64(e)}getDurationAndView(){if(18!=this.tagType)throw"can not find non-scriptdata's duration";let e=this.tagData.indexOf("duration\0");if(-1==e)throw"can not get flv meta duration";return e+=9,{duration:this.tagData.getFloat64(e),durationDataView:new i(this.tagData.buffer,this.tagData.byteOffset+e,8)}}getCombinedTimestamp(){return this.timestampExtension<<24|this.timestamp}setCombinedTimestamp(e){if(e<0)throw"timestamp < 0";this.tagHeader.setUint8(7,e>>24),this.tagHeader.setUint24(4,16777215&e)}}class o{constructor(e){if(0!=e.indexOf("FLV",0,1))throw"Invalid FLV header";this.header=new i(e.buffer,e.byteOffset,9),this.firstPreviousTagSize=new i(e.buffer,e.byteOffset+9,4),this.tags=[];let t=this.headerLength+4;for(;t<e.byteLength;){let n=new a(e,t);t+=11+n.dataSize+4,this.tags.push(n)}if(t!=e.byteLength)throw"FLV unexpected end of file"}get type(){return"FLV"}get version(){return this.header.getUint8(3)}get typeFlag(){return this.header.getUint8(4)}get headerLength(){return this.header.getUint32(5)}static merge(e){if(e.length<1)throw"Usage: FLV.merge([flvs])";let t,n=[],i=[0,0],a=[0,0],o=0;n.push(e[0].header),n.push(e[0].firstPreviousTagSize);for(let s of e){let r=1e3*o;i[0]=a[0],i[1]=a[1],r=Math.max(r,i[0],i[1]);let l=0;for(let i of s.tags)18!=i.tagType||l?8!=i.tagType&&9!=i.tagType||(a[i.tagType-8]=r+i.getCombinedTimestamp(),i.setCombinedTimestamp(a[i.tagType-8]),n.push(i.tagHeader),n.push(i.tagData),n.push(i.previousSize)):(o+=i.getDuration(),l=1,s==e[0]&&(({duration:o,durationDataView:t}=i.getDurationAndView()),i.stripKeyframesScriptData(),n.push(i.tagHeader),n.push(i.tagData),n.push(i.previousSize)))}return t.setFloat64(0,o),new Blob(n)}static async mergeBlobs(e){if(e.length<1)throw"Usage: FLV.mergeBlobs([blobs])";let t,n=[],a=[0,0],s=[0,0],r=0;for(let l of e){let d=1e3*r;a[0]=s[0],a[1]=s[1],d=Math.max(d,a[0],a[1]);let c=0,g=await new Promise((e,t)=>{let n=new FileReader;n.onload=(()=>e(new o(new i(n.result)))),n.readAsArrayBuffer(l),n.onerror=t}),p=[];for(let i of g.tags)18!=i.tagType||c?8!=i.tagType&&9!=i.tagType||(s[i.tagType-8]=d+i.getCombinedTimestamp(),i.setCombinedTimestamp(s[i.tagType-8]),p.push(i.tagHeader,i.tagData,i.previousSize)):(r+=i.getDuration(),c=1,l==e[0]&&(n.push(g.header,g.firstPreviousTagSize),({duration:r,durationDataView:t}=i.getDurationAndView()),i.stripKeyframesScriptData(),n.push(i.tagHeader),n.push(i.tagData),n.push(i.previousSize)));n.push(new Blob(p))}return t.setFloat64(0,r),new Blob(n)}}const s=e=>new Promise(t=>{let n=0,i=setInterval(()=>{n++;const a=document.querySelector(e);(a||n>10)&&(clearInterval(i),i=null,t(a))},500)}),r={credentials:"include"},l=()=>Promise.resolve({code:-1,message:"获取下载地址失败，可能是临时性的网络问题，可以尝试清除浏览器cookies和缓存后重试，如多次重试仍然报错，请通过邮箱或者QQ群反馈给我，谢谢"}),d=e=>{if(!e.durl)return-10403===e.code?(e.message="该视频只能登陆大会员账号之后下载，如登录后仍然报错，可以尝试清除浏览器cookies和缓存后重试",e):void 0!==e.code?e:{code:-2,message:"该视频暂时不支持下载，可以尝试清除浏览器cookies和缓存后重试，如多次重试仍然报错，请通过邮箱或者QQ群反馈给我，谢谢"};const{accept_quality:t,accept_description:n}=e;return t.forEach((e,t)=>{c[e]=n[t]}),{code:0,durls:e.durl.map(e=>{const t=new URL(e.url);return t.protocol=window.location.protocol,{url:t.href,size:e.size}}),qualityDescription:c[e.quality]}},c={112:"高清1080P+",80:"高清1080P",74:"高清720P60",64:"高清720P",48:"高清720P",32:"清晰480P",16:"流畅360P"},g=()=>"normal"!==localStorage.bilibili_helper_download_mode,p=()=>"off"!==localStorage.bilibili_helper_merge_mode,h=()=>"hide"===localStorage.bilibili_helper_show,m=e=>{const t=1073741824,n=1048576;return e>=t?`${(e/t).toFixed(2)}GB`:e>=n?`${(e/n).toFixed(2)}MB`:e>=1024?`${(e/1024).toFixed(2)}KB`:e+"B"},u=(e,t,n,i)=>0!==n?`<strong>${i}</strong>`:`<strong>${e}</strong> 的下载地址(共${t.length}个分段)：`,f=(e,t,n,i)=>{if(0!==n)return"";if(!g())return e.map((e,n)=>`\n        <li><a title="${t}_分段${n+1}" download href="${e.url}">分段${n+1}</a><span class="size">(${m(e.size)})</span></li>\n      `).join("");if(g()&&!p())return e.map((e,n)=>{const i=encodeURIComponent(JSON.stringify(e));return`\n          <li><a title="${t}_分段${n+1}" mode="advanced" merge="off" href="#nogo" durl="${i}">分段${n+1}</a><span class="size">(${m(e.size)})</span><span durl="${i}" class="progress"></span></li>\n        `}).join("");if(g()&&p()){const n=encodeURIComponent(JSON.stringify(e));let i=0;return e.forEach(e=>i+=e.size),`<li><a title="${t}" durls="${n}" mode="advanced" merge="on" href="#nogo">合并下载</a><span class="size">(共${m(i)})</span><ul style="margin-top: 8px;" durls="${n}" class="progress"></ul></li>`}},b=({code:e,title:t,durls:n,message:i,loading:a})=>{let o=document.getElementById("bilibili-helper-host"),s=null;const r=' <svg style="vertical-align: middle" width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-pacman"><g ng-attr-style="display:{{config.showBean}}" style="display:block"><circle cx="62.0973" cy="50" r="4" ng-attr-fill="{{config.c2}}" fill="#00a1d6"><animate attributeName="cx" calcMode="linear" values="95;35" keyTimes="0;1" dur="1" begin="-0.67s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" calcMode="linear" values="0;1;1" keyTimes="0;0.2;1" dur="1" begin="-0.67s" repeatCount="indefinite"></animate></circle><circle cx="82.4973" cy="50" r="4" ng-attr-fill="{{config.c2}}" fill="#00a1d6"><animate attributeName="cx" calcMode="linear" values="95;35" keyTimes="0;1" dur="1" begin="-0.33s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" calcMode="linear" values="0;1;1" keyTimes="0;0.2;1" dur="1" begin="-0.33s" repeatCount="indefinite"></animate></circle><circle cx="42.2973" cy="50" r="4" ng-attr-fill="{{config.c2}}" fill="#00a1d6"><animate attributeName="cx" calcMode="linear" values="95;35" keyTimes="0;1" dur="1" begin="0s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" calcMode="linear" values="0;1;1" keyTimes="0;0.2;1" dur="1" begin="0s" repeatCount="indefinite"></animate></circle></g><g ng-attr-transform="translate({{config.showBeanOffset}} 0)" transform="translate(-15 0)"><path d="M50 50L20 50A30 30 0 0 0 80 50Z" ng-attr-fill="{{config.c1}}" fill="#f45a8d" transform="rotate(10.946 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;45 50 50;0 50 50" keyTimes="0;0.5;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path><path d="M50 50L20 50A30 30 0 0 1 80 50Z" ng-attr-fill="{{config.c1}}" fill="#f45a8d" transform="rotate(-10.946 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;-45 50 50;0 50 50" keyTimes="0;0.5;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path></g></svg>';o?((s=o.shadowRoot).getElementById("title").innerHTML=a?"加载中"+r:u(t,n,e,i),s.getElementById("durls").innerHTML=a?"":f(n,t,e)):((o=document.createElement("bilibili-helper-host")).id="bilibili-helper-host",o.style.cssText=`display:block;overflow:auto;position:fixed;z-index:${Number.MAX_SAFE_INTEGER};bottom:0;left:0;right:0;max-height:50%;width:100%;background: #fff;border-top: 1px solid #ccc;box-shadow: rgba(0, 0, 0, 0.2) 0 -5px 10px;`,h()?o.classList.add("hide"):o.classList.remove("hide"),o.innerHTML="<style>\n        #bilibili-helper-host.hide{\n          width:auto!important;\n          left:auto!important;\n          background:transparent!important;\n          border:0 none!important;\n          border-radius: 6px 0 0 0;\n          box-shadow: rgba(0, 0, 0, 0.2) -5px -5px 10px!important;\n        }\n        .player-fullscreen-fix #bilibili-helper-host {\n          z-index: 99999!important;\n        }\n      </style>",document.body.appendChild(o),(s=o.attachShadow({mode:"open"})).innerHTML=`\n        <style>\n          p, a, div, span, li, i, b, strong, input, button, label {\n            font-size: inherit;\n          }\n          li {\n            margin-bottom: 5px;\n          }\n          p {\n            margin: 0;\n            line-height: 1.5;\n          }\n          h1 {\n            font-size: 20px;\n            font-weight: bold;\n            margin-bottom: 20px;\n          }\n          h3 {\n            font-size: 16px;\n            margin: 1em 0;\n          }\n          #title {\n            font-size: 16px;\n            font-weight: normal;\n          }\n          #content {\n            display: flex;\n            width: 100%;\n            font-size: 14px;\n            position: relative;\n          }\n          a {\n            color: #00a1d6 !important;\n            text-decoration: none;\n          }\n          a:hover {\n            text-decoration: underline;\n          }\n          a.disabled {\n            color: #666!important;\n          }\n          a.disabled:hover {\n            text-decoration: none;\n            cursor: not-allowed;\n          }\n          #side-bar {\n            flex: 3;\n            padding: 20px;\n            border-right: 1px solid #ccc;\n            margin-right: -1px;\n          }\n          #main {\n            flex: 7;\n            padding: 20px;\n            border-left: 1px solid #ccc;\n          }\n          #notice-frame {\n            width: 100%;\n            padding: 0;\n          }\n          .donate {\n            border-top: 1px solid #ccc;\n            padding-top: 10px;\n          }\n          #zanshang {\n            width: 80%;\n          }\n          .setting-item {\n            margin-bottom: 8px;\n          }\n          .setting-item .label {\n            font-weight: bold;\n            width: 6em;\n            display: inline-block;\n            text-align: right;\n          }\n          .desc {\n            padding-left: 6em;\n          }\n          #actions {\n            position: absolute;\n            right: 0;\n            top: 0;\n          }\n          .btn-large {\n            border: 0 none;\n            background: #f45a8d;\n            border-radius: 6px;\n            color: #fff;\n            padding: 10px 20px;\n          }\n          #toggle {\n            border-radius: 0 0 0 6px;\n            outline: none;\n            cursor: pointer;\n          }\n          .hide #side-bar {\n            display: none;\n          }\n          .hide #main {\n            display: none;\n          }\n          .hide #toggle {\n            border-radius: 6px 0 0 0;\n          }\n          .hide #actions {\n            position: static;\n          }\n      \n          a.btn {\n            border: 0 none;\n            background: #f45a8d;\n            text-decoration: none !important;\n            color: #fff !important;\n            border-radius: 3px;\n            padding: 5px 10px;\n            display: inline-block;\n          }\n          .settings {\n            border-left: 5px solid #ccc;\n            background: #eee;\n            padding: 16px 16px 8px 0;\n          }\n          .size {\n            margin: 0 5px;\n          }\n        </style>\n        <div id="content" ${h()?'class="hide"':""}>\n          <div id="side-bar">\n            <div class="notice">\n              <iframe id="notice-frame" frameborder="0"></iframe>\n            </div>\n            \x3c!--<div class="support">TODO 支持区域</div>--\x3e\n            <div class="donate">\n              <p>微信扫一扫赞赏作者(扫不出来请点击图片后扫大图)：</p>\n              <a href="${internalUrls.zanshang}" target="_blank"><img title="点击查看大图" alt="点击查看大图" id="zanshang" src="${internalUrls.zanshang}"/></a>\n            </div>\n          </div>\n          <div id="main">\n            <h1 style="margin-top: 0;">B站下载助手</h1>\n            <div class="settings">\n              <div class="setting-item">\n                <span class="label">清晰度：</span>\n                <span>请在页面中B站自己的播放器内切换清晰度</span>\n              </div>\n              <div class="setting-item">\n                <span class="label">下载模式：</span>\n                <label><input id="setting-download-mode-advanced" checked name="setting-download-mode" type="radio"/> 高级</label>\n                <label><input id="setting-download-mode-normal" name="setting-download-mode" type="radio"/> 兼容</label>\n                <p class="desc">高级模式支持自动重命名和合并下载，但会占用非常大的系统运行内存<br/>兼容模式直接使用浏览器的默认下载，资源占用很小，但不支持自动重命名和合并下载</p>\n                <p class="desc">建议系统运行内存小于16G的用户使用兼容模式，下载后可以点<a href="http://csser.top/bilibili/merge.html" target="_blank">这里</a>尝试手动合并</p>\n              </div>\n              <div class="setting-item" id="setting-advanced">\n                <span class="label">合并下载：</span>\n                <label><input id="setting-merge-on" checked name="setting-merge" type="radio"> 开</label>\n                <label><input id="setting-merge-off" name="setting-merge" type="radio"> 关</label>\n                <p class="desc">高级模式下载过程中请<strong style="color: red;">不要</strong>刷新或关闭页面，也<strong style="color: red;">不要</strong>切换分集和清晰度</p>\n              </div>\n            </div>\n            <h3 id="title">${a?"加载中"+r:u(t,n,e,i)}</h3>\n            <ul id="durls">\n              ${a?"":f(n,t,e)}\n            </ul>\n            <div class="beg">\n              <p>\n                如果这个工具确实帮到了您，烦请在Chrome商店给个五星好评，谢谢😊\n                <a class="btn" href="https://chrome.google.com/webstore/detail/bfcbfobhcjbkilcbehlnlchiinokiijp/reviews" target="_blank">去评价</a>\n              </p>\n            </div>\n          </div>\n          <div id="actions">\n            <button id="toggle" class="btn-large">${h()?"打开B站下载助手":"收起"}</button>\n          </div>\n        </div>\n      `,(e=>{const t=e.getElementById("setting-download-mode-advanced"),n=e.getElementById("setting-download-mode-normal"),i=e.getElementById("setting-merge-on"),a=e.getElementById("setting-merge-off"),o=e.getElementById("setting-advanced"),s=e.getElementById("durls"),r=e.getElementById("toggle"),l=e.getElementById("actions"),d=e.getElementById("content"),c=document.getElementById("bilibili-helper-host"),m=()=>{t.disabled=!0,n.disabled=!0,i.disabled=!0,a.disabled=!0},u=()=>{t.disabled=!1,n.disabled=!1,i.disabled=!1,a.disabled=!1};g()?(t.checked=!0,n.checked=!1,o.style.display="block"):(t.checked=!1,n.checked=!0,o.style.display="none"),p()?(i.checked=!0,a.checked=!1):(i.checked=!1,a.checked=!0);const f=()=>{e.buildDownloadLinks()};t.addEventListener("change",()=>{t.checked?(localStorage.bilibili_helper_download_mode="advanced",o.style.display="block"):(localStorage.bilibili_helper_download_mode="normal",o.style.display="none"),f()}),n.addEventListener("change",()=>{n.checked?(localStorage.bilibili_helper_download_mode="normal",o.style.display="none"):(localStorage.bilibili_helper_download_mode="advanced",o.style.display="block"),f()}),i.addEventListener("change",()=>{localStorage.bilibili_helper_merge_mode=i.checked?"on":"off",f()}),a.addEventListener("change",()=>{localStorage.bilibili_helper_merge_mode=a.checked?"off":"on",f()}),s.addEventListener("click",t=>{const n=t.target;if("a"===n.tagName.toLowerCase()&&"advanced"===n.getAttribute("mode")){if(t.preventDefault(),t.stopPropagation(),n.classList.contains("disabled"))return;let i=null;const a=n.getAttribute("title");"on"===n.getAttribute("merge")?(i=e.querySelector(`ul[durls="${n.getAttribute("durls")}"]`),m(),x(n,JSON.parse(decodeURIComponent(n.getAttribute("durls"))),a,i).then(u)):(i=e.querySelector(`span[durl="${n.getAttribute("durl")}"]`),m(),v(n,JSON.parse(decodeURIComponent(n.getAttribute("durl"))),a,i).then(u))}}),r.addEventListener("click",()=>{h()?(localStorage.bilibili_helper_show="show",d.classList.remove("hide"),r.innerHTML="收起",c.classList.remove("hide"),l.style.top="0",e.getElementById("notice-frame").contentWindow.postMessage({action:"getHeight"},"https://csser.top")):(localStorage.bilibili_helper_show="hide",d.classList.add("hide"),c.classList.add("hide"),r.innerHTML="打开B站下载助手",l.style.top="0")}),c.addEventListener("scroll",()=>{l.style.top=c.scrollTop+"px"})})(s),(e=>{const t=e.getElementById("notice-frame");t.onload=(()=>{t.contentWindow.postMessage({action:"getHeight"},"https://csser.top"),t.contentWindow.postMessage({action:"setVersion",version:{name:manifest.version,code:parseInt(manifest.version.replace(/\./g,""),10)}},"https://csser.top"),t.contentWindow.postMessage({action:"setTheme",theme:"null"},"https://csser.top")}),window.addEventListener("message",e=>{if("https://csser.top"===e.origin&&e.data&&"reportHeight"===e.data.action&&(t.style.height=e.data.height+10+"px"),"https://csser.top"===e.origin&&e.data&&"showBilibilihelperindooorsmanNoticeDialog"===e.data.action){const t=e.data.notices;t&&t.length>0&&t.forEach(e=>{})}}),t.src=`https://csser.top/bilibili/notice.html?t=${Date.now()}`,window.addEventListener("resize",()=>{t.contentWindow.postMessage({action:"getHeight"},"https://csser.top")})})(s)),s.buildDownloadLinks=(()=>{s.getElementById("durls").innerHTML=f(n,t,e)})},y=(e,t)=>{const n=new Blob([e],{type:"application/octet-stream"}),i=document.createElement("a");i.setAttribute("href",URL.createObjectURL(n)),i.setAttribute("download",t),i.setAttribute("style","position:absolute;top:-9999px;"),document.body.appendChild(i);const a=new MouseEvent("click",{bubbles:!0,cancelable:!0,view:window});i.dispatchEvent(a),setTimeout(()=>{document.body.removeChild(i)},1e3)},w=(e,t,n)=>{let i=null;return fetch(e).then(e=>{const a=e.headers.get("content-length"),o=t||parseInt(a,10);let s=0;return i=setInterval(()=>{n(s,o)},1e3),new Response(new ReadableStream({start(t){const n=e.body.getReader(),i=()=>{n.read().then(({done:e,value:n})=>{e?t.close():(s+=n.byteLength,t.enqueue(n),i())}).catch(e=>{t.error(e)})};i()}}))}).then(e=>e.blob()).finally(()=>{i&&clearInterval(i)})},v=(e,{url:t,size:n},i,a)=>(e.classList.add("disabled"),w(t,n,(e,t)=>{const n=Math.ceil(e/t*100);a.innerHTML=` 正在下载 - ${e}/${t} - ${n}%`}).then(e=>{a.innerHTML=" 已下载完成";const n=new URL(t).pathname.toLowerCase().match(/\.[a-z0-9]+?$/)[0];y(e,i+n)}).finally(()=>{e.classList.remove("disabled")})),x=(e,t,n,i)=>{if(1===t.length)return v(e,t[0],n,i);e.classList.add("disabled");const a=t.map(({url:e,size:t},n)=>{const a=document.createElement("li");return a.innerHTML=`分段${n+1} (${m(t)}) 正在下载`,i.appendChild(a),w(e,t,(e,i)=>{const o=Math.ceil(e/i*100);a.innerHTML=`分段${n+1} (${m(t)}) 正在下载 - ${e}/${i} - ${o}%`}).then(e=>(a.innerHTML=`分段${n+1} (${m(t)}) 已下载完成，等待合并`,e))});return Promise.all(a).then(async e=>{const t=await o.mergeBlobs(Array.from(e));y(t,n+".flv"),i.innerHTML="已完成"}).finally(()=>{e.classList.remove("disabled")})},_=async()=>{if(!e())return;b({loading:!0});const i=await(()=>fetch(window.location.href,r).then(e=>e.text()).then(e=>{const t=e.match(/<script>window.__INITIAL_STATE__=(.+?)<\/script>/);return t&&t[1]?JSON.parse(t[1].replace(";(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());","")):{code:-2,message:"获取视频信息失败，可以尝试清除浏览器cookies和缓存后重试，如多次重试仍然报错，请通过邮箱或QQ群反馈给我，谢谢"}}).catch(()=>l()))();if(i.code)return b(i);let a=localStorage.bilibili_player_settings&&+JSON.parse(localStorage.bilibili_player_settings).setting_config.defquality||112;if(t()){const e=i.videoData.aid;let t,n,o=i.videoData.cid;if(i.videoData.pages.length>1){const e=location.search.match(/p=(\d+)/);let a=i.videoData.pages[0];e&&e[1]&&(a=i.videoData.pages.find(t=>""+t.page==""+e[1])),t=a.page,n=a.part,o=a.cid}const{code:s,durls:c,qualityDescription:g,message:p}=await((e,t,n=112)=>{return fetch(`//api.bilibili.com/x/player/playurl?cid=${t}&avid=${e}&otype=json&qn=${n}`,r).then(e=>e.json()).then(e=>0!==e.code?d(e):d(e.data)).catch(()=>l())})(e,o,a);if(0===s){let e=`[${g}] ${i.videoData.title}`;t&&n&&(e=`[${g}] ${i.videoData.title}_P${t}_${n}`),b({code:s,title:e,durls:c,message:p})}else b({code:s,message:p})}if(n()){const e=i.epList;let t=-1===i.epId?e[e.length-1].ep_id:i.epId,n=e.find(e=>t===e.ep_id);const o=await s(".episode-item.on"),c=await s(".ep-item.cursor");if(o||c){const i=o||c,a=i.parentElement;let r=Array.from(a.querySelectorAll("li")).findIndex(e=>e===i);const l=await s("#eplist_module .ep-list-progress");l&&(r=+l.textContent.match(/(\d+)\/\d+/)[1]-1),n=e[r],t=n.ep_id||n.id}const{code:g,durls:p,qualityDescription:h,message:m}=await((e,t=112)=>{return fetch(`//api.bilibili.com/pgc/player/web/playurl/?ep_id=${e}&qn=${t}&bsource=`,r).then(e=>e.json()).then(e=>0!==e.code?d(e):d(e.result)).catch(()=>l())})(t,a);if(0===g){const e=`[${h}] ${i.mediaInfo.title}_${n.index||n.title}_${n.index_title||n.longTitle}`;b({code:g,title:e,durls:p,message:m})}else b({code:g,message:m})}};_();let $=""+window.location.href,L=""+localStorage.bilibili_player_settings;setInterval(()=>{const e=window.location.href,t=localStorage.bilibili_player_settings;if($!==e&&($=e,_()),L!==t)try{if(JSON.parse(t).setting_config.defquality===JSON.parse(L).setting_config.defquality)return;L=t,_()}catch(e){}},1e3)})();</script></head>
+<body class="m-doc-view">
+<script>
+var chooseUsersToMail    = '选择要发信通知的用户...';
+$(document).ready(function()
+{
+    $("#mailto").attr('data-placeholder', chooseUsersToMail);
+    $("#mailto, #productID").chosen();
+});
+</script>
+<header id="header">
+  <div id="mainHeader">
+    <div class="container">
+      <hrgroup id="heading">
+                <h1 id="companyname" title="DUG&amp;G50项目管理系统"><a href="http://zentao.dotcunited.com:9090/index.php?m=index&amp;f=index">DUG&amp;G50项目管理系统</a>
+</h1>
+      </hrgroup>
+      <nav id="navbar"><ul class="nav nav-default">
+<li data-id="my"><a href="http://zentao.dotcunited.com:9090/index.php?m=my&amp;f=index"><span> 我的地盘</span></a></li>
+<li data-id="product"><a href="http://zentao.dotcunited.com:9090/index.php?m=product&amp;f=index&amp;locate=no">产品</a></li>
+<li data-id="project"><a href="http://zentao.dotcunited.com:9090/index.php?m=project&amp;f=index&amp;locate=no">迭代</a></li>
+<li data-id="qa"><a href="http://zentao.dotcunited.com:9090/index.php?m=qa&amp;f=index">测试</a></li>
+<li class="divider"></li><li class="active" data-id="doc"><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=index" class="active">文档</a></li>
+<li data-id="report"><a href="http://zentao.dotcunited.com:9090/index.php?m=report&amp;f=index">统计</a></li>
+<li data-id="company"><a href="http://zentao.dotcunited.com:9090/index.php?m=company&amp;f=index">组织</a></li>
+</ul>
+</nav>
+      <div id="toolbar">
+        <ul id="extraNav" class="nav nav-default"><li class="dropdown"><a data-toggle="dropdown">帮助 <span class="caret"></span></a><ul class="dropdown-menu"><li><a href="http://zentao.dotcunited.com:9090/index.php?m=tutorial&amp;f=start" class="iframe" data-class-name="modal-inverse" data-width="800" data-headerless="true" data-backdrop="true" data-keyboard="true">新手教程</a>
+</li><li><a href="http://www.zentao.net/book/zentaopmshelp.html?fullScreen=zentao" class="open-help-tab" target="_blank">手册</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=misc&amp;f=changeLog" class="iframe" data-width="800" data-headerless="true" data-backdrop="true" data-keyboard="true">修改日志</a>
+</li></ul></li>
+<li><a href="http://zentao.dotcunited.com:9090/index.php?m=misc&amp;f=about" class="about iframe" data-width="900" data-headerless="true" data-backdrop="true" data-keyboard="true" data-class="modal-about">关于禅道</a>
+</li></ul>        <div id="userMenu">
+          <div id="searchbox"><div class="input-group"><div class="input-group-btn"><a data-toggle="dropdown" class="btn btn-link" style="border-radius: 2px 0px 0px 2px;"><span id="searchTypeName">文档</span> <span class="caret"></span></a><input type="hidden" name="searchType" id="searchType" value="doc">
+<ul id="searchTypeMenu" class="dropdown-menu"><li><a href="javascript:$.setSearchType(&quot;bug&quot;);" data-value="bug">Bug</a></li><li><a href="javascript:$.setSearchType(&quot;story&quot;);" data-value="story">需求</a></li><li><a href="javascript:$.setSearchType(&quot;task&quot;);" data-value="task">任务</a></li><li><a href="javascript:$.setSearchType(&quot;testcase&quot;);" data-value="testcase">用例</a></li><li><a href="javascript:$.setSearchType(&quot;project&quot;);" data-value="project">迭代</a></li><li><a href="javascript:$.setSearchType(&quot;product&quot;);" data-value="product">产品</a></li><li><a href="javascript:$.setSearchType(&quot;user&quot;);" data-value="user">用户</a></li><li><a href="javascript:$.setSearchType(&quot;build&quot;);" data-value="build">版本</a></li><li><a href="javascript:$.setSearchType(&quot;release&quot;);" data-value="release">发布</a></li><li><a href="javascript:$.setSearchType(&quot;productplan&quot;);" data-value="productplan">产品计划</a></li><li><a href="javascript:$.setSearchType(&quot;testtask&quot;);" data-value="testtask">测试单</a></li><li class="selected"><a href="javascript:$.setSearchType(&quot;doc&quot;);" data-value="doc">文档</a></li><li><a href="javascript:$.setSearchType(&quot;testsuite&quot;);" data-value="testsuite">用例库</a></li><li><a href="javascript:$.setSearchType(&quot;testreport&quot;);" data-value="testreport">测试报告</a></li></ul></div><input id="searchInput" class="form-control search-input" type="search" onclick="this.value=&quot;&quot;" onkeydown="if(event.keyCode==13) $.gotoObject();" placeholder="编号(ctrl+g)" style="border-radius: 0px 2px 2px 0px;"></div><a href="javascript:$.gotoObject();" class="btn btn-link" id="searchGo">GO!</a></div>
+          <ul id="userNav" class="nav nav-default">
+                                    <li><a class="dropdown-toggle" data-toggle="dropdown"><div class="avatar avatar-sm bg-secondary avatar-circle">K</div>
+<span class="user-name">王凯</span><span class="caret"></span></a><ul class="dropdown-menu pull-right"><li class="user-profile-item"><a href="http://zentao.dotcunited.com:9090/index.php?m=my&amp;f=profile&amp;onlybody=yes" class="iframe" data-width="600"><div class="avatar avatar bg-secondary avatar-circle">K</div>
+<div class="user-profile-name">王凯</div><div class="user-profile-role">研发</div></a></li><li class="divider"></li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=my&amp;f=profile&amp;onlybody=yes" class="iframe" data-width="600">个人档案</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=my&amp;f=changepassword&amp;onlybody=yes" class="iframe" data-width="500">更改密码</a>
+</li><li class="divider"></li><li class="dropdown-submenu"><a href="javascript:;">主题</a><ul class="dropdown-menu pull-left"><li class="selected"><a href="javascript:selectTheme(&quot;default&quot;);" data-value="default">禅道蓝（默认）</a></li><li><a href="javascript:selectTheme(&quot;green&quot;);" data-value="green">叶兰绿</a></li><li><a href="javascript:selectTheme(&quot;red&quot;);" data-value="red">赤诚红</a></li><li><a href="javascript:selectTheme(&quot;purple&quot;);" data-value="purple">玉烟紫</a></li><li><a href="javascript:selectTheme(&quot;pink&quot;);" data-value="pink">芙蕖粉</a></li><li><a href="javascript:selectTheme(&quot;blackberry&quot;);" data-value="blackberry">黑莓</a></li><li><a href="javascript:selectTheme(&quot;classic&quot;);" data-value="classic">经典</a></li></ul></li><li class="dropdown-submenu"><a href="javascript:;">Language</a><ul class="dropdown-menu pull-left"><li class="selected"><a href="javascript:selectLang(&quot;zh-cn&quot;);">简体</a></li><li><a href="javascript:selectLang(&quot;zh-tw&quot;);">繁體</a></li><li><a href="javascript:selectLang(&quot;en&quot;);">English</a></li></ul></li><li class="custom-item"><a href="http://zentao.dotcunited.com:9090/index.php?m=custom&amp;f=ajaxMenu&amp;module=doc&amp;method=view&amp;onlybody=yes" data-toggle="modal" data-type="iframe" data-icon="cog" data-width="80%">自定义导航</a></li><li class="divider"></li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=user&amp;f=logout">退出</a>
+</li></ul></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="subHeader">
+    <div class="container">
+      <div id="pageNav" class="btn-toolbar"><div class="btn-group angle-btn"><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=index" class="btn" style="border-radius: 2px;">文档主页</a>
+</div><div class="btn-group angle-btn"><div class="btn-group"><a data-toggle="dropdown" class="btn btn-limit" title="自定义库" style="border-radius: 2px;">自定义库 <span class="caret"></span></a><ul class="dropdown-menu"><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=browse&amp;libID=0&amp;browseTyp=byediteddate"><i class="icon icon-folder-upload"></i> 最近更新</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=browse&amp;libID=0&amp;browseTyp=openedbyme"><i class="icon icon-folder-account"></i> 我的文档</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=browse&amp;libID=0&amp;browseTyp=collectedbyme"><i class="icon icon-folder-star"></i> 我的收藏</a>
+</li><li class="divider"></li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=allLibs&amp;type=product"><i class="icon icon-cube"></i> 产品</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=allLibs&amp;type=project"><i class="icon icon-stack"></i> 迭代</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=allLibs&amp;type=custom"><i class="icon icon-folder-o"></i> 自定义库</a>
+</li></ul></div></div><div class="btn-group angle-btn"><div class="btn-group"><a data-toggle="dropdown" class="btn btn-limit" title="用户生态" style="border-radius: 2px;">用户生态 <span class="caret"></span></a><ul class="dropdown-menu"><li class="active"><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=browse&amp;libID=545"><i class="icon icon-folder-o"></i> 用户生态</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=browse&amp;libID=550"><i class="icon icon-folder-o"></i> 广告&amp;营销自动化</a>
+</li></ul></div></div></div>
+      <nav id="subNavbar"><ul class="nav nav-default" style="max-width: 936px; left: 0px; position: relative;">
+</ul>
+</nav>
+      <div id="pageActions"><div class="btn-toolbar"><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=create&amp;libID=545" class="btn btn-primary"><i class="icon icon-plus"></i> 创建文档</a>
+</div></div>
+    </div>
+  </div>
+  </header>
+
+<main id="main">
+  <div class="container">
+<link rel="stylesheet" href="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/default.css">
+<script src="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/kindeditor-min.js"></script>
+<script src="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/zh_CN.js"></script>
+<script>
+(function($) {
+    var kuid = '5e42176f9a21b';
+    var editor = {"id":["comment","lastComment"],"tools":"simple"};
+    var K = KindEditor;
+
+    var bugTools =
+    [ 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic','underline', '|', 
+    'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|',
+    'emoticons', 'image', 'code', 'link', '|', 'removeformat','undo', 'redo', 'fullscreen', 'source', 'about'];
+    var simpleTools = 
+    [ 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic','underline', '|', 
+    'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|',
+    'emoticons', 'image', 'code', 'link', '|', 'removeformat','undo', 'redo', 'fullscreen', 'source', 'about'];
+    var fullTools = 
+    [ 'formatblock', 'fontname', 'fontsize', 'lineheight', '|', 'forecolor', 'hilitecolor', '|', 'bold', 'italic','underline', 'strikethrough', '|',
+    'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', '|',
+    'insertorderedlist', 'insertunorderedlist', '|',
+    'emoticons', 'image', 'insertfile', 'hr', '|', 'link', 'unlink', '/',
+    'undo', 'redo', '|', 'selectall', 'cut', 'copy', 'paste', '|', 'plainpaste', 'wordpaste', '|', 'removeformat', 'clearhtml','quickformat', '|',
+    'indent', 'outdent', 'subscript', 'superscript', '|',
+    'table', 'code', '|', 'pagebreak', 'anchor', '|', 
+    'fullscreen', 'source', 'preview', 'about'];
+    var editorToolsMap = {fullTools: fullTools, simpleTools: simpleTools, bugTools: bugTools};
+
+    // Kindeditor default options
+    var editorDefaults = 
+    {
+        cssPath: [config.themeRoot + 'zui/css/min.css'],
+        width: '100%',
+        height: '200px',
+        filterMode: true, 
+        bodyClass: 'article-content',
+        urlType: 'absolute', 
+        uploadJson: createLink('file', 'ajaxUpload', 'uid=' + kuid),
+        allowFileManager: true,
+        langType: 'zh_CN',
+    };
+
+    window.editor = {};
+    var nextFormControl = 'input:not([type="hidden"]), textarea:not(.ke-edit-textarea), button[type="submit"], select';
+
+    // Init kindeditor
+    var setKindeditor = function(element, options)
+    {
+        var $editor  = $(element);
+        var pasted   = false;
+        options      = $.extend({}, editorDefaults, $editor.data(), options);
+        var editorID = $editor.attr('id');
+        if(editorID === undefined)
+        {
+            editorID = 'kindeditor-' + $.zui.uuid();
+            $editor.attr('id', editorID);
+        }
+        
+        var editorTool  = editorToolsMap[options.tools || editor.tools] || simpleTools;
+        var placeholder = $editor.attr('placeholder') || options.placeholder || '';
+        
+        /* Remove fullscreen in modal. */
+        if(config.onlybody == 'yes')
+        {
+            var newEditorTool = new Array();
+            for(i in editorTool)
+            {
+                if(editorTool[i] != 'fullscreen') newEditorTool.push(editorTool[i]);
+            }
+            editorTool = newEditorTool;
+        }
+
+        $.extend(options, 
+        {
+            items: editorTool,
+            afterChange: function(){$editor.change().hide();},
+            afterCreate : function()
+            {
+                var frame = this.edit;
+                var doc   = this.edit.doc; 
+                var cmd   = this.edit.cmd; 
+                pasted    = true;
+                if(!K.WEBKIT && !K.GECKO)
+                {
+                    var pasted = false;
+                    $(doc.body).bind('paste', function(ev)
+                    {
+                        pasted = true;
+                        return true;
+                    });
+                    setTimeout(function()
+                    {
+                        $(doc.body).bind('keyup', function(ev)
+                        {
+                            if(pasted)
+                            {
+                                pasted = false;
+                                return true;
+                            }
+                            if(ev.keyCode == 86 && ev.ctrlKey) alert('您的浏览器不支持粘贴图片！');
+                        })
+                    }, 10);
+                }
+                if(pasted && placeholder.indexOf('可以在编辑器直接贴图。') < 0)
+                {
+                    if(placeholder) placeholder += '<br />';
+                    placeholder += ' 可以在编辑器直接贴图。';
+                }
+
+                /* Paste in chrome.*/
+                /* Code reference from http://www.foliotek.com/devblog/copy-images-from-clipboard-in-javascript/. */
+                if(K.WEBKIT)
+                {
+                    $(doc.body).bind('paste', function(ev)
+                    {
+                        var $this    = $(this);
+                        var original = ev.originalEvent;
+                        var file     = original.clipboardData.items[0].getAsFile();
+                        if(file)
+                        {
+                            $('#submit').attr('disabled', 'disabled');
+                            $("body").click(function(){$('#submit').removeAttr('disabled');});
+
+                            var reader = new FileReader();
+                            reader.onload = function(evt) 
+                            {
+                                var result = evt.target.result;
+                                var arr    = result.split(",");
+                                var data   = arr[1]; // raw base64
+                                var contentType = arr[0].split(";")[0].split(":")[1];
+
+                                html = '<img src="' + result + '" alt="" />';
+                                $.post(createLink('file', 'ajaxPasteImage', 'uid=' + kuid), {editor: html}, function(data)
+                                {
+                                    cmd.inserthtml(data);
+                                    $('#submit').removeAttr('disabled');
+                                });
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                }
+                /* Paste in firefox and other firefox. */
+                else
+                {
+                    K(doc.body).bind('paste', function(ev)
+                    {
+                        setTimeout(function()
+                        {
+                            var html = K(doc.body).html();
+                            if(html.search(/<img src="data:.+;base64,/) > -1)
+                            {
+                                $('#submit').attr('disabled', 'disabled');
+                                $("body").click(function(){$('#submit').removeAttr('disabled');});
+                                $.post(createLink('file', 'ajaxPasteImage', 'uid=' + kuid), {editor: html}, function(data)
+                                {
+                                    if(data.indexOf('<img') == 0) data = '<p>' + data + '</p>';
+                                    frame.html(data);
+                                    $('#submit').removeAttr('disabled');
+                                });
+                            }
+                        }, 80);
+                    });
+                }
+                /* End */
+
+                /* Add for placeholder. */
+                $(this.edit.doc).find('body').after('<span class="kindeditor-ph" style="width:100%;color:#888; padding:5px 5px 5px 7px; background-color:transparent; position:absolute;z-index:10;top:2px;border:0;overflow:auto;resize:none; font-size:13px;"></span>');
+                var $placeholder = $(this.edit.doc).find('.kindeditor-ph');
+                $placeholder.html(placeholder);
+                $placeholder.css('pointerEvents', 'none');
+                $placeholder.click(function(){frame.doc.body.focus()});
+                if(frame.html() != '') $placeholder.hide();
+            },
+            afterFocus: function()
+            {
+                var frame = this.edit;
+                var $placeholder = $(frame.doc).find('.kindeditor-ph');
+                if($placeholder.size() == 0)
+                {
+                    setTimeout(function(){$(frame.doc).find('.kindeditor-ph').hide();}, 50);
+                }
+                else
+                {
+                    $placeholder.hide();
+                }
+                $editor.prev('.ke-container').addClass('focus');
+            },
+            afterBlur: function()
+            {
+                this.sync();
+                $editor.prev('.ke-container').removeClass('focus');
+                var frame = this.edit;
+                if(K(frame.doc.body).html() == '') $(frame.doc).find('.kindeditor-ph').show();
+            },
+            afterTab: function(id)
+            {
+                var $next = $editor.next(nextFormControl);
+                if(!$next.length) $next = $editor.parent().next().find(nextFormControl);
+                if(!$next.length) $next = $editor.parent().parent().next().find(nextFormControl);
+                $next = $next.first().focus();
+                var keditor = $next.data('keditor');
+                if(keditor) keditor.focus();
+                else if($next.hasClass('chosen')) $next.trigger('chosen:activate');
+            }
+        });
+
+        try
+        {
+            var keditor = K.create('#' + editorID, options);
+            window.editor['#'] = window.editor[editorID] = keditor;
+            $editor.data('keditor', keditor);
+            return keditor;
+        }
+        catch(e){return false;}
+    };
+
+    // Init kindeditor with jquery way
+    $.fn.kindeditor = function(options)
+    {
+        return this.each(function()
+        {
+            setKindeditor(this, options);
+        });
+    };
+
+    // Init all kindeditor    
+    var initKindeditor = function(afterInit)
+    {
+        var $submitBtn = $('form :input[type=submit]');
+        if($submitBtn.length)
+        {
+            $submitBtn.next('#uid').remove();
+            $submitBtn.after("<input type='hidden' id='uid' name='uid' value=" + kuid + ">");
+        }
+        if($.isFunction(afterInit)) afterInit();
+        $.each(editor.id, function(key, editorID)
+        {
+            setKindeditor('#' + editorID);
+        });
+    };
+
+    // Init all kindeditors when document is ready
+    $(initKindeditor);
+}(jQuery));
+</script>
+<style></style><div id="mainMenu" class="clearfix">
+  <div class="btn-toolbar pull-left">
+    <a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=browse" class="btn btn-link"><i class="icon icon-back icon-sm"></i> 返回</a>
+    <div class="divider"></div>
+    <div class="page-title">
+      <span class="label label-id">378</span><span class="text" title="国外-激进-PieSdk2.0.1接入文档">国外-激进-PieSdk2.0.1接入文档</span>
+                        <small class="dropdown">
+        <a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378#" data-toggle="dropdown" class="text-muted">#25 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378&amp;version=5">#5 王涛 20-01-16 17:21</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378&amp;version=4">#4 王涛 19-12-16 22:02</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378&amp;version=3">#3 王涛 19-12-16 22:02</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378&amp;version=2">#2 牛向东 19-12-10 15:55</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378&amp;version=1">#1 牛向东 19-12-06 14:11</a>
+</li>        </ul>
+      </small>
+          </div>
+  </div>
+</div>
+<div id="mainContent" class="main-row">
+  <div class="main-col col-8">
+    <div class="cell">
+      <div class="detail no-margin no-padding">
+        <div class="detail-content article-content no-margin no-padding">
+          <h2>aar依赖</h2><h4>aar资源在底部</h4><pre><code>dependencies {
+    //flurry
+    implementation 'com.flurry.android:analytics:11.4.0@aar'
+        //referrer
+    implementation 'com.android.installreferrer:installreferrer:1.0'
+    //admob
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    //facebook
+       implementation 'com.facebook.android:audience-network-sdk:5.6.0'
+      implementation 'com.facebook.android:facebook-android-sdk:[5,6]'
+    //mopub
+    implementation('com.mopub:mopub-sdk:5.5.0@aar') {
+        transitive = true
+        exclude module: 'libAvid-mopub' // To exclude AVID
+        exclude module: 'moat-mobile-app-kit' // To exclude Moat
+    }
+ 
+    // base
+    implementation 'com.google.code.gson:gson:2.8.2'
+          //stringfog
+    implementation 'com.github.megatronking.stringfog:xor:1.1.0'
+}
+
+项目的build.gradle下添加
+dependencies {
+     classpath 'com.github.megatronking.stringfog:gradle-plugin:2.2.0'
+   classpath 'com.github.megatronking.stringfog:xor:1.1.0'
+}
+</code></pre><h3>PieSdk</h3><ul><li><p>初始化：在application的Oncreate调用：</p></li></ul><pre><code>PieSdk.getInstance().init(this,启动页activity.class, "flurryKey","facebook_app_id");</code></pre><h4>2 账户</h4><pre><code>1 添加账号描述，在values文件夹下的string.xml里面添加常量
+pie_account_name = 账户名称
+pie_account_type =  包名
+        
+2 添加账号图标，在drawable文件夹下添加一个图片，用做账号图标，名称：pie_account_icon.png
+</code></pre><h4>广告部分</h4><ul><li><p>插屏广告,示例代码如下：</p></li></ul><pre><code> PieAdRequest pieAdRequest = new PieAdRequest
+                .Builder()
+                .setAdType(PieAdRequest.INTERS_TYPE)
+                .build();
+
+        pieAdRequest.requestAd(new AdCallback() {
+            @Override
+            public void onLoaded(AdNode adNode) {
+                adNode.showInter();
+            }
+
+            @Override
+            public void onError(String name) {
+            }
+
+            @Override
+            public void onClick() {
+            }
+
+            @Override
+            public void onClose() {
+            }
+        });</code></pre><ul><li><p>原生广告需要传入相应的自定义广告布局defalut_native_ad_sample,示例资源在底部，右键打开新窗口下载。</p></li></ul><pre><code>        PieAdRequest pieAdRequest = new PieAdRequest
+                .Builder()
+                                .setLayoutId(R.layout.xxx)
+                .setAdType(PieAdRequest.NATIVE_TYPE)
+                .build();
+
+        pieAdRequest.requestAd(new AdCallback() {
+            @Override
+            public void onLoaded(AdNode adNode) {
+                adNode.show(nativeContainer);
+            }
+
+            @Override
+            public void onError(String name) {
+            }
+
+            @Override
+            public void onClick() {
+            }
+
+            @Override
+            public void onClose() {
+            }
+        });
+</code></pre><pre><code>若使用默认布局，则调用        
+        PieAdRequest pieAdRequest = new PieAdRequest
+                .Builder()
+                .setAdType(PieAdRequest.NATIVE_TYPE)
+                .build();
+
+        pieAdRequest.requestAd(new AdCallback() {
+            @Override
+            public void onLoaded(AdNode adNode) {
+                adNode.show(nativeContainer);
+            }
+
+            @Override
+            public void onError(String name) {
+            }
+
+            @Override
+            public void onClick() {
+            }
+
+            @Override
+            public void onClose() {
+            }
+        });
+</code></pre><h4>资源id对应类型</h4><table><thead><tr><th>说明</th><th>类型</th><th>资源id</th></tr></thead><tbody><tr><td>广告icon</td><td>ImageView</td><td>native_icon_image</td></tr><tr><td>平台标识</td><td>ImageView</td><td>ad_tv</td></tr><tr><td>广告标题</td><td>TextView</td><td>native_title</td></tr><tr><td>广告描述</td><td>TextView</td><td>native_text</td></tr><tr><td>大图</td><td>RelativeLayout</td><td>native_main_image</td><td>native_admob_view</td><td>native_ad_media</td></tr><tr><td>按钮</td><td>TextView</td><td>native_cta</td></tr></tbody></table><p><img src="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/index.php" alt="" title=""></p><ul><li><p>banner广告</p></li></ul><pre><code> PieAdRequest pieAdRequest = new PieAdRequest
+                .Builder()
+                .setAdType(PieAdRequest.BANNER_TYPE)
+                .build();
+
+        pieAdRequest.requestAd(new AdCallback() {
+            @Override
+            public void onLoaded(AdNode adNode) {
+                adNode.show(bannerContainer);
+            }
+
+            @Override
+            public void onError(String name) {
+            }
+
+            @Override
+            public void onClick() {
+            }
+
+            @Override
+            public void onClose() {
+            }
+        });</code></pre><h3>测试：</h3><pre><code>测隐藏图标和log信息：
+日志tag:SdkLog
+adb shell touch sdcard/appAfMode  //测试模式
+adb shell touch sdcard/appTmMode //查看log
+adb shell touch sdcard/appAdTmMode //fb广告测试模式
+adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</code></pre><h3>混淆：</h3><pre><code>mapping.txt文件见附件
+
+</code></pre>
+                                                                                                                      </div>
+      </div>
+      <div class="detail">
+  <div class="detail-title">附件 <i class="icon icon-paper-clip icon-sm"></i></div>
+  <div class="detail-content">
+  <style>
+  .files-list>li>a {display: inline;}
+  .files-list>li>.right-icon {opacity: 1;}
+  </style>
+  <script>
+  /* Delete a file. */
+  function deleteFile(fileID)
+  {
+      if(!fileID) return;
+      hiddenwin.location.href =createLink('file', 'delete', 'fileID=' + fileID);
+  }
+  /* Download a file, append the mouse to the link. Thus we call decide to open the file in browser no download it. */
+  function downloadFile(fileID, extension, imageWidth)
+  {
+      if(!fileID) return;
+      var fileTypes     = 'txt,jpg,jpeg,gif,png,bmp';
+      var sessionString = '&zentaosid=pdhg9lr3qo6poptjpdie3nps9h';
+      var windowWidth   = $(window).width();
+      var url           = createLink('file', 'download', 'fileID=' + fileID + '&mouse=left') + sessionString;
+      width = (windowWidth > imageWidth) ? ((imageWidth < windowWidth*0.5) ? windowWidth*0.5 : imageWidth) : windowWidth;
+      if(fileTypes.indexOf(extension) >= 0)
+      {
+          $('<a>').modalTrigger({url: url, type: 'iframe', width: width}).trigger('click');
+      }
+      else
+      {
+          window.open(url, '_blank');
+      }
+      return false;
+  }
+  </script>
+    <ul class="files-list">
+      <a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=download&amp;fileID=9067&amp;zentaosid=pdhg9lr3qo6poptjpdie3nps9h" onclick="return downloadFile(9067, &#39;txt&#39;, 0)" target="_blank"></a><li title="上传时间：2019-12-06"><a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=download&amp;fileID=9067&amp;zentaosid=pdhg9lr3qo6poptjpdie3nps9h" onclick="return downloadFile(9067, &#39;txt&#39;, 0)" target="_blank"><i class="icon icon-file-text"></i> &nbsp;defalut_native_ad_sample.xml (5.93K)</a>
+<span class="right-icon">&nbsp; <a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=edit&amp;fileID=9067" data-width="400" class="edit iframe text-primary" title="重命名">重命名</a>
+<a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378###" class="text-primary" onclick="deleteFile(9067)" title="删除">删除</a>
+</span></li><a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=download&amp;fileID=9094&amp;zentaosid=pdhg9lr3qo6poptjpdie3nps9h" onclick="return downloadFile(9094, &#39;txt&#39;, 0)" target="_blank"></a><li title="上传时间：2019-12-09"><a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=download&amp;fileID=9094&amp;zentaosid=pdhg9lr3qo6poptjpdie3nps9h" onclick="return downloadFile(9094, &#39;txt&#39;, 0)" target="_blank"><i class="icon icon-file-text"></i> &nbsp;隐藏图标配置 (812B)</a>
+<span class="right-icon">&nbsp; <a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=edit&amp;fileID=9094" data-width="400" class="edit iframe text-primary" title="重命名">重命名</a>
+<a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378###" class="text-primary" onclick="deleteFile(9094)" title="删除">删除</a>
+</span></li><a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=download&amp;fileID=9333&amp;zentaosid=pdhg9lr3qo6poptjpdie3nps9h" onclick="return downloadFile(9333, &#39;txt&#39;, 0)" target="_blank"></a><li title="上传时间：2019-12-16"><a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=download&amp;fileID=9333&amp;zentaosid=pdhg9lr3qo6poptjpdie3nps9h" onclick="return downloadFile(9333, &#39;txt&#39;, 0)" target="_blank"><i class="icon icon-file-text"></i> &nbsp;function_piesdk_1.0.6.aar (152.06K)</a>
+<span class="right-icon">&nbsp; <a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=edit&amp;fileID=9333" data-width="400" class="edit iframe text-primary" title="重命名">重命名</a>
+<a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378###" class="text-primary" onclick="deleteFile(9333)" title="删除">删除</a>
+</span></li><a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=download&amp;fileID=10328&amp;zentaosid=pdhg9lr3qo6poptjpdie3nps9h" onclick="return downloadFile(10328, &#39;txt&#39;, 0)" target="_blank"></a><li title="上传时间：2020-01-16"><a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=download&amp;fileID=10328&amp;zentaosid=pdhg9lr3qo6poptjpdie3nps9h" onclick="return downloadFile(10328, &#39;txt&#39;, 0)" target="_blank"><i class="icon icon-file-text"></i> &nbsp;mapping (578B)</a>
+<span class="right-icon">&nbsp; <a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=edit&amp;fileID=10328" data-width="400" class="edit iframe text-primary" title="重命名">重命名</a>
+<a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378###" class="text-primary" onclick="deleteFile(10328)" title="删除">删除</a>
+</span></li><a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=download&amp;fileID=10345&amp;zentaosid=pdhg9lr3qo6poptjpdie3nps9h" onclick="return downloadFile(10345, &#39;txt&#39;, 0)" target="_blank"></a><li title="上传时间：2020-01-17"><a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=download&amp;fileID=10345&amp;zentaosid=pdhg9lr3qo6poptjpdie3nps9h" onclick="return downloadFile(10345, &#39;txt&#39;, 0)" target="_blank"><i class="icon icon-file-text"></i> &nbsp;function_piesdk_2.0.1.aar (142.45K)</a>
+<span class="right-icon">&nbsp; <a href="http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=edit&amp;fileID=10345" data-width="400" class="edit iframe text-primary" title="重命名">重命名</a>
+<a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=view&amp;docID=378###" class="text-primary" onclick="deleteFile(10345)" title="删除">删除</a>
+</span></li>    </ul>
+  </div>
+</div>
+            <div class="detail histories" id="actionbox" data-textdiff="文本格式" data-original="原始格式">
+<style>.histories-list > li{word-break: break-all; word-wrap: break-word;}</style>
+  <script>
+  $(function()
+  {
+      var diffButton = '<button type="button" class="btn btn-mini btn-icon btn-strip"><i class="icon icon-code icon-sm"></i></button>';
+      var newBoxID = '';
+      var oldBoxID = '';
+      $('blockquote.textdiff').each(function()
+      {
+          newBoxID = $(this).parent().attr('id');
+          if(newBoxID != oldBoxID) 
+          {
+              oldBoxID = newBoxID;
+              if($(this).html() != $(this).next().html()) $(this).closest('.history-changes').before(diffButton);
+          }
+      })
+  })
+  </script>
+    <div class="detail-title">
+      历史记录 &nbsp;
+    <button type="button" class="btn btn-mini btn-icon btn-reverse" title="切换顺序">
+      <i class="icon icon-arrow-up icon-sm"></i>
+    </button>
+    <button type="button" class="btn btn-mini btn-icon btn-expand-all" title="切换显示">
+      <i class="icon icon-plus icon-sm"></i>
+    </button>
+      </div>
+      <div class="detail-content">
+      <ol class="histories-list">
+                        <li value="1">
+                2019-12-06 14:11:42, 由 <strong>牛向东</strong> 创建。
+                      </li>
+                  <li value="2">
+                2019-12-09 12:32:11, 由 <strong>牛向东</strong> 添加备注。
+                 
+                <div class="article-content comment">
+          上传了附件 隐藏图标配置 
+        </div>
+                      </li>
+                  <li value="3">
+                2019-12-09 13:16:21, 由 <strong>牛向东</strong> 删除了附件：<strong><i>mapping</i></strong>。
+                      </li>
+                  <li value="4">
+                2019-12-09 13:16:32, 由 <strong>牛向东</strong> 添加备注。
+                 
+                <div class="article-content comment">
+          上传了附件 mapping 
+        </div>
+                      </li>
+                  <li value="5">
+                2019-12-09 21:47:53, 由 <strong>牛向东</strong> 删除了附件：<strong><i>function_piesdk_1.0.aar</i></strong>。
+                      </li>
+                  <li value="6">
+                2019-12-09 21:48:07, 由 <strong>牛向东</strong> 添加备注。
+                 
+                <div class="article-content comment">
+          上传了附件 function_piesdk_1.0.3.aar 
+        </div>
+                      </li>
+                  <li value="7">
+                2019-12-09 21:59:27, 由 <strong>牛向东</strong> 删除了附件：<strong><i>function_piesdk_1.0.3.aar</i></strong>。
+                      </li>
+                  <li value="8">
+                2019-12-09 21:59:48, 由 <strong>牛向东</strong> 添加备注。
+                 
+                <div class="article-content comment">
+          上传了附件 function_piesdk_1.0.3.aar 
+        </div>
+                      </li>
+                  <li value="9">
+                2019-12-10 15:55:56, 由 <strong>牛向东</strong> 编辑。
+                <button type="button" class="btn btn-mini switch-btn btn-icon btn-expand" title="切换显示"><i class="change-show icon icon-plus icon-sm"></i></button>
+        <div class="history-changes" id="changeBox10">
+          修改了 <strong><i>文档正文</i></strong>，区别为：
+<blockquote class="textdiff">072- <del>public void nativeClick(View view) {</del><br>
+072+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+073- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+073+ <ins>.Builder()</ins><br>
+074- <del>.Builder()</del><br>
+074+ <ins>.setLayoutId(R.layout.xxx)</ins><br>
+075- <del>.setLayoutId(R.layout.xxx)</del><br>
+075+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+076- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+076+ <ins>.build();</ins><br>
+077- <del>.build();</del><br>
+077+ <ins></ins><br>
+078- <del></del><br>
+078+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+079- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+079+ <ins>@Override</ins><br>
+080- <del>@Override</del><br>
+080+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+081- <del>public void onLoaded(AdNode adNode) {</del><br>
+081+ <ins>adNode.show(nativeContainer);</ins><br>
+082- <del>adNode.show(nativeContainer);</del><br>
+082+ <ins>}</ins><br>
+083- <del>}</del><br>
+083+ <ins></ins><br>
+084- <del></del><br>
+084+ <ins>@Override</ins><br>
+085- <del>@Override</del><br>
+085+ <ins>public void onError(String name) {</ins><br>
+086- <del>public void onError(String name) {</del><br>
+086+ <ins>}</ins><br>
+087- <del>}</del><br>
+087+ <ins></ins><br>
+088- <del></del><br>
+088+ <ins>@Override</ins><br>
+089- <del>@Override</del><br>
+089+ <ins>public void onClick() {</ins><br>
+090- <del>public void onClick() {</del><br>
+090+ <ins>}</ins><br>
+091- <del>}</del><br>
+091+ <ins></ins><br>
+092- <del></del><br>
+092+ <ins>@Override</ins><br>
+093- <del>@Override</del><br>
+093+ <ins>public void onClose() {</ins><br>
+094- <del>public void onClose() {</del><br>
+094+ <ins>}</ins><br>
+095- <del>}</del><br>
+095+ <ins>});</ins><br>
+096- <del>});</del><br>
+096+ <ins></ins><br>
+097- <del></del><br>
+097+ <ins>```</ins><br>
+098- <del>```</del><br>
+098+ <ins></ins><br>
+099- <del></del><br>
+099+ <ins>```</ins><br>
+100- <del>```</del><br>
+100+ <ins>若使用默认布局，则调用</ins><br>
+101- <del>若使用默认布局，则调用</del><br>
+101+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+102- <del>public void nativeClick(View view) {</del><br>
+102+ <ins>.Builder()</ins><br>
+103- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+103+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+104- <del>.Builder()</del><br>
+104+ <ins>.build();</ins><br>
+105- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+105+ <ins></ins><br>
+106- <del>.build();</del><br>
+106+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+107- <del></del><br>
+107+ <ins>@Override</ins><br>
+108- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+108+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+109- <del>@Override</del><br>
+109+ <ins>adNode.show(nativeContainer);</ins><br>
+110- <del>public void onLoaded(AdNode adNode) {</del><br>
+110+ <ins>}</ins><br>
+111- <del>adNode.show(nativeContainer);</del><br>
+111+ <ins></ins><br>
+112- <del>}</del><br>
+112+ <ins>@Override</ins><br>
+113- <del></del><br>
+113+ <ins>public void onError(String name) {</ins><br>
+114- <del>@Override</del><br>
+114+ <ins>}</ins><br>
+115- <del>public void onError(String name) {</del><br>
+115+ <ins></ins><br>
+116- <del>}</del><br>
+116+ <ins>@Override</ins><br>
+117- <del></del><br>
+117+ <ins>public void onClick() {</ins><br>
+118- <del>@Override</del><br>
+118+ <ins>}</ins><br>
+119- <del>public void onClick() {</del><br>
+119+ <ins></ins><br>
+120- <del>}</del><br>
+120+ <ins>@Override</ins><br>
+121- <del></del><br>
+121+ <ins>public void onClose() {</ins><br>
+122- <del>@Override</del><br>
+122+ <ins>}</ins><br>
+123- <del>public void onClose() {</del><br>
+123+ <ins>});</ins><br>
+124- <del>}</del><br>
+124+ <ins></ins><br>
+125- <del>});</del><br>
+125+ <ins>```</ins><br>
+127- <del>```</del><br>
+127+ <ins>#### 资源id对应类型</ins><br>
+129- <del>#### 资源id对应类型</del><br>
+129+ <ins>| 说明 | 类型 | 资源id |</ins><br>
+130- <del></del><br>
+130+ <ins>| -------- | -------- | -------- |</ins><br>
+131- <del>| 说明 | 类型 | 资源id |</del><br>
+131+ <ins>|广告icon | ImageView | native_icon_image |</ins><br>
+132- <del>| -------- | -------- | -------- |</del><br>
+132+ <ins>|平台标识| ImageView | ad_tv|</ins><br>
+133- <del>|广告icon | ImageView | native_icon_image |</del><br>
+133+ <ins>|广告标题 | TextView | native_title|</ins><br>
+134- <del>|平台标识| ImageView | ad_tv|</del><br>
+134+ <ins>|广告描述| TextView | native_text|</ins><br>
+135- <del>|广告标题 | TextView | native_title|</del><br>
+135+ <ins>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</ins><br>
+136- <del>|广告描述| TextView | native_text|</del><br>
+136+ <ins>|按钮 | TextView | native_cta|</ins><br>
+137- <del>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</del><br>
+137+ <ins></ins><br>
+138- <del>|按钮 | TextView | native_cta|</del><br>
+138+ <ins>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</ins><br>
+140- <del>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</del><br>
+140+ <ins>* banner广告</ins><br>
+142- <del>* banner广告</del><br>
+142+ <ins>```</ins><br>
+143- <del></del><br>
+143+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+144- <del>```</del><br>
+144+ <ins>.Builder()</ins><br>
+145- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+145+ <ins>.setAdType(PieAdRequest.BANNER_TYPE)</ins><br>
+146- <del>.Builder()</del><br>
+146+ <ins>.build();</ins><br>
+147- <del>.setAdType(PieAdRequest.BANNER_TYPE)</del><br>
+147+ <ins></ins><br>
+148- <del>.build();</del><br>
+148+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+149- <del></del><br>
+149+ <ins>@Override</ins><br>
+150- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+150+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+151- <del>@Override</del><br>
+151+ <ins>adNode.show(bannerContainer);</ins><br>
+152- <del>public void onLoaded(AdNode adNode) {</del><br>
+152+ <ins>}</ins><br>
+153- <del>adNode.show(bannerContainer);</del><br>
+153+ <ins></ins><br>
+154- <del>}</del><br>
+154+ <ins>@Override</ins><br>
+155- <del></del><br>
+155+ <ins>public void onError(String name) {</ins><br>
+156- <del>@Override</del><br>
+156+ <ins>}</ins><br>
+157- <del>public void onError(String name) {</del><br>
+157+ <ins></ins><br>
+158- <del>}</del><br>
+158+ <ins>@Override</ins><br>
+159- <del></del><br>
+159+ <ins>public void onClick() {</ins><br>
+160- <del>@Override</del><br>
+160+ <ins>}</ins><br>
+161- <del>public void onClick() {</del><br>
+161+ <ins></ins><br>
+162- <del>}</del><br>
+162+ <ins>@Override</ins><br>
+163- <del></del><br>
+163+ <ins>public void onClose() {</ins><br>
+164- <del>@Override</del><br>
+164+ <ins>}</ins><br>
+165- <del>public void onClose() {</del><br>
+165+ <ins>});</ins><br>
+166- <del>}</del><br>
+166+ <ins>```</ins><br>
+167- <del>});</del><br>
+167+ <ins>### 测试：</ins><br>
+168- <del>```</del><br>
+168+ <ins></ins><br>
+169- <del>### 测试：</del><br>
+169+ <ins>```</ins><br>
+170- <del></del><br>
+170+ <ins>测隐藏图标和log信息：</ins><br>
+171- <del>```</del><br>
+171+ <ins>日志tag:SdkLog</ins><br>
+172- <del>测隐藏图标和log信息：</del><br>
+172+ <ins>adb shell touch sdcard/appAfMode  //测试模式</ins><br>
+173- <del>日志tag:SdkLog</del><br>
+173+ <ins>adb shell touch sdcard/appTmMode //查看log</ins><br>
+174- <del>adb shell touch sdcard/appAfMode  //测试模式</del><br>
+174+ <ins>adb shell touch sdcard/appAdTmMode //fb广告测试模式</ins><br>
+175- <del>adb shell touch sdcard/appTmMode //查看log</del><br>
+175+ <ins>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</ins><br>
+176- <del>adb shell touch sdcard/appAdTmMode //fb广告测试模式</del><br>
+176+ <ins>```</ins><br>
+177- <del>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</del><br>
+177+ <ins></ins><br>
+178- <del>```</del><br>
+178+ <ins>### 混淆：</ins><br>
+179- <del></del><br>
+179+ <ins>```</ins><br>
+180- <del>### 混淆：</del><br>
+180+ <ins>mapping.txt文件见附件</ins><br>
+181- <del>```</del><br>
+181+ <ins></ins><br>
+182- <del>mapping.txt文件见附件</del><br>
+182+ <ins></ins><br>
+183- <del></del><br>
+183+ <ins>```</ins><br>
+184- <del></del><br>
+185- <del>```</del></blockquote>
+<blockquote class="original">072- <del>public void nativeClick(View view) {</del><br>
+072+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+073- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+073+ <ins>.Builder()</ins><br>
+074- <del>.Builder()</del><br>
+074+ <ins>.setLayoutId(R.layout.xxx)</ins><br>
+075- <del>.setLayoutId(R.layout.xxx)</del><br>
+075+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+076- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+076+ <ins>.build();</ins><br>
+077- <del>.build();</del><br>
+077+ <ins></ins><br>
+078- <del></del><br>
+078+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+079- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+079+ <ins>@Override</ins><br>
+080- <del>@Override</del><br>
+080+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+081- <del>public void onLoaded(AdNode adNode) {</del><br>
+081+ <ins>adNode.show(nativeContainer);</ins><br>
+082- <del>adNode.show(nativeContainer);</del><br>
+082+ <ins>}</ins><br>
+083- <del>}</del><br>
+083+ <ins></ins><br>
+084- <del></del><br>
+084+ <ins>@Override</ins><br>
+085- <del>@Override</del><br>
+085+ <ins>public void onError(String name) {</ins><br>
+086- <del>public void onError(String name) {</del><br>
+086+ <ins>}</ins><br>
+087- <del>}</del><br>
+087+ <ins></ins><br>
+088- <del></del><br>
+088+ <ins>@Override</ins><br>
+089- <del>@Override</del><br>
+089+ <ins>public void onClick() {</ins><br>
+090- <del>public void onClick() {</del><br>
+090+ <ins>}</ins><br>
+091- <del>}</del><br>
+091+ <ins></ins><br>
+092- <del></del><br>
+092+ <ins>@Override</ins><br>
+093- <del>@Override</del><br>
+093+ <ins>public void onClose() {</ins><br>
+094- <del>public void onClose() {</del><br>
+094+ <ins>}</ins><br>
+095- <del>}</del><br>
+095+ <ins>});</ins><br>
+096- <del>});</del><br>
+096+ <ins></ins><br>
+097- <del></del><br>
+097+ <ins>```</ins><br>
+098- <del>```</del><br>
+098+ <ins></ins><br>
+099- <del></del><br>
+099+ <ins>```</ins><br>
+100- <del>```</del><br>
+100+ <ins>若使用默认布局，则调用</ins><br>
+101- <del>若使用默认布局，则调用</del><br>
+101+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+102- <del>public void nativeClick(View view) {</del><br>
+102+ <ins>.Builder()</ins><br>
+103- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+103+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+104- <del>.Builder()</del><br>
+104+ <ins>.build();</ins><br>
+105- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+105+ <ins></ins><br>
+106- <del>.build();</del><br>
+106+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+107- <del></del><br>
+107+ <ins>@Override</ins><br>
+108- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+108+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+109- <del>@Override</del><br>
+109+ <ins>adNode.show(nativeContainer);</ins><br>
+110- <del>public void onLoaded(AdNode adNode) {</del><br>
+110+ <ins>}</ins><br>
+111- <del>adNode.show(nativeContainer);</del><br>
+111+ <ins></ins><br>
+112- <del>}</del><br>
+112+ <ins>@Override</ins><br>
+113- <del></del><br>
+113+ <ins>public void onError(String name) {</ins><br>
+114- <del>@Override</del><br>
+114+ <ins>}</ins><br>
+115- <del>public void onError(String name) {</del><br>
+115+ <ins></ins><br>
+116- <del>}</del><br>
+116+ <ins>@Override</ins><br>
+117- <del></del><br>
+117+ <ins>public void onClick() {</ins><br>
+118- <del>@Override</del><br>
+118+ <ins>}</ins><br>
+119- <del>public void onClick() {</del><br>
+119+ <ins></ins><br>
+120- <del>}</del><br>
+120+ <ins>@Override</ins><br>
+121- <del></del><br>
+121+ <ins>public void onClose() {</ins><br>
+122- <del>@Override</del><br>
+122+ <ins>}</ins><br>
+123- <del>public void onClose() {</del><br>
+123+ <ins>});</ins><br>
+124- <del>}</del><br>
+124+ <ins></ins><br>
+125- <del>});</del><br>
+125+ <ins>```</ins><br>
+127- <del>```</del><br>
+127+ <ins>#### 资源id对应类型</ins><br>
+129- <del>#### 资源id对应类型</del><br>
+129+ <ins>| 说明 | 类型 | 资源id |</ins><br>
+130- <del></del><br>
+130+ <ins>| -------- | -------- | -------- |</ins><br>
+131- <del>| 说明 | 类型 | 资源id |</del><br>
+131+ <ins>|广告icon | ImageView | native_icon_image |</ins><br>
+132- <del>| -------- | -------- | -------- |</del><br>
+132+ <ins>|平台标识| ImageView | ad_tv|</ins><br>
+133- <del>|广告icon | ImageView | native_icon_image |</del><br>
+133+ <ins>|广告标题 | TextView | native_title|</ins><br>
+134- <del>|平台标识| ImageView | ad_tv|</del><br>
+134+ <ins>|广告描述| TextView | native_text|</ins><br>
+135- <del>|广告标题 | TextView | native_title|</del><br>
+135+ <ins>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</ins><br>
+136- <del>|广告描述| TextView | native_text|</del><br>
+136+ <ins>|按钮 | TextView | native_cta|</ins><br>
+137- <del>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</del><br>
+137+ <ins></ins><br>
+138- <del>|按钮 | TextView | native_cta|</del><br>
+138+ <ins>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</ins><br>
+140- <del>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</del><br>
+140+ <ins>* banner广告</ins><br>
+142- <del>* banner广告</del><br>
+142+ <ins>```</ins><br>
+143- <del></del><br>
+143+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+144- <del>```</del><br>
+144+ <ins>.Builder()</ins><br>
+145- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+145+ <ins>.setAdType(PieAdRequest.BANNER_TYPE)</ins><br>
+146- <del>.Builder()</del><br>
+146+ <ins>.build();</ins><br>
+147- <del>.setAdType(PieAdRequest.BANNER_TYPE)</del><br>
+147+ <ins></ins><br>
+148- <del>.build();</del><br>
+148+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+149- <del></del><br>
+149+ <ins>@Override</ins><br>
+150- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+150+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+151- <del>@Override</del><br>
+151+ <ins>adNode.show(bannerContainer);</ins><br>
+152- <del>public void onLoaded(AdNode adNode) {</del><br>
+152+ <ins>}</ins><br>
+153- <del>adNode.show(bannerContainer);</del><br>
+153+ <ins></ins><br>
+154- <del>}</del><br>
+154+ <ins>@Override</ins><br>
+155- <del></del><br>
+155+ <ins>public void onError(String name) {</ins><br>
+156- <del>@Override</del><br>
+156+ <ins>}</ins><br>
+157- <del>public void onError(String name) {</del><br>
+157+ <ins></ins><br>
+158- <del>}</del><br>
+158+ <ins>@Override</ins><br>
+159- <del></del><br>
+159+ <ins>public void onClick() {</ins><br>
+160- <del>@Override</del><br>
+160+ <ins>}</ins><br>
+161- <del>public void onClick() {</del><br>
+161+ <ins></ins><br>
+162- <del>}</del><br>
+162+ <ins>@Override</ins><br>
+163- <del></del><br>
+163+ <ins>public void onClose() {</ins><br>
+164- <del>@Override</del><br>
+164+ <ins>}</ins><br>
+165- <del>public void onClose() {</del><br>
+165+ <ins>});</ins><br>
+166- <del>}</del><br>
+166+ <ins>```</ins><br>
+167- <del>});</del><br>
+167+ <ins>### 测试：</ins><br>
+168- <del>```</del><br>
+168+ <ins></ins><br>
+169- <del>### 测试：</del><br>
+169+ <ins>```</ins><br>
+170- <del></del><br>
+170+ <ins>测隐藏图标和log信息：</ins><br>
+171- <del>```</del><br>
+171+ <ins>日志tag:SdkLog</ins><br>
+172- <del>测隐藏图标和log信息：</del><br>
+172+ <ins>adb shell touch sdcard/appAfMode  //测试模式</ins><br>
+173- <del>日志tag:SdkLog</del><br>
+173+ <ins>adb shell touch sdcard/appTmMode //查看log</ins><br>
+174- <del>adb shell touch sdcard/appAfMode  //测试模式</del><br>
+174+ <ins>adb shell touch sdcard/appAdTmMode //fb广告测试模式</ins><br>
+175- <del>adb shell touch sdcard/appTmMode //查看log</del><br>
+175+ <ins>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</ins><br>
+176- <del>adb shell touch sdcard/appAdTmMode //fb广告测试模式</del><br>
+176+ <ins>```</ins><br>
+177- <del>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</del><br>
+177+ <ins></ins><br>
+178- <del>```</del><br>
+178+ <ins>### 混淆：</ins><br>
+179- <del></del><br>
+179+ <ins>```</ins><br>
+180- <del>### 混淆：</del><br>
+180+ <ins>mapping.txt文件见附件</ins><br>
+181- <del>```</del><br>
+181+ <ins></ins><br>
+182- <del>mapping.txt文件见附件</del><br>
+182+ <ins></ins><br>
+183- <del></del><br>
+183+ <ins>```</ins><br>
+184- <del></del><br>
+185- <del>```</del></blockquote>        </div>
+                      </li>
+                  <li value="10">
+                2019-12-10 16:39:16, 由 <strong>牛向东</strong> 删除了附件：<strong><i>function_piesdk_1.0.3.aar</i></strong>。
+                      </li>
+                  <li value="11">
+                2019-12-10 16:39:44, 由 <strong>牛向东</strong> 删除了附件：<strong><i>mapping</i></strong>。
+                      </li>
+                  <li value="12">
+                2019-12-10 16:46:06, 由 <strong>牛向东</strong> 添加备注。
+                 
+                <div class="article-content comment">
+          上传了附件 mapping,function_piesdk_1.0.4.aar 
+        </div>
+                      </li>
+                  <li value="13">
+                2019-12-11 11:32:03, 由 <strong>牛向东</strong> 添加备注。
+                 
+                <div class="article-content comment">
+          上传了附件 function_piesdk_1.0.5.aar 
+        </div>
+                      </li>
+                  <li value="14">
+                2019-12-11 11:32:10, 由 <strong>牛向东</strong> 删除了附件：<strong><i>function_piesdk_1.0.4.aar</i></strong>。
+                      </li>
+                  <li value="15">
+                2019-12-16 21:59:43, 由 <strong>王涛</strong> 添加备注。
+                 
+                <div class="article-content comment">
+          上传了附件 mapping 
+        </div>
+                      </li>
+                  <li value="16">
+                2019-12-16 22:02:19, 由 <strong>王涛</strong> 编辑。
+                <button type="button" class="btn btn-mini switch-btn btn-icon btn-expand" title="切换显示"><i class="change-show icon icon-plus icon-sm"></i></button>
+        <div class="history-changes" id="changeBox17">
+          修改了 <strong><i>文档正文</i></strong>，区别为：
+<blockquote class="textdiff">040- <del>#### 广告部分</del><br>
+040+ <ins>#### 2 账户</ins><br>
+041- <del>* 插屏广告,示例代码如下：</del><br>
+041+ <ins>```</ins><br>
+042- <del></del><br>
+042+ <ins>1 添加账号描述，在values文件夹下的string.xml里面添加常量</ins><br>
+043- <del>```</del><br>
+043+ <ins>pie_account_name = 账户名称</ins><br>
+044- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+044+ <ins>pie_account_type =  包名</ins><br>
+045- <del>.Builder()</del><br>
+045+ <ins></ins><br>
+046- <del>.setAdType(PieAdRequest.INTERS_TYPE)</del><br>
+046+ <ins>2 添加账号图标，在drawable文件夹下添加一个图片，用做账号图标，名称：pie_account_icon.png</ins><br>
+047- <del>.build();</del><br>
+047+ <ins></ins><br>
+048- <del></del><br>
+048+ <ins>```</ins><br>
+049- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+049+ <ins></ins><br>
+050- <del>@Override</del><br>
+050+ <ins></ins><br>
+051- <del>public void onLoaded(AdNode adNode) {</del><br>
+051+ <ins>#### 广告部分</ins><br>
+052- <del>adNode.showInter();</del><br>
+052+ <ins>* 插屏广告,示例代码如下：</ins><br>
+053- <del>}</del><br>
+053+ <ins></ins><br>
+054- <del></del><br>
+054+ <ins>```</ins><br>
+055- <del>@Override</del><br>
+055+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+056- <del>public void onError(String name) {</del><br>
+056+ <ins>.Builder()</ins><br>
+057- <del>}</del><br>
+057+ <ins>.setAdType(PieAdRequest.INTERS_TYPE)</ins><br>
+058- <del></del><br>
+058+ <ins>.build();</ins><br>
+059- <del>@Override</del><br>
+059+ <ins></ins><br>
+060- <del>public void onClick() {</del><br>
+060+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+061- <del>}</del><br>
+061+ <ins>@Override</ins><br>
+062- <del></del><br>
+062+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+063- <del>@Override</del><br>
+063+ <ins>adNode.showInter();</ins><br>
+064- <del>public void onClose() {</del><br>
+064+ <ins>}</ins><br>
+065- <del>}</del><br>
+065+ <ins></ins><br>
+066- <del>});</del><br>
+066+ <ins>@Override</ins><br>
+067- <del>```</del><br>
+067+ <ins>public void onError(String name) {</ins><br>
+068- <del></del><br>
+068+ <ins>}</ins><br>
+069- <del>* 原生广告需要传入相应的自定义广告布局defalut_native_ad_sample,示例资源在底部，右键打开新窗口下载。</del><br>
+069+ <ins></ins><br>
+070- <del></del><br>
+070+ <ins>@Override</ins><br>
+071- <del>```</del><br>
+071+ <ins>public void onClick() {</ins><br>
+072- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+072+ <ins>}</ins><br>
+073- <del>.Builder()</del><br>
+073+ <ins></ins><br>
+074- <del>.setLayoutId(R.layout.xxx)</del><br>
+074+ <ins>@Override</ins><br>
+075- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+075+ <ins>public void onClose() {</ins><br>
+076- <del>.build();</del><br>
+076+ <ins>}</ins><br>
+077- <del></del><br>
+077+ <ins>});</ins><br>
+078- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+078+ <ins>```</ins><br>
+079- <del>@Override</del><br>
+079+ <ins></ins><br>
+080- <del>public void onLoaded(AdNode adNode) {</del><br>
+080+ <ins>* 原生广告需要传入相应的自定义广告布局defalut_native_ad_sample,示例资源在底部，右键打开新窗口下载。</ins><br>
+081- <del>adNode.show(nativeContainer);</del><br>
+081+ <ins></ins><br>
+082- <del>}</del><br>
+082+ <ins>```</ins><br>
+083- <del></del><br>
+083+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+084- <del>@Override</del><br>
+084+ <ins>.Builder()</ins><br>
+085- <del>public void onError(String name) {</del><br>
+085+ <ins>.setLayoutId(R.layout.xxx)</ins><br>
+086- <del>}</del><br>
+086+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+087- <del></del><br>
+087+ <ins>.build();</ins><br>
+088- <del>@Override</del><br>
+088+ <ins></ins><br>
+089- <del>public void onClick() {</del><br>
+089+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+090- <del>}</del><br>
+090+ <ins>@Override</ins><br>
+091- <del></del><br>
+091+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+092- <del>@Override</del><br>
+092+ <ins>adNode.show(nativeContainer);</ins><br>
+093- <del>public void onClose() {</del><br>
+093+ <ins>}</ins><br>
+094- <del>}</del><br>
+094+ <ins></ins><br>
+095- <del>});</del><br>
+095+ <ins>@Override</ins><br>
+096- <del></del><br>
+096+ <ins>public void onError(String name) {</ins><br>
+097- <del>```</del><br>
+097+ <ins>}</ins><br>
+098- <del></del><br>
+098+ <ins></ins><br>
+099- <del>```</del><br>
+099+ <ins>@Override</ins><br>
+100- <del>若使用默认布局，则调用</del><br>
+100+ <ins>public void onClick() {</ins><br>
+101- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+101+ <ins>}</ins><br>
+102- <del>.Builder()</del><br>
+102+ <ins></ins><br>
+103- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+103+ <ins>@Override</ins><br>
+104- <del>.build();</del><br>
+104+ <ins>public void onClose() {</ins><br>
+105- <del></del><br>
+105+ <ins>}</ins><br>
+106- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+106+ <ins>});</ins><br>
+107- <del>@Override</del><br>
+107+ <ins></ins><br>
+108- <del>public void onLoaded(AdNode adNode) {</del><br>
+108+ <ins>```</ins><br>
+109- <del>adNode.show(nativeContainer);</del><br>
+109+ <ins></ins><br>
+110- <del>}</del><br>
+110+ <ins>```</ins><br>
+111- <del></del><br>
+111+ <ins>若使用默认布局，则调用</ins><br>
+112- <del>@Override</del><br>
+112+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+113- <del>public void onError(String name) {</del><br>
+113+ <ins>.Builder()</ins><br>
+114- <del>}</del><br>
+114+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+115- <del></del><br>
+115+ <ins>.build();</ins><br>
+116- <del>@Override</del><br>
+116+ <ins></ins><br>
+117- <del>public void onClick() {</del><br>
+117+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+118- <del>}</del><br>
+118+ <ins>@Override</ins><br>
+119- <del></del><br>
+119+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+120- <del>@Override</del><br>
+120+ <ins>adNode.show(nativeContainer);</ins><br>
+121- <del>public void onClose() {</del><br>
+121+ <ins>}</ins><br>
+122- <del>}</del><br>
+122+ <ins></ins><br>
+123- <del>});</del><br>
+123+ <ins>@Override</ins><br>
+124- <del></del><br>
+124+ <ins>public void onError(String name) {</ins><br>
+125- <del>```</del><br>
+125+ <ins>}</ins><br>
+127- <del>#### 资源id对应类型</del><br>
+127+ <ins>@Override</ins><br>
+128- <del></del><br>
+128+ <ins>public void onClick() {</ins><br>
+129- <del>| 说明 | 类型 | 资源id |</del><br>
+129+ <ins>}</ins><br>
+130- <del>| -------- | -------- | -------- |</del><br>
+130+ <ins></ins><br>
+131- <del>|广告icon | ImageView | native_icon_image |</del><br>
+131+ <ins>@Override</ins><br>
+132- <del>|平台标识| ImageView | ad_tv|</del><br>
+132+ <ins>public void onClose() {</ins><br>
+133- <del>|广告标题 | TextView | native_title|</del><br>
+133+ <ins>}</ins><br>
+134- <del>|广告描述| TextView | native_text|</del><br>
+134+ <ins>});</ins><br>
+135- <del>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</del><br>
+135+ <ins></ins><br>
+136- <del>|按钮 | TextView | native_cta|</del><br>
+136+ <ins>```</ins><br>
+138- <del>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</del><br>
+138+ <ins>#### 资源id对应类型</ins><br>
+140- <del>* banner广告</del><br>
+140+ <ins>| 说明 | 类型 | 资源id |</ins><br>
+141- <del></del><br>
+141+ <ins>| -------- | -------- | -------- |</ins><br>
+142- <del>```</del><br>
+142+ <ins>|广告icon | ImageView | native_icon_image |</ins><br>
+143- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+143+ <ins>|平台标识| ImageView | ad_tv|</ins><br>
+144- <del>.Builder()</del><br>
+144+ <ins>|广告标题 | TextView | native_title|</ins><br>
+145- <del>.setAdType(PieAdRequest.BANNER_TYPE)</del><br>
+145+ <ins>|广告描述| TextView | native_text|</ins><br>
+146- <del>.build();</del><br>
+146+ <ins>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</ins><br>
+147- <del></del><br>
+147+ <ins>|按钮 | TextView | native_cta|</ins><br>
+148- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+148+ <ins></ins><br>
+149- <del>@Override</del><br>
+149+ <ins>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</ins><br>
+150- <del>public void onLoaded(AdNode adNode) {</del><br>
+150+ <ins></ins><br>
+151- <del>adNode.show(bannerContainer);</del><br>
+151+ <ins>* banner广告</ins><br>
+152- <del>}</del><br>
+152+ <ins></ins><br>
+153- <del></del><br>
+153+ <ins>```</ins><br>
+154- <del>@Override</del><br>
+154+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+155- <del>public void onError(String name) {</del><br>
+155+ <ins>.Builder()</ins><br>
+156- <del>}</del><br>
+156+ <ins>.setAdType(PieAdRequest.BANNER_TYPE)</ins><br>
+157- <del></del><br>
+157+ <ins>.build();</ins><br>
+158- <del>@Override</del><br>
+158+ <ins></ins><br>
+159- <del>public void onClick() {</del><br>
+159+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+160- <del>}</del><br>
+160+ <ins>@Override</ins><br>
+161- <del></del><br>
+161+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+162- <del>@Override</del><br>
+162+ <ins>adNode.show(bannerContainer);</ins><br>
+163- <del>public void onClose() {</del><br>
+163+ <ins>}</ins><br>
+164- <del>}</del><br>
+164+ <ins></ins><br>
+165- <del>});</del><br>
+165+ <ins>@Override</ins><br>
+166- <del>```</del><br>
+166+ <ins>public void onError(String name) {</ins><br>
+167- <del>### 测试：</del><br>
+167+ <ins>}</ins><br>
+169- <del>```</del><br>
+169+ <ins>@Override</ins><br>
+170- <del>测隐藏图标和log信息：</del><br>
+170+ <ins>public void onClick() {</ins><br>
+171- <del>日志tag:SdkLog</del><br>
+171+ <ins>}</ins><br>
+172- <del>adb shell touch sdcard/appAfMode  //测试模式</del><br>
+172+ <ins></ins><br>
+173- <del>adb shell touch sdcard/appTmMode //查看log</del><br>
+173+ <ins>@Override</ins><br>
+174- <del>adb shell touch sdcard/appAdTmMode //fb广告测试模式</del><br>
+174+ <ins>public void onClose() {</ins><br>
+175- <del>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</del><br>
+175+ <ins>}</ins><br>
+176- <del>```</del><br>
+176+ <ins>});</ins><br>
+177- <del></del><br>
+177+ <ins>```</ins><br>
+178- <del>### 混淆：</del><br>
+178+ <ins>### 测试：</ins><br>
+179- <del>```</del><br>
+179+ <ins></ins><br>
+180- <del>mapping.txt文件见附件</del><br>
+180+ <ins>```</ins><br>
+181- <del></del><br>
+181+ <ins>测隐藏图标和log信息：</ins><br>
+182- <del></del><br>
+182+ <ins>日志tag:SdkLog</ins><br>
+183- <del>```</del><br>
+183+ <ins>adb shell touch sdcard/appAfMode  //测试模式</ins><br>
+184+ <ins>adb shell touch sdcard/appTmMode //查看log</ins><br>
+185+ <ins>adb shell touch sdcard/appAdTmMode //fb广告测试模式</ins><br>
+186+ <ins>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</ins><br>
+187+ <ins>```</ins><br>
+188+ <ins></ins><br>
+189+ <ins>### 混淆：</ins><br>
+190+ <ins>```</ins><br>
+191+ <ins>mapping.txt文件见附件</ins><br>
+192+ <ins></ins><br>
+193+ <ins></ins><br>
+194+ <ins>```</ins></blockquote>
+<blockquote class="original">040- <del>#### 广告部分</del><br>
+040+ <ins>#### 2 账户</ins><br>
+041- <del>* 插屏广告,示例代码如下：</del><br>
+041+ <ins>```</ins><br>
+042- <del></del><br>
+042+ <ins>1 添加账号描述，在values文件夹下的string.xml里面添加常量</ins><br>
+043- <del>```</del><br>
+043+ <ins>pie_account_name = 账户名称</ins><br>
+044- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+044+ <ins>pie_account_type =  包名</ins><br>
+045- <del>.Builder()</del><br>
+045+ <ins></ins><br>
+046- <del>.setAdType(PieAdRequest.INTERS_TYPE)</del><br>
+046+ <ins>2 添加账号图标，在drawable文件夹下添加一个图片，用做账号图标，名称：pie_account_icon.png</ins><br>
+047- <del>.build();</del><br>
+047+ <ins></ins><br>
+048- <del></del><br>
+048+ <ins>```</ins><br>
+049- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+049+ <ins></ins><br>
+050- <del>@Override</del><br>
+050+ <ins></ins><br>
+051- <del>public void onLoaded(AdNode adNode) {</del><br>
+051+ <ins>#### 广告部分</ins><br>
+052- <del>adNode.showInter();</del><br>
+052+ <ins>* 插屏广告,示例代码如下：</ins><br>
+053- <del>}</del><br>
+053+ <ins></ins><br>
+054- <del></del><br>
+054+ <ins>```</ins><br>
+055- <del>@Override</del><br>
+055+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+056- <del>public void onError(String name) {</del><br>
+056+ <ins>.Builder()</ins><br>
+057- <del>}</del><br>
+057+ <ins>.setAdType(PieAdRequest.INTERS_TYPE)</ins><br>
+058- <del></del><br>
+058+ <ins>.build();</ins><br>
+059- <del>@Override</del><br>
+059+ <ins></ins><br>
+060- <del>public void onClick() {</del><br>
+060+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+061- <del>}</del><br>
+061+ <ins>@Override</ins><br>
+062- <del></del><br>
+062+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+063- <del>@Override</del><br>
+063+ <ins>adNode.showInter();</ins><br>
+064- <del>public void onClose() {</del><br>
+064+ <ins>}</ins><br>
+065- <del>}</del><br>
+065+ <ins></ins><br>
+066- <del>});</del><br>
+066+ <ins>@Override</ins><br>
+067- <del>```</del><br>
+067+ <ins>public void onError(String name) {</ins><br>
+068- <del></del><br>
+068+ <ins>}</ins><br>
+069- <del>* 原生广告需要传入相应的自定义广告布局defalut_native_ad_sample,示例资源在底部，右键打开新窗口下载。</del><br>
+069+ <ins></ins><br>
+070- <del></del><br>
+070+ <ins>@Override</ins><br>
+071- <del>```</del><br>
+071+ <ins>public void onClick() {</ins><br>
+072- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+072+ <ins>}</ins><br>
+073- <del>.Builder()</del><br>
+073+ <ins></ins><br>
+074- <del>.setLayoutId(R.layout.xxx)</del><br>
+074+ <ins>@Override</ins><br>
+075- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+075+ <ins>public void onClose() {</ins><br>
+076- <del>.build();</del><br>
+076+ <ins>}</ins><br>
+077- <del></del><br>
+077+ <ins>});</ins><br>
+078- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+078+ <ins>```</ins><br>
+079- <del>@Override</del><br>
+079+ <ins></ins><br>
+080- <del>public void onLoaded(AdNode adNode) {</del><br>
+080+ <ins>* 原生广告需要传入相应的自定义广告布局defalut_native_ad_sample,示例资源在底部，右键打开新窗口下载。</ins><br>
+081- <del>adNode.show(nativeContainer);</del><br>
+081+ <ins></ins><br>
+082- <del>}</del><br>
+082+ <ins>```</ins><br>
+083- <del></del><br>
+083+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+084- <del>@Override</del><br>
+084+ <ins>.Builder()</ins><br>
+085- <del>public void onError(String name) {</del><br>
+085+ <ins>.setLayoutId(R.layout.xxx)</ins><br>
+086- <del>}</del><br>
+086+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+087- <del></del><br>
+087+ <ins>.build();</ins><br>
+088- <del>@Override</del><br>
+088+ <ins></ins><br>
+089- <del>public void onClick() {</del><br>
+089+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+090- <del>}</del><br>
+090+ <ins>@Override</ins><br>
+091- <del></del><br>
+091+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+092- <del>@Override</del><br>
+092+ <ins>adNode.show(nativeContainer);</ins><br>
+093- <del>public void onClose() {</del><br>
+093+ <ins>}</ins><br>
+094- <del>}</del><br>
+094+ <ins></ins><br>
+095- <del>});</del><br>
+095+ <ins>@Override</ins><br>
+096- <del></del><br>
+096+ <ins>public void onError(String name) {</ins><br>
+097- <del>```</del><br>
+097+ <ins>}</ins><br>
+098- <del></del><br>
+098+ <ins></ins><br>
+099- <del>```</del><br>
+099+ <ins>@Override</ins><br>
+100- <del>若使用默认布局，则调用</del><br>
+100+ <ins>public void onClick() {</ins><br>
+101- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+101+ <ins>}</ins><br>
+102- <del>.Builder()</del><br>
+102+ <ins></ins><br>
+103- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+103+ <ins>@Override</ins><br>
+104- <del>.build();</del><br>
+104+ <ins>public void onClose() {</ins><br>
+105- <del></del><br>
+105+ <ins>}</ins><br>
+106- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+106+ <ins>});</ins><br>
+107- <del>@Override</del><br>
+107+ <ins></ins><br>
+108- <del>public void onLoaded(AdNode adNode) {</del><br>
+108+ <ins>```</ins><br>
+109- <del>adNode.show(nativeContainer);</del><br>
+109+ <ins></ins><br>
+110- <del>}</del><br>
+110+ <ins>```</ins><br>
+111- <del></del><br>
+111+ <ins>若使用默认布局，则调用</ins><br>
+112- <del>@Override</del><br>
+112+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+113- <del>public void onError(String name) {</del><br>
+113+ <ins>.Builder()</ins><br>
+114- <del>}</del><br>
+114+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+115- <del></del><br>
+115+ <ins>.build();</ins><br>
+116- <del>@Override</del><br>
+116+ <ins></ins><br>
+117- <del>public void onClick() {</del><br>
+117+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+118- <del>}</del><br>
+118+ <ins>@Override</ins><br>
+119- <del></del><br>
+119+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+120- <del>@Override</del><br>
+120+ <ins>adNode.show(nativeContainer);</ins><br>
+121- <del>public void onClose() {</del><br>
+121+ <ins>}</ins><br>
+122- <del>}</del><br>
+122+ <ins></ins><br>
+123- <del>});</del><br>
+123+ <ins>@Override</ins><br>
+124- <del></del><br>
+124+ <ins>public void onError(String name) {</ins><br>
+125- <del>```</del><br>
+125+ <ins>}</ins><br>
+127- <del>#### 资源id对应类型</del><br>
+127+ <ins>@Override</ins><br>
+128- <del></del><br>
+128+ <ins>public void onClick() {</ins><br>
+129- <del>| 说明 | 类型 | 资源id |</del><br>
+129+ <ins>}</ins><br>
+130- <del>| -------- | -------- | -------- |</del><br>
+130+ <ins></ins><br>
+131- <del>|广告icon | ImageView | native_icon_image |</del><br>
+131+ <ins>@Override</ins><br>
+132- <del>|平台标识| ImageView | ad_tv|</del><br>
+132+ <ins>public void onClose() {</ins><br>
+133- <del>|广告标题 | TextView | native_title|</del><br>
+133+ <ins>}</ins><br>
+134- <del>|广告描述| TextView | native_text|</del><br>
+134+ <ins>});</ins><br>
+135- <del>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</del><br>
+135+ <ins></ins><br>
+136- <del>|按钮 | TextView | native_cta|</del><br>
+136+ <ins>```</ins><br>
+138- <del>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</del><br>
+138+ <ins>#### 资源id对应类型</ins><br>
+140- <del>* banner广告</del><br>
+140+ <ins>| 说明 | 类型 | 资源id |</ins><br>
+141- <del></del><br>
+141+ <ins>| -------- | -------- | -------- |</ins><br>
+142- <del>```</del><br>
+142+ <ins>|广告icon | ImageView | native_icon_image |</ins><br>
+143- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+143+ <ins>|平台标识| ImageView | ad_tv|</ins><br>
+144- <del>.Builder()</del><br>
+144+ <ins>|广告标题 | TextView | native_title|</ins><br>
+145- <del>.setAdType(PieAdRequest.BANNER_TYPE)</del><br>
+145+ <ins>|广告描述| TextView | native_text|</ins><br>
+146- <del>.build();</del><br>
+146+ <ins>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</ins><br>
+147- <del></del><br>
+147+ <ins>|按钮 | TextView | native_cta|</ins><br>
+148- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+148+ <ins></ins><br>
+149- <del>@Override</del><br>
+149+ <ins>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</ins><br>
+150- <del>public void onLoaded(AdNode adNode) {</del><br>
+150+ <ins></ins><br>
+151- <del>adNode.show(bannerContainer);</del><br>
+151+ <ins>* banner广告</ins><br>
+152- <del>}</del><br>
+152+ <ins></ins><br>
+153- <del></del><br>
+153+ <ins>```</ins><br>
+154- <del>@Override</del><br>
+154+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+155- <del>public void onError(String name) {</del><br>
+155+ <ins>.Builder()</ins><br>
+156- <del>}</del><br>
+156+ <ins>.setAdType(PieAdRequest.BANNER_TYPE)</ins><br>
+157- <del></del><br>
+157+ <ins>.build();</ins><br>
+158- <del>@Override</del><br>
+158+ <ins></ins><br>
+159- <del>public void onClick() {</del><br>
+159+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+160- <del>}</del><br>
+160+ <ins>@Override</ins><br>
+161- <del></del><br>
+161+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+162- <del>@Override</del><br>
+162+ <ins>adNode.show(bannerContainer);</ins><br>
+163- <del>public void onClose() {</del><br>
+163+ <ins>}</ins><br>
+164- <del>}</del><br>
+164+ <ins></ins><br>
+165- <del>});</del><br>
+165+ <ins>@Override</ins><br>
+166- <del>```</del><br>
+166+ <ins>public void onError(String name) {</ins><br>
+167- <del>### 测试：</del><br>
+167+ <ins>}</ins><br>
+169- <del>```</del><br>
+169+ <ins>@Override</ins><br>
+170- <del>测隐藏图标和log信息：</del><br>
+170+ <ins>public void onClick() {</ins><br>
+171- <del>日志tag:SdkLog</del><br>
+171+ <ins>}</ins><br>
+172- <del>adb shell touch sdcard/appAfMode  //测试模式</del><br>
+172+ <ins></ins><br>
+173- <del>adb shell touch sdcard/appTmMode //查看log</del><br>
+173+ <ins>@Override</ins><br>
+174- <del>adb shell touch sdcard/appAdTmMode //fb广告测试模式</del><br>
+174+ <ins>public void onClose() {</ins><br>
+175- <del>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</del><br>
+175+ <ins>}</ins><br>
+176- <del>```</del><br>
+176+ <ins>});</ins><br>
+177- <del></del><br>
+177+ <ins>```</ins><br>
+178- <del>### 混淆：</del><br>
+178+ <ins>### 测试：</ins><br>
+179- <del>```</del><br>
+179+ <ins></ins><br>
+180- <del>mapping.txt文件见附件</del><br>
+180+ <ins>```</ins><br>
+181- <del></del><br>
+181+ <ins>测隐藏图标和log信息：</ins><br>
+182- <del></del><br>
+182+ <ins>日志tag:SdkLog</ins><br>
+183- <del>```</del><br>
+183+ <ins>adb shell touch sdcard/appAfMode  //测试模式</ins><br>
+184+ <ins>adb shell touch sdcard/appTmMode //查看log</ins><br>
+185+ <ins>adb shell touch sdcard/appAdTmMode //fb广告测试模式</ins><br>
+186+ <ins>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</ins><br>
+187+ <ins>```</ins><br>
+188+ <ins></ins><br>
+189+ <ins>### 混淆：</ins><br>
+190+ <ins>```</ins><br>
+191+ <ins>mapping.txt文件见附件</ins><br>
+192+ <ins></ins><br>
+193+ <ins></ins><br>
+194+ <ins>```</ins></blockquote>        </div>
+                      </li>
+                  <li value="17">
+                2019-12-16 22:02:42, 由 <strong>王涛</strong> 编辑。
+                <button type="button" class="btn btn-mini switch-btn btn-icon btn-expand" title="切换显示"><i class="change-show icon icon-plus icon-sm"></i></button>
+        <div class="history-changes" id="changeBox18">
+          修改了 <strong><i>文档正文</i></strong>，区别为：
+<blockquote class="textdiff">034- <del>### MonkeySdk</del><br>
+034+ <ins>### PieSdk</ins></blockquote>
+<blockquote class="original">034- <del>### MonkeySdk</del><br>
+034+ <ins>### PieSdk</ins></blockquote>        </div>
+                      </li>
+                  <li value="18">
+                2019-12-16 22:03:23, 由 <strong>王涛</strong> 删除了附件：<strong><i>mapping</i></strong>。
+                      </li>
+                  <li value="19">
+                2019-12-16 22:03:28, 由 <strong>王涛</strong> 删除了附件：<strong><i>function_piesdk_1.0.5.aar</i></strong>。
+                      </li>
+                  <li value="20">
+                2019-12-16 22:07:08, 由 <strong>王涛</strong> 添加备注。
+                 
+                <div class="article-content comment">
+          上传了附件 function_piesdk_1.0.6.aar 
+        </div>
+                      </li>
+                  <li value="21">
+                2020-01-16 17:21:06, 由 <strong>王涛</strong> 编辑。
+                <button type="button" class="btn btn-mini switch-btn btn-icon btn-expand" title="切换显示"><i class="change-show icon icon-plus icon-sm"></i></button>
+        <div class="history-changes" id="changeBox22">
+          修改了 <strong><i>文档正文</i></strong>，区别为：
+<blockquote class="textdiff">012- <del>implementation 'com.facebook.android:audience-network-sdk:5.4.1'</del><br>
+012+ <ins>implementation 'com.facebook.android:audience-network-sdk:5.6.0'</ins><br>
+013- <del>//mopub</del><br>
+013+ <ins>implementation 'com.facebook.android:facebook-android-sdk:[5,6]'</ins><br>
+014- <del>implementation('com.mopub:mopub-sdk:5.5.0@aar') {</del><br>
+014+ <ins>//mopub</ins><br>
+015- <del>transitive = true</del><br>
+015+ <ins>implementation('com.mopub:mopub-sdk:5.5.0@aar') {</ins><br>
+016- <del>exclude module: 'libAvid-mopub' // To exclude AVID</del><br>
+016+ <ins>transitive = true</ins><br>
+017- <del>exclude module: 'moat-mobile-app-kit' // To exclude Moat</del><br>
+017+ <ins>exclude module: 'libAvid-mopub' // To exclude AVID</ins><br>
+018- <del>}</del><br>
+018+ <ins>exclude module: 'moat-mobile-app-kit' // To exclude Moat</ins><br>
+019- <del></del><br>
+019+ <ins>}</ins><br>
+020- <del>// base</del><br>
+020+ <ins></ins><br>
+021- <del>implementation 'com.google.code.gson:gson:2.8.2'</del><br>
+021+ <ins>// base</ins><br>
+022- <del>//stringfog</del><br>
+022+ <ins>implementation 'com.google.code.gson:gson:2.8.2'</ins><br>
+023- <del>implementation 'com.github.megatronking.stringfog:xor:1.1.0'</del><br>
+023+ <ins>//stringfog</ins><br>
+024- <del>}</del><br>
+024+ <ins>implementation 'com.github.megatronking.stringfog:xor:1.1.0'</ins><br>
+025- <del></del><br>
+025+ <ins>}</ins><br>
+026- <del>项目的build.gradle下添加</del><br>
+026+ <ins></ins><br>
+027- <del>dependencies {</del><br>
+027+ <ins>项目的build.gradle下添加</ins><br>
+028- <del>classpath 'com.github.megatronking.stringfog:gradle-plugin:2.2.0'</del><br>
+028+ <ins>dependencies {</ins><br>
+029- <del>classpath 'com.github.megatronking.stringfog:xor:1.1.0'</del><br>
+029+ <ins>classpath 'com.github.megatronking.stringfog:gradle-plugin:2.2.0'</ins><br>
+030- <del>}</del><br>
+030+ <ins>classpath 'com.github.megatronking.stringfog:xor:1.1.0'</ins><br>
+031- <del></del><br>
+031+ <ins>}</ins><br>
+032- <del>```</del><br>
+032+ <ins></ins><br>
+033- <del></del><br>
+033+ <ins>```</ins><br>
+034- <del>### PieSdk</del><br>
+034+ <ins></ins><br>
+035- <del>* 初始化：在application的Oncreate调用：</del><br>
+035+ <ins>### PieSdk</ins><br>
+036- <del>```</del><br>
+036+ <ins>* 初始化：在application的Oncreate调用：</ins><br>
+037- <del>PieSdk.getInstance().init(this,启动页activity.class, "flurryKey");</del><br>
+037+ <ins>```</ins><br>
+038- <del>```</del><br>
+038+ <ins>PieSdk.getInstance().init(this,启动页activity.class, "flurryKey","facebook_app_id");</ins><br>
+039- <del></del><br>
+039+ <ins>```</ins><br>
+040- <del>#### 2 账户</del><br>
+040+ <ins></ins><br>
+041- <del>```</del><br>
+041+ <ins>#### 2 账户</ins><br>
+042- <del>1 添加账号描述，在values文件夹下的string.xml里面添加常量</del><br>
+042+ <ins>```</ins><br>
+043- <del>pie_account_name = 账户名称</del><br>
+043+ <ins>1 添加账号描述，在values文件夹下的string.xml里面添加常量</ins><br>
+044- <del>pie_account_type =  包名</del><br>
+044+ <ins>pie_account_name = 账户名称</ins><br>
+045- <del></del><br>
+045+ <ins>pie_account_type =  包名</ins><br>
+046- <del>2 添加账号图标，在drawable文件夹下添加一个图片，用做账号图标，名称：pie_account_icon.png</del><br>
+046+ <ins></ins><br>
+047- <del></del><br>
+047+ <ins>2 添加账号图标，在drawable文件夹下添加一个图片，用做账号图标，名称：pie_account_icon.png</ins><br>
+048- <del>```</del><br>
+048+ <ins></ins><br>
+049- <del></del><br>
+049+ <ins>```</ins><br>
+051- <del>#### 广告部分</del><br>
+051+ <ins></ins><br>
+052- <del>* 插屏广告,示例代码如下：</del><br>
+052+ <ins>#### 广告部分</ins><br>
+053- <del></del><br>
+053+ <ins>* 插屏广告,示例代码如下：</ins><br>
+054- <del>```</del><br>
+054+ <ins></ins><br>
+055- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+055+ <ins>```</ins><br>
+056- <del>.Builder()</del><br>
+056+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+057- <del>.setAdType(PieAdRequest.INTERS_TYPE)</del><br>
+057+ <ins>.Builder()</ins><br>
+058- <del>.build();</del><br>
+058+ <ins>.setAdType(PieAdRequest.INTERS_TYPE)</ins><br>
+059- <del></del><br>
+059+ <ins>.build();</ins><br>
+060- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+060+ <ins></ins><br>
+061- <del>@Override</del><br>
+061+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+062- <del>public void onLoaded(AdNode adNode) {</del><br>
+062+ <ins>@Override</ins><br>
+063- <del>adNode.showInter();</del><br>
+063+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+064- <del>}</del><br>
+064+ <ins>adNode.showInter();</ins><br>
+065- <del></del><br>
+065+ <ins>}</ins><br>
+066- <del>@Override</del><br>
+066+ <ins></ins><br>
+067- <del>public void onError(String name) {</del><br>
+067+ <ins>@Override</ins><br>
+068- <del>}</del><br>
+068+ <ins>public void onError(String name) {</ins><br>
+069- <del></del><br>
+069+ <ins>}</ins><br>
+070- <del>@Override</del><br>
+070+ <ins></ins><br>
+071- <del>public void onClick() {</del><br>
+071+ <ins>@Override</ins><br>
+072- <del>}</del><br>
+072+ <ins>public void onClick() {</ins><br>
+073- <del></del><br>
+073+ <ins>}</ins><br>
+074- <del>@Override</del><br>
+074+ <ins></ins><br>
+075- <del>public void onClose() {</del><br>
+075+ <ins>@Override</ins><br>
+076- <del>}</del><br>
+076+ <ins>public void onClose() {</ins><br>
+077- <del>});</del><br>
+077+ <ins>}</ins><br>
+078- <del>```</del><br>
+078+ <ins>});</ins><br>
+079- <del></del><br>
+079+ <ins>```</ins><br>
+080- <del>* 原生广告需要传入相应的自定义广告布局defalut_native_ad_sample,示例资源在底部，右键打开新窗口下载。</del><br>
+080+ <ins></ins><br>
+081- <del></del><br>
+081+ <ins>* 原生广告需要传入相应的自定义广告布局defalut_native_ad_sample,示例资源在底部，右键打开新窗口下载。</ins><br>
+082- <del>```</del><br>
+082+ <ins></ins><br>
+083- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+083+ <ins>```</ins><br>
+084- <del>.Builder()</del><br>
+084+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+085- <del>.setLayoutId(R.layout.xxx)</del><br>
+085+ <ins>.Builder()</ins><br>
+086- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+086+ <ins>.setLayoutId(R.layout.xxx)</ins><br>
+087- <del>.build();</del><br>
+087+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+088- <del></del><br>
+088+ <ins>.build();</ins><br>
+089- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+089+ <ins></ins><br>
+090- <del>@Override</del><br>
+090+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+091- <del>public void onLoaded(AdNode adNode) {</del><br>
+091+ <ins>@Override</ins><br>
+092- <del>adNode.show(nativeContainer);</del><br>
+092+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+093- <del>}</del><br>
+093+ <ins>adNode.show(nativeContainer);</ins><br>
+094- <del></del><br>
+094+ <ins>}</ins><br>
+095- <del>@Override</del><br>
+095+ <ins></ins><br>
+096- <del>public void onError(String name) {</del><br>
+096+ <ins>@Override</ins><br>
+097- <del>}</del><br>
+097+ <ins>public void onError(String name) {</ins><br>
+098- <del></del><br>
+098+ <ins>}</ins><br>
+099- <del>@Override</del><br>
+099+ <ins></ins><br>
+100- <del>public void onClick() {</del><br>
+100+ <ins>@Override</ins><br>
+101- <del>}</del><br>
+101+ <ins>public void onClick() {</ins><br>
+102- <del></del><br>
+102+ <ins>}</ins><br>
+103- <del>@Override</del><br>
+103+ <ins></ins><br>
+104- <del>public void onClose() {</del><br>
+104+ <ins>@Override</ins><br>
+105- <del>}</del><br>
+105+ <ins>public void onClose() {</ins><br>
+106- <del>});</del><br>
+106+ <ins>}</ins><br>
+107- <del></del><br>
+107+ <ins>});</ins><br>
+108- <del>```</del><br>
+108+ <ins></ins><br>
+109- <del></del><br>
+109+ <ins>```</ins><br>
+110- <del>```</del><br>
+110+ <ins></ins><br>
+111- <del>若使用默认布局，则调用</del><br>
+111+ <ins>```</ins><br>
+112- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+112+ <ins>若使用默认布局，则调用</ins><br>
+113- <del>.Builder()</del><br>
+113+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+114- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+114+ <ins>.Builder()</ins><br>
+115- <del>.build();</del><br>
+115+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+116- <del></del><br>
+116+ <ins>.build();</ins><br>
+117- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+117+ <ins></ins><br>
+118- <del>@Override</del><br>
+118+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+119- <del>public void onLoaded(AdNode adNode) {</del><br>
+119+ <ins>@Override</ins><br>
+120- <del>adNode.show(nativeContainer);</del><br>
+120+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+121- <del>}</del><br>
+121+ <ins>adNode.show(nativeContainer);</ins><br>
+122- <del></del><br>
+122+ <ins>}</ins><br>
+123- <del>@Override</del><br>
+123+ <ins></ins><br>
+124- <del>public void onError(String name) {</del><br>
+124+ <ins>@Override</ins><br>
+125- <del>}</del><br>
+125+ <ins>public void onError(String name) {</ins><br>
+126- <del></del><br>
+126+ <ins>}</ins><br>
+127- <del>@Override</del><br>
+127+ <ins></ins><br>
+128- <del>public void onClick() {</del><br>
+128+ <ins>@Override</ins><br>
+129- <del>}</del><br>
+129+ <ins>public void onClick() {</ins><br>
+130- <del></del><br>
+130+ <ins>}</ins><br>
+131- <del>@Override</del><br>
+131+ <ins></ins><br>
+132- <del>public void onClose() {</del><br>
+132+ <ins>@Override</ins><br>
+133- <del>}</del><br>
+133+ <ins>public void onClose() {</ins><br>
+134- <del>});</del><br>
+134+ <ins>}</ins><br>
+135- <del></del><br>
+135+ <ins>});</ins><br>
+136- <del>```</del><br>
+136+ <ins></ins><br>
+137- <del></del><br>
+137+ <ins>```</ins><br>
+138- <del>#### 资源id对应类型</del><br>
+138+ <ins></ins><br>
+139- <del></del><br>
+139+ <ins>#### 资源id对应类型</ins><br>
+140- <del>| 说明 | 类型 | 资源id |</del><br>
+140+ <ins></ins><br>
+141- <del>| -------- | -------- | -------- |</del><br>
+141+ <ins>| 说明 | 类型 | 资源id |</ins><br>
+142- <del>|广告icon | ImageView | native_icon_image |</del><br>
+142+ <ins>| -------- | -------- | -------- |</ins><br>
+143- <del>|平台标识| ImageView | ad_tv|</del><br>
+143+ <ins>|广告icon | ImageView | native_icon_image |</ins><br>
+144- <del>|广告标题 | TextView | native_title|</del><br>
+144+ <ins>|平台标识| ImageView | ad_tv|</ins><br>
+145- <del>|广告描述| TextView | native_text|</del><br>
+145+ <ins>|广告标题 | TextView | native_title|</ins><br>
+146- <del>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</del><br>
+146+ <ins>|广告描述| TextView | native_text|</ins><br>
+147- <del>|按钮 | TextView | native_cta|</del><br>
+147+ <ins>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</ins><br>
+148- <del></del><br>
+148+ <ins>|按钮 | TextView | native_cta|</ins><br>
+149- <del>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</del><br>
+149+ <ins></ins><br>
+150- <del></del><br>
+150+ <ins>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</ins><br>
+151- <del>* banner广告</del><br>
+151+ <ins></ins><br>
+152- <del></del><br>
+152+ <ins>* banner广告</ins><br>
+153- <del>```</del><br>
+153+ <ins></ins><br>
+154- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+154+ <ins>```</ins><br>
+155- <del>.Builder()</del><br>
+155+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+156- <del>.setAdType(PieAdRequest.BANNER_TYPE)</del><br>
+156+ <ins>.Builder()</ins><br>
+157- <del>.build();</del><br>
+157+ <ins>.setAdType(PieAdRequest.BANNER_TYPE)</ins><br>
+158- <del></del><br>
+158+ <ins>.build();</ins><br>
+159- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+159+ <ins></ins><br>
+160- <del>@Override</del><br>
+160+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+161- <del>public void onLoaded(AdNode adNode) {</del><br>
+161+ <ins>@Override</ins><br>
+162- <del>adNode.show(bannerContainer);</del><br>
+162+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+163- <del>}</del><br>
+163+ <ins>adNode.show(bannerContainer);</ins><br>
+164- <del></del><br>
+164+ <ins>}</ins><br>
+165- <del>@Override</del><br>
+165+ <ins></ins><br>
+166- <del>public void onError(String name) {</del><br>
+166+ <ins>@Override</ins><br>
+167- <del>}</del><br>
+167+ <ins>public void onError(String name) {</ins><br>
+168- <del></del><br>
+168+ <ins>}</ins><br>
+169- <del>@Override</del><br>
+169+ <ins></ins><br>
+170- <del>public void onClick() {</del><br>
+170+ <ins>@Override</ins><br>
+171- <del>}</del><br>
+171+ <ins>public void onClick() {</ins><br>
+172- <del></del><br>
+172+ <ins>}</ins><br>
+173- <del>@Override</del><br>
+173+ <ins></ins><br>
+174- <del>public void onClose() {</del><br>
+174+ <ins>@Override</ins><br>
+175- <del>}</del><br>
+175+ <ins>public void onClose() {</ins><br>
+176- <del>});</del><br>
+176+ <ins>}</ins><br>
+177- <del>```</del><br>
+177+ <ins>});</ins><br>
+178- <del>### 测试：</del><br>
+178+ <ins>```</ins><br>
+179- <del></del><br>
+179+ <ins>### 测试：</ins><br>
+180- <del>```</del><br>
+180+ <ins></ins><br>
+181- <del>测隐藏图标和log信息：</del><br>
+181+ <ins>```</ins><br>
+182- <del>日志tag:SdkLog</del><br>
+182+ <ins>测隐藏图标和log信息：</ins><br>
+183- <del>adb shell touch sdcard/appAfMode  //测试模式</del><br>
+183+ <ins>日志tag:SdkLog</ins><br>
+184- <del>adb shell touch sdcard/appTmMode //查看log</del><br>
+184+ <ins>adb shell touch sdcard/appAfMode  //测试模式</ins><br>
+185- <del>adb shell touch sdcard/appAdTmMode //fb广告测试模式</del><br>
+185+ <ins>adb shell touch sdcard/appTmMode //查看log</ins><br>
+186- <del>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</del><br>
+186+ <ins>adb shell touch sdcard/appAdTmMode //fb广告测试模式</ins><br>
+187- <del>```</del><br>
+187+ <ins>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</ins><br>
+188- <del></del><br>
+188+ <ins>```</ins><br>
+189- <del>### 混淆：</del><br>
+189+ <ins></ins><br>
+190- <del>```</del><br>
+190+ <ins>### 混淆：</ins><br>
+191- <del>mapping.txt文件见附件</del><br>
+191+ <ins>```</ins><br>
+192- <del></del><br>
+192+ <ins>mapping.txt文件见附件</ins><br>
+194- <del>```</del><br>
+194+ <ins></ins><br>
+195+ <ins>```</ins></blockquote>
+<blockquote class="original">012- <del>implementation 'com.facebook.android:audience-network-sdk:5.4.1'</del><br>
+012+ <ins>implementation 'com.facebook.android:audience-network-sdk:5.6.0'</ins><br>
+013- <del>//mopub</del><br>
+013+ <ins>implementation 'com.facebook.android:facebook-android-sdk:[5,6]'</ins><br>
+014- <del>implementation('com.mopub:mopub-sdk:5.5.0@aar') {</del><br>
+014+ <ins>//mopub</ins><br>
+015- <del>transitive = true</del><br>
+015+ <ins>implementation('com.mopub:mopub-sdk:5.5.0@aar') {</ins><br>
+016- <del>exclude module: 'libAvid-mopub' // To exclude AVID</del><br>
+016+ <ins>transitive = true</ins><br>
+017- <del>exclude module: 'moat-mobile-app-kit' // To exclude Moat</del><br>
+017+ <ins>exclude module: 'libAvid-mopub' // To exclude AVID</ins><br>
+018- <del>}</del><br>
+018+ <ins>exclude module: 'moat-mobile-app-kit' // To exclude Moat</ins><br>
+019- <del></del><br>
+019+ <ins>}</ins><br>
+020- <del>// base</del><br>
+020+ <ins></ins><br>
+021- <del>implementation 'com.google.code.gson:gson:2.8.2'</del><br>
+021+ <ins>// base</ins><br>
+022- <del>//stringfog</del><br>
+022+ <ins>implementation 'com.google.code.gson:gson:2.8.2'</ins><br>
+023- <del>implementation 'com.github.megatronking.stringfog:xor:1.1.0'</del><br>
+023+ <ins>//stringfog</ins><br>
+024- <del>}</del><br>
+024+ <ins>implementation 'com.github.megatronking.stringfog:xor:1.1.0'</ins><br>
+025- <del></del><br>
+025+ <ins>}</ins><br>
+026- <del>项目的build.gradle下添加</del><br>
+026+ <ins></ins><br>
+027- <del>dependencies {</del><br>
+027+ <ins>项目的build.gradle下添加</ins><br>
+028- <del>classpath 'com.github.megatronking.stringfog:gradle-plugin:2.2.0'</del><br>
+028+ <ins>dependencies {</ins><br>
+029- <del>classpath 'com.github.megatronking.stringfog:xor:1.1.0'</del><br>
+029+ <ins>classpath 'com.github.megatronking.stringfog:gradle-plugin:2.2.0'</ins><br>
+030- <del>}</del><br>
+030+ <ins>classpath 'com.github.megatronking.stringfog:xor:1.1.0'</ins><br>
+031- <del></del><br>
+031+ <ins>}</ins><br>
+032- <del>```</del><br>
+032+ <ins></ins><br>
+033- <del></del><br>
+033+ <ins>```</ins><br>
+034- <del>### PieSdk</del><br>
+034+ <ins></ins><br>
+035- <del>* 初始化：在application的Oncreate调用：</del><br>
+035+ <ins>### PieSdk</ins><br>
+036- <del>```</del><br>
+036+ <ins>* 初始化：在application的Oncreate调用：</ins><br>
+037- <del>PieSdk.getInstance().init(this,启动页activity.class, "flurryKey");</del><br>
+037+ <ins>```</ins><br>
+038- <del>```</del><br>
+038+ <ins>PieSdk.getInstance().init(this,启动页activity.class, "flurryKey","facebook_app_id");</ins><br>
+039- <del></del><br>
+039+ <ins>```</ins><br>
+040- <del>#### 2 账户</del><br>
+040+ <ins></ins><br>
+041- <del>```</del><br>
+041+ <ins>#### 2 账户</ins><br>
+042- <del>1 添加账号描述，在values文件夹下的string.xml里面添加常量</del><br>
+042+ <ins>```</ins><br>
+043- <del>pie_account_name = 账户名称</del><br>
+043+ <ins>1 添加账号描述，在values文件夹下的string.xml里面添加常量</ins><br>
+044- <del>pie_account_type =  包名</del><br>
+044+ <ins>pie_account_name = 账户名称</ins><br>
+045- <del></del><br>
+045+ <ins>pie_account_type =  包名</ins><br>
+046- <del>2 添加账号图标，在drawable文件夹下添加一个图片，用做账号图标，名称：pie_account_icon.png</del><br>
+046+ <ins></ins><br>
+047- <del></del><br>
+047+ <ins>2 添加账号图标，在drawable文件夹下添加一个图片，用做账号图标，名称：pie_account_icon.png</ins><br>
+048- <del>```</del><br>
+048+ <ins></ins><br>
+049- <del></del><br>
+049+ <ins>```</ins><br>
+051- <del>#### 广告部分</del><br>
+051+ <ins></ins><br>
+052- <del>* 插屏广告,示例代码如下：</del><br>
+052+ <ins>#### 广告部分</ins><br>
+053- <del></del><br>
+053+ <ins>* 插屏广告,示例代码如下：</ins><br>
+054- <del>```</del><br>
+054+ <ins></ins><br>
+055- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+055+ <ins>```</ins><br>
+056- <del>.Builder()</del><br>
+056+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+057- <del>.setAdType(PieAdRequest.INTERS_TYPE)</del><br>
+057+ <ins>.Builder()</ins><br>
+058- <del>.build();</del><br>
+058+ <ins>.setAdType(PieAdRequest.INTERS_TYPE)</ins><br>
+059- <del></del><br>
+059+ <ins>.build();</ins><br>
+060- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+060+ <ins></ins><br>
+061- <del>@Override</del><br>
+061+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+062- <del>public void onLoaded(AdNode adNode) {</del><br>
+062+ <ins>@Override</ins><br>
+063- <del>adNode.showInter();</del><br>
+063+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+064- <del>}</del><br>
+064+ <ins>adNode.showInter();</ins><br>
+065- <del></del><br>
+065+ <ins>}</ins><br>
+066- <del>@Override</del><br>
+066+ <ins></ins><br>
+067- <del>public void onError(String name) {</del><br>
+067+ <ins>@Override</ins><br>
+068- <del>}</del><br>
+068+ <ins>public void onError(String name) {</ins><br>
+069- <del></del><br>
+069+ <ins>}</ins><br>
+070- <del>@Override</del><br>
+070+ <ins></ins><br>
+071- <del>public void onClick() {</del><br>
+071+ <ins>@Override</ins><br>
+072- <del>}</del><br>
+072+ <ins>public void onClick() {</ins><br>
+073- <del></del><br>
+073+ <ins>}</ins><br>
+074- <del>@Override</del><br>
+074+ <ins></ins><br>
+075- <del>public void onClose() {</del><br>
+075+ <ins>@Override</ins><br>
+076- <del>}</del><br>
+076+ <ins>public void onClose() {</ins><br>
+077- <del>});</del><br>
+077+ <ins>}</ins><br>
+078- <del>```</del><br>
+078+ <ins>});</ins><br>
+079- <del></del><br>
+079+ <ins>```</ins><br>
+080- <del>* 原生广告需要传入相应的自定义广告布局defalut_native_ad_sample,示例资源在底部，右键打开新窗口下载。</del><br>
+080+ <ins></ins><br>
+081- <del></del><br>
+081+ <ins>* 原生广告需要传入相应的自定义广告布局defalut_native_ad_sample,示例资源在底部，右键打开新窗口下载。</ins><br>
+082- <del>```</del><br>
+082+ <ins></ins><br>
+083- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+083+ <ins>```</ins><br>
+084- <del>.Builder()</del><br>
+084+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+085- <del>.setLayoutId(R.layout.xxx)</del><br>
+085+ <ins>.Builder()</ins><br>
+086- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+086+ <ins>.setLayoutId(R.layout.xxx)</ins><br>
+087- <del>.build();</del><br>
+087+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+088- <del></del><br>
+088+ <ins>.build();</ins><br>
+089- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+089+ <ins></ins><br>
+090- <del>@Override</del><br>
+090+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+091- <del>public void onLoaded(AdNode adNode) {</del><br>
+091+ <ins>@Override</ins><br>
+092- <del>adNode.show(nativeContainer);</del><br>
+092+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+093- <del>}</del><br>
+093+ <ins>adNode.show(nativeContainer);</ins><br>
+094- <del></del><br>
+094+ <ins>}</ins><br>
+095- <del>@Override</del><br>
+095+ <ins></ins><br>
+096- <del>public void onError(String name) {</del><br>
+096+ <ins>@Override</ins><br>
+097- <del>}</del><br>
+097+ <ins>public void onError(String name) {</ins><br>
+098- <del></del><br>
+098+ <ins>}</ins><br>
+099- <del>@Override</del><br>
+099+ <ins></ins><br>
+100- <del>public void onClick() {</del><br>
+100+ <ins>@Override</ins><br>
+101- <del>}</del><br>
+101+ <ins>public void onClick() {</ins><br>
+102- <del></del><br>
+102+ <ins>}</ins><br>
+103- <del>@Override</del><br>
+103+ <ins></ins><br>
+104- <del>public void onClose() {</del><br>
+104+ <ins>@Override</ins><br>
+105- <del>}</del><br>
+105+ <ins>public void onClose() {</ins><br>
+106- <del>});</del><br>
+106+ <ins>}</ins><br>
+107- <del></del><br>
+107+ <ins>});</ins><br>
+108- <del>```</del><br>
+108+ <ins></ins><br>
+109- <del></del><br>
+109+ <ins>```</ins><br>
+110- <del>```</del><br>
+110+ <ins></ins><br>
+111- <del>若使用默认布局，则调用</del><br>
+111+ <ins>```</ins><br>
+112- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+112+ <ins>若使用默认布局，则调用</ins><br>
+113- <del>.Builder()</del><br>
+113+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+114- <del>.setAdType(PieAdRequest.NATIVE_TYPE)</del><br>
+114+ <ins>.Builder()</ins><br>
+115- <del>.build();</del><br>
+115+ <ins>.setAdType(PieAdRequest.NATIVE_TYPE)</ins><br>
+116- <del></del><br>
+116+ <ins>.build();</ins><br>
+117- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+117+ <ins></ins><br>
+118- <del>@Override</del><br>
+118+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+119- <del>public void onLoaded(AdNode adNode) {</del><br>
+119+ <ins>@Override</ins><br>
+120- <del>adNode.show(nativeContainer);</del><br>
+120+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+121- <del>}</del><br>
+121+ <ins>adNode.show(nativeContainer);</ins><br>
+122- <del></del><br>
+122+ <ins>}</ins><br>
+123- <del>@Override</del><br>
+123+ <ins></ins><br>
+124- <del>public void onError(String name) {</del><br>
+124+ <ins>@Override</ins><br>
+125- <del>}</del><br>
+125+ <ins>public void onError(String name) {</ins><br>
+126- <del></del><br>
+126+ <ins>}</ins><br>
+127- <del>@Override</del><br>
+127+ <ins></ins><br>
+128- <del>public void onClick() {</del><br>
+128+ <ins>@Override</ins><br>
+129- <del>}</del><br>
+129+ <ins>public void onClick() {</ins><br>
+130- <del></del><br>
+130+ <ins>}</ins><br>
+131- <del>@Override</del><br>
+131+ <ins></ins><br>
+132- <del>public void onClose() {</del><br>
+132+ <ins>@Override</ins><br>
+133- <del>}</del><br>
+133+ <ins>public void onClose() {</ins><br>
+134- <del>});</del><br>
+134+ <ins>}</ins><br>
+135- <del></del><br>
+135+ <ins>});</ins><br>
+136- <del>```</del><br>
+136+ <ins></ins><br>
+137- <del></del><br>
+137+ <ins>```</ins><br>
+138- <del>#### 资源id对应类型</del><br>
+138+ <ins></ins><br>
+139- <del></del><br>
+139+ <ins>#### 资源id对应类型</ins><br>
+140- <del>| 说明 | 类型 | 资源id |</del><br>
+140+ <ins></ins><br>
+141- <del>| -------- | -------- | -------- |</del><br>
+141+ <ins>| 说明 | 类型 | 资源id |</ins><br>
+142- <del>|广告icon | ImageView | native_icon_image |</del><br>
+142+ <ins>| -------- | -------- | -------- |</ins><br>
+143- <del>|平台标识| ImageView | ad_tv|</del><br>
+143+ <ins>|广告icon | ImageView | native_icon_image |</ins><br>
+144- <del>|广告标题 | TextView | native_title|</del><br>
+144+ <ins>|平台标识| ImageView | ad_tv|</ins><br>
+145- <del>|广告描述| TextView | native_text|</del><br>
+145+ <ins>|广告标题 | TextView | native_title|</ins><br>
+146- <del>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</del><br>
+146+ <ins>|广告描述| TextView | native_text|</ins><br>
+147- <del>|按钮 | TextView | native_cta|</del><br>
+147+ <ins>|大图| RelativeLayout | native_main_image|   native_admob_view |native_ad_media</ins><br>
+148- <del></del><br>
+148+ <ins>|按钮 | TextView | native_cta|</ins><br>
+149- <del>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</del><br>
+149+ <ins></ins><br>
+150- <del></del><br>
+150+ <ins>![](http://zentao.dotcunited.com:9090/index.php?m=file&amp;f=read&amp;fileID=7566)</ins><br>
+151- <del>* banner广告</del><br>
+151+ <ins></ins><br>
+152- <del></del><br>
+152+ <ins>* banner广告</ins><br>
+153- <del>```</del><br>
+153+ <ins></ins><br>
+154- <del>PieAdRequest pieAdRequest = new PieAdRequest</del><br>
+154+ <ins>```</ins><br>
+155- <del>.Builder()</del><br>
+155+ <ins>PieAdRequest pieAdRequest = new PieAdRequest</ins><br>
+156- <del>.setAdType(PieAdRequest.BANNER_TYPE)</del><br>
+156+ <ins>.Builder()</ins><br>
+157- <del>.build();</del><br>
+157+ <ins>.setAdType(PieAdRequest.BANNER_TYPE)</ins><br>
+158- <del></del><br>
+158+ <ins>.build();</ins><br>
+159- <del>pieAdRequest.requestAd(new AdCallback() {</del><br>
+159+ <ins></ins><br>
+160- <del>@Override</del><br>
+160+ <ins>pieAdRequest.requestAd(new AdCallback() {</ins><br>
+161- <del>public void onLoaded(AdNode adNode) {</del><br>
+161+ <ins>@Override</ins><br>
+162- <del>adNode.show(bannerContainer);</del><br>
+162+ <ins>public void onLoaded(AdNode adNode) {</ins><br>
+163- <del>}</del><br>
+163+ <ins>adNode.show(bannerContainer);</ins><br>
+164- <del></del><br>
+164+ <ins>}</ins><br>
+165- <del>@Override</del><br>
+165+ <ins></ins><br>
+166- <del>public void onError(String name) {</del><br>
+166+ <ins>@Override</ins><br>
+167- <del>}</del><br>
+167+ <ins>public void onError(String name) {</ins><br>
+168- <del></del><br>
+168+ <ins>}</ins><br>
+169- <del>@Override</del><br>
+169+ <ins></ins><br>
+170- <del>public void onClick() {</del><br>
+170+ <ins>@Override</ins><br>
+171- <del>}</del><br>
+171+ <ins>public void onClick() {</ins><br>
+172- <del></del><br>
+172+ <ins>}</ins><br>
+173- <del>@Override</del><br>
+173+ <ins></ins><br>
+174- <del>public void onClose() {</del><br>
+174+ <ins>@Override</ins><br>
+175- <del>}</del><br>
+175+ <ins>public void onClose() {</ins><br>
+176- <del>});</del><br>
+176+ <ins>}</ins><br>
+177- <del>```</del><br>
+177+ <ins>});</ins><br>
+178- <del>### 测试：</del><br>
+178+ <ins>```</ins><br>
+179- <del></del><br>
+179+ <ins>### 测试：</ins><br>
+180- <del>```</del><br>
+180+ <ins></ins><br>
+181- <del>测隐藏图标和log信息：</del><br>
+181+ <ins>```</ins><br>
+182- <del>日志tag:SdkLog</del><br>
+182+ <ins>测隐藏图标和log信息：</ins><br>
+183- <del>adb shell touch sdcard/appAfMode  //测试模式</del><br>
+183+ <ins>日志tag:SdkLog</ins><br>
+184- <del>adb shell touch sdcard/appTmMode //查看log</del><br>
+184+ <ins>adb shell touch sdcard/appAfMode  //测试模式</ins><br>
+185- <del>adb shell touch sdcard/appAdTmMode //fb广告测试模式</del><br>
+185+ <ins>adb shell touch sdcard/appTmMode //查看log</ins><br>
+186- <del>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</del><br>
+186+ <ins>adb shell touch sdcard/appAdTmMode //fb广告测试模式</ins><br>
+187- <del>```</del><br>
+187+ <ins>adb shell touch sdcard/appIconTmMode //测试模式下不隐藏图标</ins><br>
+188- <del></del><br>
+188+ <ins>```</ins><br>
+189- <del>### 混淆：</del><br>
+189+ <ins></ins><br>
+190- <del>```</del><br>
+190+ <ins>### 混淆：</ins><br>
+191- <del>mapping.txt文件见附件</del><br>
+191+ <ins>```</ins><br>
+192- <del></del><br>
+192+ <ins>mapping.txt文件见附件</ins><br>
+194- <del>```</del><br>
+194+ <ins></ins><br>
+195+ <ins>```</ins></blockquote>        </div>
+                      </li>
+                  <li value="22">
+                2020-01-16 17:21:21, 由 <strong>王涛</strong> 编辑。
+                <button type="button" class="btn btn-mini switch-btn btn-icon btn-expand" title="切换显示"><i class="change-show icon icon-plus icon-sm"></i></button>
+        <div class="history-changes" id="changeBox23">
+          修改了 <strong><i>文档标题</i></strong>，区别为：
+<blockquote class="textdiff">001- <del>国外-激进-PieSdk接入文档</del><br>
+001+ <ins>国外-激进-PieSdk2.0.1接入文档</ins></blockquote>
+<blockquote class="original">001- <del>国外-激进-PieSdk接入文档</del><br>
+001+ <ins>国外-激进-PieSdk2.0.1接入文档</ins></blockquote>        </div>
+                      </li>
+                  <li value="23">
+                2020-01-16 20:19:50, 由 <strong>王涛</strong> 添加备注。
+                 
+                <div class="article-content comment">
+          上传了附件 mapping 
+        </div>
+                      </li>
+                  <li value="24">
+                2020-01-17 12:33:57, 由 <strong>王涛</strong> 添加备注。
+                 
+                <div class="article-content comment">
+          上传了附件 function_piesdk_2.0.1.aar 
+        </div>
+                      </li>
+                  <li value="25">
+                2020-01-17 12:34:09, 由 <strong>王涛</strong> 删除了附件：<strong><i>mapping</i></strong>。
+                      </li>
+          </ol>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="side-col col-4">
+    <div class="cell">
+      <details class="detail" open="">
+        <summary class="detail-title">文档摘要</summary>
+        <div class="detail-content">
+          <div class="text-center text-muted">暂无</div>        </div>
+      </details>
+    </div>
+    <div class="cell">
+      <details class="detail" open="">
+        <summary class="detail-title">关键字</summary>
+        <div class="detail-content">
+          <div class="text-center text-muted">暂无</div>        </div>
+      </details>
+    </div>
+    <div class="cell">
+      <details class="detail" open="">
+        <summary class="detail-title">基本信息</summary>
+        <div class="detail-content">
+          <table class="table table-data">
+            <tbody>
+                                          <tr>
+                <th class="w-80px">所属文档库</th>
+                <td>用户生态</td>
+              </tr>
+              <tr>
+                <th>所属分类</th>
+                <td>中台-&gt;商业化</td>
+              </tr>
+              <tr>
+                <th>添加时间</th>
+                <td>2019-12-06 14:11:41</td>
+              </tr>
+              <tr>
+                <th>由谁编辑</th>
+                <td>王涛</td>
+              </tr>
+              <tr>
+                <th>编辑时间</th>
+                <td>2020-01-17 12:33:57</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<div id="mainActions">
+  <nav class="container"></nav>  <div class="btn-toolbar">
+    <a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=browse" id="back" class="btn" title="返回[快捷键:Alt+↑]"><i class="icon-goback icon-back"></i> 返回</a>
+    <div class="divider"></div><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=edit&amp;docID=378" class="btn btn-link " title="编辑文档"><i class="icon-common-edit icon-edit"></i></a>  </div>
+</div>
+<script src="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/shCore.js" type="text/javascript"></script>
+<script src="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/shAutoloader.js" type="text/javascript"></script>
+<link href="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/shCore.css" rel="stylesheet" type="text/css">
+<link href="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/shThemeDefault.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+function path()
+{
+  var args = arguments;
+  var result = [];
+       
+  for(var i = 0; i < args.length; i++) result.push(args[i].replace('@', '/js/jquery/syntaxhighlighter/scripts/'));
+       
+  return result
+}
+ 
+SyntaxHighlighter.autoloader.apply(null, path(
+  'applescript            @shBrushAppleScript.js',
+  'actionscript3 as3      @shBrushAS3.js',
+  'bash shell             @shBrushBash.js',
+  'coldfusion cf          @shBrushColdFusion.js',
+  'cpp c                  @shBrushCpp.js',
+  'c# c-sharp csharp      @shBrushCSharp.js',
+  'css                    @shBrushCss.js',
+  'delphi pascal          @shBrushDelphi.js',
+  'diff patch pas         @shBrushDiff.js',
+  'erl erlang             @shBrushErlang.js',
+  'groovy                 @shBrushGroovy.js',
+  'java                   @shBrushJava.js',
+  'jfx javafx             @shBrushJavaFX.js',
+  'js jscript javascript  @shBrushJScript.js',
+  'perl pl                @shBrushPerl.js',
+  'php                    @shBrushPhp.js',
+  'text plain             @shBrushPlain.js',
+  'py python              @shBrushPython.js',
+  'ruby rails ror rb      @shBrushRuby.js',
+  'sass scss              @shBrushSass.js',
+  'scala                  @shBrushScala.js',
+  'sql                    @shBrushSql.js',
+  'vb vbnet               @shBrushVb.js',
+  'xml xhtml xslt html    @shBrushXml.js'
+));
+SyntaxHighlighter.defaults['toolbar'] = false;
+SyntaxHighlighter.all();
+</script>
+</div><script>$.initSidebar()</script>
+
+<iframe frameborder="0" name="hiddenwin" id="hiddenwin" scrolling="no" class="debugwin hidden" src="./DOC #378 国外-激进-PieSdk2.0.1接入文档 - 用户生态 - 禅道_files/saved_resource.html"></iframe>
+
+</main><footer id="footer">
+  <div class="container">
+    <ul class="breadcrumb"><li><a href="http://zentao.dotcunited.com:9090/index.php?m=my&amp;f=index">禅道</a>
+</li><li><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=index">文档</a>
+</li><li class="active"><a href="http://zentao.dotcunited.com:9090/index.php?m=doc&amp;f=browse&amp;libID=545">用户生态</a>
+</li><li class="active">文档详情</li></ul>    <div id="poweredBy">
+      <a href="http://www.zentao.net/" target="_blank"><i class="icon-zentao"></i> 禅道10.3</a> &nbsp;
+      <a href="http://api.zentao.net/goto.php?item=proversion&amp;from=footer" target="_blank" id="proLink" class="text-important">专业版 <i class="text-danger icon-pro-version"></i></a> &nbsp;           </div>
+  </div>
+</footer>
+<div id="noticeBox"></div>
+<script>
+browserNotice = '你目前使用的浏览器可能无法得到最佳浏览效果，建议使用Chrome、火狐、IE9+、Opera、Safari浏览器。'
+function ajaxIgnoreBrowser(){$.get(createLink('misc', 'ajaxIgnoreBrowser'));}
+$(function(){showBrowserNotice()});
+
+/* Alert get message. */
+$(function()
+{
+    var windowBlur = false;
+    if(window.Notification)
+    {
+        window.onblur  = function(){windowBlur = true;}
+        window.onfocus = function(){windowBlur = false;}
+    }
+    setInterval(function()
+    {
+        $.get(createLink('message', 'ajaxGetMessage', "windowBlur=" + (windowBlur ? '1' : '0')), function(data)
+        {
+            if(!windowBlur)
+            {
+                $('#noticeBox').append(data);
+                adjustNoticePosition();
+            }
+            else
+            {
+                if(data)
+                {
+                    if(typeof data == 'string') data = $.parseJSON(data);
+                    if(typeof data.message == 'string') notifyMessage(data.message);
+                }
+            }
+        });
+    }, 5 * 60 * 1000);
+})
+
+</script>
+
+<script>function loadModules(libID)
+{
+    link = createLink('doc', 'ajaxGetModules', 'libID=' + libID);
+    $('#moduleBox').load(link, function(){$('#moduleBox').find('select').chosen()});
+}
+
+function toggleAcl(acl)
+{
+    if(acl == 'custom')
+    {
+        $('#whiteListBox').removeClass('hidden');
+    }
+    else
+    {
+        $('#whiteListBox').addClass('hidden');
+    }
+}
+
+function setBrowseType(type)
+{
+    $.cookie('browseType', type, {expires:config.cookieLife, path:config.webRoot});
+    location.href = location.href;
+}
+
+$(document).ready(function()
+{
+    $('.libs-group.sort').sortable(
+    {
+        trigger:  '.lib',
+        selector: '.lib',
+        finish:   function()
+        {
+            var orders = {};
+            var orderNext = 1;
+
+            $('.libs-group .lib').not('.files').not('.addbtn').each(function()
+            {
+                orders[$(this).data('id')] = orderNext ++;
+            })
+
+            $.post(createLink('doc', 'sort'), orders, function(data)
+            {
+                if(data.result == 'success')
+                {
+                    return location.reload();
+                }
+                else
+                {
+                    alert(data.message);
+                    return location.reload();
+                }
+            }, 'json');
+        }
+
+    });
+
+    'use strict';
+
+    var NAME = 'zui.splitRow'; // model name
+
+    // File input list
+    // The SplitRow model class
+    var SplitRow = function(element, options)
+    {
+        var that = this;
+        that.name = NAME;
+        var $element = that.$ = $(element);
+
+        options = that.options = $.extend({}, SplitRow.DEFAULTS, this.$.data(), options);
+        var id = options.id || $element.attr('id') || $.zui.uuid();
+        var $cols = $element.children('.side-col,.main-col');
+        var $firstCol = $cols.first();
+        var $secondCol = $cols.eq(1);
+        var $spliter = $firstCol.next('.col-spliter');
+        if (!$spliter.length)
+        {
+            $spliter = $(options.spliter);
+            if (!$spliter.parent().length)
+            {
+                $spliter.insertAfter($firstCol);
+            }
+        }
+        var spliterWidth = $spliter.width();
+        var minFirstColWidth = $firstCol.data('minWidth');
+        var minSecondColWidth = $secondCol.data('minWidth');
+        var setFirstColWidth = function(width)
+        {
+            var rowWidth = $element.width();
+            var maxFirstWidth = rowWidth - minSecondColWidth - spliterWidth;
+            width = Math.max(minFirstColWidth, Math.min(width, maxFirstWidth));
+            $firstCol.width(width);
+            $.zui.store.set('splitRowFirstSize:' + id, width);
+        };
+
+        var defaultWidth = $.zui.store.get('splitRowFirstSize:' + id);
+        if (defaultWidth) setFirstColWidth(defaultWidth);
+
+        var documentEventName = '.' + id;
+
+        var mouseDownX, isMouseDown, startFirstWidth;
+        $spliter.on('mousedown', function(e)
+        {
+            startFirstWidth = $firstCol.width();
+            mouseDownX = e.pageX;
+            isMouseDown = true;
+            $element.addClass('row-spliting');
+            e.preventDefault();
+            $(document).on('mousemove' + documentEventName, function(e)
+            {
+                if (isMouseDown)
+                {
+                    var deltaX = e.pageX - mouseDownX;
+                    setFirstColWidth(startFirstWidth + deltaX);
+                    e.preventDefault();
+                } else {
+                    $(document).off(documentEventName);
+                    $element.removeClass('row-spliting');
+                }
+            }).on('mouseup' + documentEventName + ' mouseleave' + documentEventName, function(e)
+            {
+                isMouseDown = false;
+                $(document).off(documentEventName);
+                $element.removeClass('row-spliting');
+            });
+        });
+
+        var fixColClass = function($col)
+        {
+            if (options.smallSize) $col.toggleClass('col-sm-size', $col.width() < options.smallSize);
+            if (options.middleSize) $col.toggleClass('col-md-size', $col.width() < options.middleSize);
+        };
+
+        var resizeCols = function() {
+            var $cells = $cols.children('.panel,.cell').height('auto');
+            if($firstCol.next('.col-spliter').css('display') != 'none')
+            {
+                var bestHeight = $firstCol.height();
+                $cells.css('height', bestHeight);
+            }
+        };
+
+        $element.find('.tree').on('resize', resizeCols);
+        $firstCol.on('resize', function(e) {fixColClass($firstCol);});
+        $secondCol.on('resize', function(e) {fixColClass($secondCol);});
+        fixColClass($firstCol);
+        fixColClass($secondCol);
+        resizeCols();
+    };
+
+    // default options
+    SplitRow.DEFAULTS =
+    {
+        spliter: '<div class="col-spliter"></div>',
+        smallSize: 700,
+        middleSize: 850
+    };
+
+    // Extense jquery element
+    $.fn.splitRow = function(option)
+    {
+        return this.each(function()
+        {
+            var $this = $(this);
+            var data = $this.data(NAME);
+            var options = typeof option == 'object' && option;
+            if(!data) $this.data(NAME, (data = new SplitRow(this, options)));
+        });
+    };
+
+    SplitRow.NAME = NAME;
+
+    $.fn.splitRow.Constructor = SplitRow;
+
+    // Auto call splitRow after document load complete
+    $(function()
+    {
+        $('.split-row').splitRow();
+    });
+
+    var $pageSetting = $('#pageSetting');
+    if($pageSetting.length)
+    {
+        $pageSetting.on('click', '.close-dropdown', function()
+        {
+            $pageSetting.parent().removeClass('open');
+        }).on('click', function(e){e.stopPropagation()});
+    }
+
+    $('.ajaxCollect').mousedown(function (event) {
+        var obj = $(this);
+        var url = obj.data('url');
+        $.get(url, function(response)
+        {
+          if(response.status == 'yes')
+          {
+            obj.children('i').removeClass().addClass('icon icon-star text-yellow');
+            obj.parent().prev().children('.file-name').children('i').remove('.icon');
+            obj.parent().prev().children('.file-name').prepend('<i class="icon icon-star text-yellow"></i> ');
+          }
+          else
+          {
+            obj.children('i').removeClass().addClass('icon icon-star-empty');
+            obj.parent().prev().children('.file-name').children('i').remove(".icon");
+          }
+        }, 'json');
+        return false;
+    });
+});
+
+</script>
+
+
+</body></html>
