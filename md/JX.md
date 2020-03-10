@@ -133,7 +133,7 @@
 | NL           | 荷兰               | Netherlands              | 31       |
 | NO           | 挪威               | Norway                   | 47       |
 | NP           | 尼泊尔             | Nepal                    | 977      |
-|              | 荷属安的列斯       | Netheriands Antilles     | 599      |
+| NA           | 荷属安的列斯       | Netheriands Antilles     | 599      |
 | NR           | 瑙鲁               | Nauru                    | 674      |
 | NZ           | 新西兰             | New Zealand              | 64       |
 | OM           | 阿曼               | Oman                     | 968      |
