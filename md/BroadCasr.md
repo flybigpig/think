@@ -1,4 +1,4 @@
-# BroadCasr
+# BroadCast
 
 ```java
 # 8.0发送广播被禁止

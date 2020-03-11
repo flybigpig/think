@@ -1,4 +1,4 @@
-# meituxiuxiu
+# meitu
 
 ```java
 package com.fairy.thickness.open.activity;
