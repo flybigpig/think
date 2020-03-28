@@ -1,5 +1,9 @@
 # View
 
+![](C:\Users\czdxn\Desktop\md\think\think\md\pic\window.png)
+
+[https://blog.csdn.net/qiaoyl113/article/details/84662688](https://blog.csdn.net/qiaoyl113/article/details/84662688)
+
 ![](C:\Users\czdxn\Desktop\md\think\think\md\pic\view.png)
 
 - ViewGroup也继承自View
@@ -144,8 +148,109 @@
     
     - View事件分发机制
     
-        - 
+        - setContent()
+        
+          getWindow().setContentView();
+        
+          getWindow() ----->Activity.attach() --> mWindow =new PhoneWindow(this);
+        
+          ```
+          # phoneWindow.setContentView();
+          
+          @Override
+              public void setContentView(int layoutResID) {
+                  // Note: FEATURE_CONTENT_TRANSITIONS may be set in the process of installing the window
+                  // decor, when theme attributes and the like are crystalized. Do not check the feature
+                  // before this happens.
+                  if (mContentParent == null) {
+                      installDecor();
+                  } else if (!hasFeature(FEATURE_CONTENT_TRANSITIONS)) {
+                      mContentParent.removeAllViews();
+                  }
+          
+                  if (hasFeature(FEATURE_CONTENT_TRANSITIONS)) {
+                      final Scene newScene = Scene.getSceneForLayout(mContentParent, layoutResID,
+                              getContext());
+                      transitionTo(newScene);
+                  } else {
+                      mLayoutInflater.inflate(layoutResID, mContentParent);
+                  }
+                  mContentParent.requestApplyInsets();
+                  final Callback cb = getCallback();
+                  if (cb != null && !isDestroyed()) {
+                      cb.onContentChanged();
+                  }
+                  mContentParentExplicitlySet = true;
+              }
+          ```
+        
     
       
+    
+- ###### 伪代码事件处理
+
+  ```
+   @Override
+      public boolean dispatchTouchEvent(MotionEvent ev) {
+          boolean result = false;
+          if (onInterceptTouchEvent(ev)) {
+              result = childView.onTouchEvent(ev);
+          } else {
+              result = childView.dispatchTouchEvent(ev);
+          }
+          return result;
+      }
+  ```
+
+- view工作流程
+
+  - **DecorView被加载到Window中**
+
+    startActivity -->ActivityThread.handleLunchActivity()--->创建Activity
+
+    ```
+    private void handleLauncherActivity(ActivityRecord r,Intent customIntent){
+    ```
+    	Activity a = performLaunchActivity(r,customIntent);
+    	if(a!=null){
+    		r.createdConfig = new Configuration(mConfiguration);
+    		Bundle oldState = r.state;
+    		handleResumeActivity(r.token,false,r.isForward,
+    	!r.activity.mFinished 	&&  !r.startsNotResumed);
+    	}
+    	```
+    }
+    -----------------------------
+    performLaunchActivity 创建Activity 在这里会调用Activity的onCreate(),从而完成DecorView的创建。
+    
+    ```
+find void handleResumeActivity(IBinder token,boolean clearHide,boolean isForward,boolean reallyResume){
+    	unsheduleGcIdler();
+    	mSomeActivitiesChanged= true;
+    	ActivityClientRecord r = performResumeActivity(token,clearHide);
+    	if(r!=null){
+    		final Activity a = r.activity;
+    		```
+    		if(r.window==null && !a.mFinished && willBeVisible){
+    			r.window=r.activity.getwindow;
+    			view decor = r.window.getDecorView();
+    			decor.setVisiblity(Vier.INVISIABLE);
+    			ViewManager vm =a.getWindowManager();
+    			WindowManager.LayoutParams l =r.window.getAttributes();
+    			a,mDecor = decor;
+    			l.type =WindowManager.LayoutParams.TYPE_BASE_APPLICATION;
+    			l.softInputMode |=forwardBit;
+    			if(a.mVisibleFromClient){
+    				a.mWindowAdded = true ;
+    				wm.addView(decor,l);
+    			}
+    		}
+    		```
+    	}
+    }
+    ```
+    此处会调用onResume方法
+    得到WindowManager，一个接口并继承实现ViewManager.
+    实际调用WindowManagerImpl的addView()方法
 
 

@@ -1,88 +1,42 @@
-# SoundPool
-
-我们可以加载多个音频资源到内存，进行管理与播放
-
-- 我们需要监听加载完毕后才能播放
-
-SoundPool还可以调节左右声道的音量值，调整播放的语速，设置播放优先级，以及播放次数。
+# soundPool
 
 ```
-		/**
-	     * 创建SoundPool ，注意 api 等级
-	     */
-	    private void createSoundPoolIfNeeded() {
-	        if (mSoundPool == null) {
-	            // 5.0 及 之后
-	            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-	                AudioAttributes audioAttributes = null;
-	                audioAttributes = new AudioAttributes.Builder()
-	                        .setUsage(AudioAttributes.USAGE_MEDIA)
-	                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-	                        .build();
-	
-	                mSoundPool = new SoundPool.Builder()
-	                        .setMaxStreams(16)
-	                        .setAudioAttributes(audioAttributes)
-	                        .build();
-	            } else { // 5.0 以前
-	                mSoundPool = new SoundPool(16, AudioManager.STREAM_MUSIC, 0);  // 创建SoundPool
-	            }
-	
-	            mSoundPool.setOnLoadCompleteListener(this);  // 设置加载完成监听
-	        }
-	    }	
+if (Build.VERSION.SDK_INT > 21) {
+    SoundPool.Builder builder = new SoundPool.Builder();
 
-```
+    builder.setMaxStreams(5);
 
-- setAudioAttributes用来设置audio 属性，此值要么不设，要么设置不为null的值，否则会导致异常产生
+    AudioAttributes.Builder attrBuilder = new AudioAttributes.Builder();
 
-  ```
-  public Builder setAudioAttributes(AudioAttributes attributes)
-                  throws IllegalArgumentException {
-              if (attributes == null) {
-                  throw new IllegalArgumentException("Invalid null AudioAttributes");
-              }
-              mAudioAttributes = attributes;
-              return this;
-          }
-  
-          public SoundPool build() {
-              if (mAudioAttributes == null) {
-                  mAudioAttributes = new AudioAttributes.Builder()
-                          .setUsage(AudioAttributes.USAGE_MEDIA).build();
-              }
-              return new SoundPool(mMaxStreams, mAudioAttributes);
-          }
-  ```
+    attrBuilder.setLegacyStreamType(AudioManager.STREAM_MUSIC);//STREAM_MUSIC
 
-  
+    builder.setAudioAttributes(attrBuilder.build());
+    soundpool = builder.build();
+} else {
+    soundpool = new SoundPool(5, AudioManager.STREAM_SYSTEM, 0);
+}
 
-```
-  // 返回值streamID ， 返回0则播放失败,否则成功
-  
-  public final int play(int soundID, float leftVolume, float rightVolume,
-            int priority, int loop, float rate) {
-        baseStart();
-        return _play(soundID, leftVolume, rightVolume, priority, loop, rate);
+soundmap.put(1, soundpool.load(this, R.raw.samp1, 1));
+soundmap.put(2, soundpool.load(this, R.raw.samp2, 2));
+soundmap.put(3, soundpool.load(this, R.raw.samp3, 3));
+soundmap.put(4, soundpool.load(this, R.raw.samp4, 4));
+
+soundmap.put(5, soundpool.load(this, R.raw.heiha, 5));
+soundmap.put(6, soundpool.load(this, R.raw.xiha, 6));
+soundmap.put(7, soundpool.load(this, R.raw.dala, 7));
+
+soundpool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+    @Override
+    public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+        soundPool.autoPause();
+        load = true;
     }
-```
+});
+
+mMAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+currentVolume = mMAudioManager.getStreamVolume(AudioManager.STREAM_SYSTEM);
+
+
+                    streadId = soundpool.play(soundmap.get(isPlay), mMAudioManager.getStreamVolume(AudioManager.STREAM_SYSTEM), mMAudioManager.getStreamVolume(AudioManager.STREAM_SYSTEM), 0, -1, 1);
 
 ```
-
-// 资源释放
-/**
-     * 释放资源
-     */
-    private void releaseSoundPool() {
-        if (mSoundPool != null) {
-            mSoundPool.autoPause();
-            mSoundPool.unload(mSoundId);
-            mSoundId = DEFAULT_INVALID_SOUND_ID;
-            mSoundPool.release();
-            mSoundPool = null;
-        }
-    }
-```
-
-
-
