@@ -230,7 +230,7 @@ find void handleResumeActivity(IBinder token,boolean clearHide,boolean isForward
     	ActivityClientRecord r = performResumeActivity(token,clearHide);
     	if(r!=null){
     		final Activity a = r.activity;
-    		```
+    ```
     		if(r.window==null && !a.mFinished && willBeVisible){
     			r.window=r.activity.getwindow;
     			view decor = r.window.getDecorView();
@@ -252,5 +252,63 @@ find void handleResumeActivity(IBinder token,boolean clearHide,boolean isForward
     此处会调用onResume方法
     得到WindowManager，一个接口并继承实现ViewManager.
     实际调用WindowManagerImpl的addView()方法
+    ```
+
+
+
+# 以下为自定义view实战
+
+------
+
+
+
+- Paint.setStyle()
+  - Paint.Style.Fill  :仅仅填充内部
+  - Paint.Style.Fill_AND_STROKE: 填充内部和描边
+  - Paint.Style.STROKE:仅仅描边
+- Paint.setStrokeWidth()
+  - 设置画笔宽度
+- Canvas
+- Path ： 默认情况下路径都是链接好的，除了
+  - 调用AddXXX系列函数，将直接添加固定形状路径
+  - 调用moveTo()函数改变回值起始位置
+- **Region(区域)**
+  - 本意不是用来绘图
+  - 间接构造
+    - 无论是调用set系列函数的Region是不是有区域值，当调用set系列函数后，原来的区域值就会被替换成set系列函数的区域值
+    - setPath(Path path,Region clip)
+- Canvas变换
+  - clip
+  - save
+  - restore
+
+
+
+# animation
+
+- 视图动画
+  - 配置xml动画
+  - alpha +scale + translate + rotate+set
+- 视图动画
+  - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
