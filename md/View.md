@@ -330,7 +330,15 @@ find void handleResumeActivity(IBinder token,boolean clearHide,boolean isForward
 
 
 
+### 获取activity根布局
 
+***View view = getWindow().getDecorView();***
+
+```
+View view = getWindow().getDecorView();
+RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.relativelayout);
+relativeLayout.setBackgroundColor(Color.BLACK);
+```
 
 
 
