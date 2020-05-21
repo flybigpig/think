@@ -1264,9 +1264,24 @@ join()
 
 
 
-*Syn*chronize Sequence Numbers   
-
-
+> TCP首部有6个标志比特。
+>
+> SYN是其中之zhidao一，它是个同步序号，当TCP连接建立时会把SYN置1。
+>
+> 一般请求端会发送一个报文，其中包含这样的字段SYN 1415531521：1415531521(0)。
+>
+> 然后服务端收到后会返回一个ack 1415531522，ack表示确内认收到。
+> SYN，ACK是标志位。
+>
+> SEQ，AN是数据包序号。
+>
+> SYN=1, ACK=0, SEQ=200 的意思是：发送的为一个SYN请求，发容送端的初始数据包序号为200
+>
+> 
+>
+> SYN=1, ACK=1, SEQ=4800, AN=201 的意思是：接收端的确认信息，且接收端的初始数据包。序号为4800。
+>
+> 
 
 TCP三次握手的过程如下。
 
@@ -1288,15 +1303,139 @@ TCP三次握手的过程如下。
 
 
 
-
+**ACK和ack是不一样的，ACK是标志位，ack是确认序列号。图片三次握手错了，别误导大家，更新一下**
 
 如果有大量的连接，每次在连接、关闭时都要经历三次握手、四次挥手，这很显然会造成性能低下。因此，HTTP有一种叫作keepalive connections的机制，它可以在传输数据后仍然保持连接，当客户端需要再次获取数据时，直接使用刚刚空闲下来的连接而无须再次握手
 
+
+
+[Http/s](C:\Users\czdxn\Desktop\md\think\think\md\HTTP_NET.md)
+
+##### http特点
+
+- 支持C/S 客户端服务器模式
+- 简单快速
+- 灵活
+- 无状态
+
+
+
+HTTP请求方法有8种，分别是GET、POST、HEAD、PUT、DELETE、TRACE、CONNECT、OPTIONS。对于移动开发最常用的就是GET和POST了。
+
+• GET：请求获取Request-URI所标识的资源。
+
+• POST：在Request-URI所标识的资源后附加新的数据。
+
+• HEAD：请求获取由Request-URI所标识的资源的响应消息报头。
+
+• PUT：请求服务器存储一个资源，并用Request-URI作为其标识。
+
+• DELETE：请求服务器删除Request-URI所标识的资源。
+
+• TRACE：请求服务器回送收到的请求信息，主要用于测试或诊断。
+
+• CONNECT：HTTP 1.1协议中预留给能够将连接改为管道方式的代理服务器。
+
+• OPTIONS：请求查询服务器的性能，或者查询与资源相关的选项和需求。
+
+
+
+```
+private void sendRequestWithHttpURLConnection() {
+        // 开启线程来发起网络请求
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HttpURLConnection connection = null;
+                BufferedReader reader = null;
+                try {
+                    URL url = new URL("https://www.baidu.com");
+                    connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setConnectTimeout(8000);
+                    connection.setReadTimeout(8000);
+                    InputStream in = connection.getInputStream();
+                    // 下面对获取到的输入流进行读取
+                    reader = new BufferedReader(new InputStreamReader(in));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    showResponse(response.toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (reader != null) {
+                        try {
+                            reader.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (connection != null) {
+                        connection.disconnect();
+                    }
+                }
+            }
+        }).start();
+    }
+
+    private void showResponse(final String response) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("responsssssssssss", response);
+            }
+        });
+    }
+```
+
+
+
+
+
+
+
+##### 设计模式
+
+###### 六大原则
+
+​	单一职责原则：就一个类而言，应改仅有一个引起它变化的原因
+
+​	开放封闭原则：类、模块、函数等应该事可以扩展的，但是不可修改的
+
+​	里氏替换原则：所有引用积累(父类)的地方必须能够透明地使用其子类的对象
+
+​	依赖倒置原理:   高层模块不应该以来低层模块，两者都应该依赖于抽象。抽象不应该依赖于细节，细节应该依赖于抽象
+
+​	迪米特原则：一个软件应该尽可能减少与其他实体发生相互作用
+
+​	接口隔离原则： 一个类对另一个类的依赖应该建立再最小的接口上
+
+
+
+GoF提出的设计模式总共有23种，根据目的准则分类，分为三大类。
+
+• 创建型设计模式，共5种：单例模式、工厂方法模式、抽象工厂模式、建造者模式、原型模式。
+
+• 结构型设计模式，共7种：适配器模式、装饰模式、代理模式、外观模式、桥接模式、组合模式、享元模式。
+
+• 行为型设计模式，共11种：策略模式、模板方法模式、观察者模式、迭代器模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。
+
+另外，随着设计模式的发展也涌现出很多新的设计模式：它们分别是规格模式、对象池模式、雇工模式、黑板模式和空对象模式等
+
+
+
+
+
+
+
+
+
+
+
 ##### 反射
-
-
-
-
 
 
 
